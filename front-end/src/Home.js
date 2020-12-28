@@ -14,7 +14,7 @@ const Home = (props) => {
     return (
     <>
     <h1>{greet}</h1>
-    <button onClick={handleClick}>Okay</button>
+    {/* <button onClick={handleClick}>Okay</button> */}
     </>
     );
 };
