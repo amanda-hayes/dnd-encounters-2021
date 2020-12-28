@@ -37,6 +37,22 @@ characterRouter.get('/', async (req, res) => {
     }
 });
 
+/***************
+* UPDATE ROUTE *
+****************/
+characterRouter.put('/:id', async (req, res) => {
+    try {
+        const updatedCharacter = await characterModel.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        res.status(200).json(updatedCharacter);
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
+
 
 /***************
 * CREATE ROUTE *
@@ -49,6 +65,8 @@ characterRouter.post('/', async (req, res) => {
         res.status(400).json(error);
     }
 });
+
+
 
 
 
