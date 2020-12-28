@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url("./party.jpg");
+  background-size: cover;
+  color: white;
 }
 
 .App-logo {
@@ -36,3 +39,7 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+

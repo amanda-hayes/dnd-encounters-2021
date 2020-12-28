@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
+import './App.css';
 
 const Home = (props) => {
     const [greet, setGreet] = useState("Welcome to DND Encounters");
 
     useEffect(() => {
-        alert(greet);
-    }, [greet]);
+    }, []);
 
-    const handleClick = () => {
-        setGreet('Are you ready to go on an adventure?');
-    };
 
     return (
     <>
+    <div>
     <h1>{greet}</h1>
-    {/* <button onClick={handleClick}>Okay</button> */}
+    <p>lorem ipsum akdnmsl/knslakndalskndalksndalksndalksndalskndlasknd
+        askjdnaksjndakjsndajksndkajsndjkasndkjasndjkasndajsndas
+        ajsndskjd czmxn cxalskjndwkejsbfksdjz c,zmx claKS nlkasnfdksajbcs
+    </p>
+    </div>
     </>
     );
 };
