@@ -1,16 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const characterModel = require('./models/characterModel.js')
 const app = express();
+const characterRouter = express.Router();
 
 const PORT = process.env.PORT || 7000;
 const MONGOURI =
     process.env.MONGODB_URI;
 
-// app.use(cors);
 app.use(express.json());
-
+app.use('/characters', characterRouter);
 
 mongoose.connection.on('error', (err) =>
 console.log(err.message + ' is Mongod not running?')
@@ -22,9 +22,17 @@ mongoose.connection.once('open', () => {
     console.log('connected to mongoose!!!');
 });
 
+// ROUTES //
 
-const characterRouter = require('./controllers/characters.js')
-    app.use('/characters', characterRouter);
+characterRouter.get('/', async (req, res) => {
+    try {
+        const foundCharacters = await characterModel.find({});
+        console.log(foundCharacters);
+        res.status(200).json(foundCharacters);
+    } catch(error){
+        res.status(400).json(error)
+    }
+});
 
 
 app.listen(PORT, () => {
