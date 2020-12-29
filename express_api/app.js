@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-// const characterModel = require('./models/characterModel.js')
+const cors = require('cors');
+const characterModel = require('./models/characterModel.js')
 const app = express();
 
 const PORT = process.env.PORT || 7000;
@@ -9,6 +10,7 @@ const charactersController = require('./controllers/characters')
 const MONGOURI =
     process.env.MONGODB_URI
 
+app.use(cors());
 app.use(express.json());
 app.use('/characters', charactersController);
 
