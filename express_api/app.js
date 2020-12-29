@@ -2,17 +2,19 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const characterModel = require('./models/characterModel.js')
 const app = express();
 
 const PORT = process.env.PORT || 7000;
 const charactersController = require('./controllers/characters')
+const randomCharController = require('./controllers/randomChar')
 const MONGOURI =
     process.env.MONGODB_URI
 
 app.use(cors());
 app.use(express.json());
 app.use('/characters', charactersController);
+app.use('./randomChar', randomCharController);
+
 
 mongoose.connection.on('error', (err) =>
 console.log(err.message + ' is Mongod not running?')
