@@ -13,7 +13,7 @@ const MONGOURI =
 app.use(cors());
 app.use(express.json());
 app.use('/characters', charactersController);
-app.use('./randomChar', randomCharController);
+app.use('/randomChar', randomCharController);
 
 
 mongoose.connection.on('error', (err) =>
