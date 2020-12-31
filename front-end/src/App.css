@@ -10,6 +10,24 @@
   pointer-events: none;
 }
 
+#myDiv {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+  display: none;
+}
+
+#poop {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: pink;
+  margin-top: 20px;
+  display: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
