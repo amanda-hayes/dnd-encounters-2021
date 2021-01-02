@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import '../App.css';
-
 import { Link } from "react-router-dom";
 
 const CreateCharacterForm = (props) => {
@@ -23,11 +22,10 @@ const CreateCharacterForm = (props) => {
         const attack = attackSelect.current.value;
         const weapon = weaponSelect.current.value;
         const catchphrases = catchphrasesSelect.current.value;
+        const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, weapon, catchphrases });
 
-        const body = JSON.stringify({
-            name, pronouns, race, characterClass, hp, attack, weapon, catchphrases
-        });
         event.currentTarget.reset();
+
         try {
             const response = await fetch('http://localhost:7000/characters', {
                 method: 'POST',
@@ -35,18 +33,14 @@ const CreateCharacterForm = (props) => {
                     'Content-type': 'application/json'
                 },
                 body
-                
             });
 
-            const data = await response.json();
-            props.updateCharacters([...props.characters, data]);
-            //response.redirect('/');
+            props.history.push('/Characters');
+
         } catch (error) {
             console.error(error)
-        }
+        };
     }
-
-   
 
     return (
         <form onSubmit={createCharacter} method="post">
@@ -98,9 +92,7 @@ const CreateCharacterForm = (props) => {
                 <option value="Screw it, we're Gods!">'Screw it, we're Gods!'</option>
             </select>
             <br />
-            <Link to="/">
             <input type="submit" value="Create Character" />
-            </Link>
         </form>
     )
 };

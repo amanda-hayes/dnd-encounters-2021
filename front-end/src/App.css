@@ -1,20 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 .App {
-  /* text-align: center; */
-  background-image: url("./party.jpg");
+  text-align: center;
   background-size: cover;
-  color: white; 
+  color: black;
   padding: 20px;
-  font-family: 'Roboto Condensed';
+  font-family: "Roboto";
+  /* background-image: url("./party.jpg"); */
 }
 
 input {
   padding: 5px;
   font-size: 14px;
 }
-
 
 label {
   width: 200px;
@@ -35,10 +33,11 @@ form {
 .myCharList {
   font-size: 24px;
   box-shadow: 20px;
+
 }
 
 .form-box {
-  background-color:rgba(255, 255, 255, 0.432);
+  background-color: rgba(255, 255, 255, 0.432);
   width: 40%;
   padding: 10px;
   border-radius: 5px;
@@ -119,12 +118,13 @@ li {
   width: 30%;
   padding: 10px;
   border-radius: 5px;
+  font-size: 1.5rem;
 }
+
+/* a {
+  font-size: 1.5rem;
+} */
 
 /* .myChars {
   text-align: left;
 } */
-
-
-
-
