@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import '../App.css';
-import { Link } from "react-router-dom";
 
 const CreateCharacterForm = (props) => {
     const nameInput = useRef(null);

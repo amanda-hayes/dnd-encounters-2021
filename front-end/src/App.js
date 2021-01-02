@@ -1,10 +1,11 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AllCharPage from './Components/Characters'
 import CharacterStats from './Components/CharDetails';
 import UpdateCharacterForm from './Components/UpdateCharacterForm';
 import CreateCharacterForm from './Components/CreateCharacterForm';
 import GenerateCharComponent from './Components/GenerateChar';
+import GetRandom from './Components/GetRandom';
 
 function App() {
   const Home = () => (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/CreateCharacterForm" exact component={CreateCharacterForm} />
         <Route path="/UpdateCharacterForm/:id" component={UpdateCharacterForm} />
         <Route path="/GenerateChar" exact component={GenerateCharComponent} />
-
+        <Route path="/GetRandom" component={GetRandom} />
       </Switch>
       </div>
     </Router>

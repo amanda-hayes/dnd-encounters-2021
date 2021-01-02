@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import '../App.css';
+
 
 function GenerateCharComponent(props) {
   const [randomCharacters, setRandomCharacters] = useState([]);
@@ -7,9 +9,8 @@ function GenerateCharComponent(props) {
     try {
       const response = await fetch('http://localhost:7000/randomChar');
       const data = await response.json();
-
-      props.updateCharacters([...props.characters, data]);
       setRandomCharacters(data);
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -25,23 +26,32 @@ function GenerateCharComponent(props) {
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(generateChar)
+        body: JSON.stringify(generatedCharacter)
       });
+      console.log(generatedCharacter);
     } catch (error) {
       console.log(error);
     }
   };
 
+  function handleClick(e) {
+    e.preventDefault();
+    generateChar();
+  }
+
   useEffect(() => { 
     fetchRandomCharacters()
-    generateChar()
   }, []);
 
   return (
     <div>
       <h2>Generate a random character for me</h2>
-      <button onClick={generateChar}
+      <button onClick={handleClick}
       >Generate</button>
+      <h2>Heres your char</h2>
+      <li>
+      {/* {generatedCharacter.name} */}
+      </li>
     </div>
   )
 }

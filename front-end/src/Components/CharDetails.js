@@ -29,7 +29,7 @@ function CharacterStats() {
       {character.weapon}<br />
       {character.attack}<br />
       {character.catchphrases}<br />
-      <img src="../images/rand.jpg" />
+      <img src="./rand.jpg" />
     </div>
   )
 }

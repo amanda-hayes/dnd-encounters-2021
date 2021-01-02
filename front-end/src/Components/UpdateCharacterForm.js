@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import '../App.css';
 import { useRouteMatch } from "react-router-dom";
 
-export default (props) => {
+const UpdateCharacterForm = (props) => {
     const updateNameInput = useRef(null);
     const updatePronounsInput = useRef(null);
     const updateRaceSelect = useRef(null);
@@ -25,7 +25,6 @@ export default (props) => {
         const catchphrases = updateCatchphrasesSelect.current.value;
         const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, catchphrases });
 
-        
 
         event.currentTarget.reset();
 
@@ -93,3 +92,5 @@ export default (props) => {
         </>
     )
 };
+
+export default UpdateCharacterForm;

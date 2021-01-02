@@ -1,8 +1,7 @@
 import '../App.css';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import UpdateCharacterForm from './UpdateCharacterForm';
-import GenerateCharComponent from './Components/GenerateChar';
+
 
 function AllCharPage() {
   const [characters, setCharacters] = useState([]);
@@ -16,15 +15,6 @@ function AllCharPage() {
       console.error(error);
     }
   }
-
-  // const toggleUpdateChar = () => {
-  //   const toggle = document.getElementsByClassName("updateChar");
-  //   if (toggle.style.display==="none") {
-  //     toggle.style.display = "block";
-  //   } else {
-  //     toggle.style.display = "none"
-  //   }
-  //  }
 
   const deleteCharacter = async (id) => {
     try {
@@ -43,10 +33,48 @@ function AllCharPage() {
     }
   };
 
- 
+  // GENERATE A NEW CHARACTER
+
+    const [randomCharacters, setRandomCharacters] = useState([]);
+  
+    const fetchRandomCharacters = async () => {
+      try {
+        const response = await fetch('http://localhost:7000/randomChar');
+        const data = await response.json();
+        setRandomCharacters(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    const generateChar = async () => {
+      const randomIndex = Math.round(Math.random() * (randomCharacters.length - 1));
+      const generatedCharacter = randomCharacters[randomIndex];
+  
+      try {
+        const response = await fetch("http://localhost:7000/characters", {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(generatedCharacter)
+        });
+        console.log(generatedCharacter);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    function handleClick(e) {
+      e.preventDefault();
+      generateChar();
+    }
+
 
   useEffect(() => {
     fetchCharacters()
+    fetchRandomCharacters()
   }, []);
 
   return (
@@ -69,39 +97,22 @@ function AllCharPage() {
               <Link to={`/UpdateCharacterForm/${character._id}`}>EDIT</Link>
               </button>
 
-                 {/* <button onClick={
-                  (event) => {
-                    toggleUpdateChar()
-                  }
-                }>EDIT 
-                </button> */}
-
-
-                {/* <UpdateCharacterForm character={character} updateCharacters={setCharacters} characters={characters} /> */}
-
-
-
               <button onClick={
                   (event) => {
                     deleteCharacter(character._id)
                   }
                 }>DELETE </button>
-                
             </li>
-          
           )
         })
       }
       </>
       </ul>
-
+      <div>
       <h2>Generate a random character for me</h2>
-      <Link to="/GenerateChar">
-      <button
+      <button onClick={handleClick}
       >Generate</button>
-      </Link>
-
-
+      </div>
 
       <Link to="/CreateCharacterForm">
       <button>Create New Character</button>
