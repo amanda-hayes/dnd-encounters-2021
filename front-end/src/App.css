@@ -1,31 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+
 .App {
-  text-align: center;
-  /* background-image: url("./party.jpg");
+  /* text-align: center; */
+  background-image: url("./party.jpg");
   background-size: cover;
-  color: white; */
+  color: white; 
+  padding: 20px;
+  font-family: 'Roboto Condensed';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  padding: 5px;
+  font-size: 14px;
 }
 
-#myDiv {
-  width: 100%;
-  padding: 50px 0;
+
+label {
+  width: 200px;
+  display: inline-block;
+}
+
+.select {
+  padding: 5px;
+  font-size: 16px;
+}
+
+form {
+  text-align: left;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.myCharList {
+  font-size: 24px;
+  box-shadow: 20px;
+}
+
+.form-box {
+  background-color:rgba(255, 255, 255, 0.432);
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 10px;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.updateChar {
+  width: 40%;
+  padding: 20px 0;
   text-align: center;
-  background-color: lightblue;
-  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.432);
+  margin: 10px;
+  font-size: 1.5rem;
   display: none;
+  border-radius: 5px;
 }
 
-#poop {
-  width: 100%;
-  padding: 50px 0;
+.viewStats {
+  width: 30%;
+  padding: 20px 0;
   text-align: center;
-  background-color: pink;
-  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.432);
+  margin-top: 10px;
+  font-size: 1.5rem;
   display: none;
+  border-radius: 5px;
+}
+
+#newChar {
+  width: 30%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.432);
+  margin-top: 10px;
+  font-size: 1.5rem;
+  display: none;
+  border-radius: 5px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -57,6 +111,19 @@
     transform: rotate(360deg);
   }
 }
+
+li {
+  list-style: none;
+  background-color: brown;
+  margin: 10px;
+  width: 30%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* .myChars {
+  text-align: left;
+} */
 
 
 

@@ -1,4 +1,7 @@
 import { useRef } from 'react';
+import '../App.css';
+
+import { Link } from "react-router-dom";
 
 const CreateCharacterForm = (props) => {
     const nameInput = useRef(null);
@@ -7,6 +10,7 @@ const CreateCharacterForm = (props) => {
     const characterClassSelect = useRef(null);
     const hpSelect = useRef(null);
     const attackSelect = useRef(null);
+    const weaponSelect = useRef(null);
     const catchphrasesSelect = useRef(null);
 
     const createCharacter = async (event) => {
@@ -17,10 +21,11 @@ const CreateCharacterForm = (props) => {
         const characterClass = characterClassSelect.current.value;
         const hp = hpSelect.current.value;
         const attack = attackSelect.current.value;
+        const weapon = weaponSelect.current.value;
         const catchphrases = catchphrasesSelect.current.value;
 
         const body = JSON.stringify({
-            name, pronouns, race, characterClass, hp, attack, catchphrases
+            name, pronouns, race, characterClass, hp, attack, weapon, catchphrases
         });
         event.currentTarget.reset();
         try {
@@ -29,11 +34,13 @@ const CreateCharacterForm = (props) => {
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: body
+                body
+                
             });
 
             const data = await response.json();
             props.updateCharacters([...props.characters, data]);
+            //response.redirect('/');
         } catch (error) {
             console.error(error)
         }
@@ -43,41 +50,57 @@ const CreateCharacterForm = (props) => {
 
     return (
         <form onSubmit={createCharacter} method="post">
-            Character Name:<input type="text" name="name" ref={nameInput} />
+            <label>Character Name:</label>
+            <input type="text" name="name" ref={nameInput} />
             <br />
-            Character Pronouns:<input type="text" name="pronouns" ref={pronounsInput} />
+            <label>Character Pronouns:</label>
+            <input type="text" name="pronouns" ref={pronounsInput} />
             <br />
-            Race: <select ref={raceSelect}>
+            <label>Race:</label> 
+            <select className="select" ref={raceSelect}>
                 <option value="Human">Human</option>
                 <option value="Half Elf">Elf</option>
                 <option value="Gnome">Gnome</option>
                 <option value="Half Orc">Half Orc</option>
             </select>
             <br />
-            Class: <select ref={characterClassSelect}>
+            <label>Class:</label>
+             <select className="select" ref={characterClassSelect}>
                 <option value="Fighter">Fighter (Tank)</option>
                 <option value="Wizard">Wizard (DPS)</option>
                 <option value="Rogue">Rogue (stabby stabby)</option>
                 <option value="Cleric">Cleric (Healer)</option>
             </select>
             <br />
-            HP: <select ref={hpSelect}>
-                <option value="Default">8</option>
+            <label>HP:</label> 
+            <select className="select" ref={hpSelect}>
+                <option value="Default">12</option>
             </select>
             <br />
-            Attack: <select ref={attackSelect}>
-                <option value="Default">Sword Slash</option>
-                <option value="Default">Magic Missile</option>
-                <option value="Default">Shoryuken</option>
+            <label>Attack:</label> 
+            <select className="select" ref={attackSelect}>
+                <option value="Sword Slash">Sword Slash</option>
+                <option value="Magic Missile">Magic Missile</option>
+                <option value="Shoryukem">Shoryuken</option>
             </select>
             <br />
-            Catchphrases: <select ref={catchphrasesSelect}>
-                <option value="Default">'Let's Do This!'</option>
-                <option value="Default">'Can't we ever just have a normal field trip?'</option>
-                <option value="Default">'Screw it, we're Gods!'</option>
+            <label>Weapon:</label> 
+            <select className="select" ref={weaponSelect}>
+                <option value="Sword Slash">Sword</option>
+                <option value="Magic Missile">Wand</option>
+                <option value="Shoryukem">Dagger</option>
             </select>
             <br />
+            <label>Catchphrases:</label> 
+            <select className="select" ref={catchphrasesSelect}>
+                <option value="Let's Do This!">'Let's Do This!'</option>
+                <option value="Can't we ever just have a normal field trip?">'Can't we ever just have a normal field trip?'</option>
+                <option value="Screw it, we're Gods!">'Screw it, we're Gods!'</option>
+            </select>
+            <br />
+            <Link to="/">
             <input type="submit" value="Create Character" />
+            </Link>
         </form>
     )
 };
