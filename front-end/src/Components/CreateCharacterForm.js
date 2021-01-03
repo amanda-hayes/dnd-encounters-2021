@@ -8,6 +8,7 @@ const CreateCharacterForm = (props) => {
     const characterClassSelect = useRef(null);
     const hpSelect = useRef(null);
     const attackSelect = useRef(null);
+    const armorClassSelect = useRef(null);
     const weaponSelect = useRef(null);
     const catchphrasesSelect = useRef(null);
 
@@ -17,11 +18,13 @@ const CreateCharacterForm = (props) => {
         const pronouns = pronounsInput.current.value;
         const race = raceSelect.current.value;
         const characterClass = characterClassSelect.current.value;
-        const hp = hpSelect.current.value;
+        const hp = 12;
         const attack = attackSelect.current.value;
+        const armorClass = 15;
         const weapon = weaponSelect.current.value;
         const catchphrases = catchphrasesSelect.current.value;
-        const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, weapon, catchphrases });
+
+        const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, armorClass, weapon, catchphrases });
 
         event.currentTarget.reset();
 
@@ -31,7 +34,7 @@ const CreateCharacterForm = (props) => {
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body
+                body: body
             });
 
             props.history.push('/Characters');
@@ -65,7 +68,7 @@ const CreateCharacterForm = (props) => {
                 <option value="Cleric">Cleric (Healer)</option>
             </select>
             <br />
-            <label>HP:</label> 
+            <label>HP</label> 
             <select className="select" ref={hpSelect}>
                 <option value="Default">12</option>
             </select>
@@ -74,7 +77,12 @@ const CreateCharacterForm = (props) => {
             <select className="select" ref={attackSelect}>
                 <option value="Sword Slash">Sword Slash</option>
                 <option value="Magic Missile">Magic Missile</option>
-                <option value="Shoryukem">Shoryuken</option>
+                <option value="Shoryuken">Shoryuken</option>
+            </select>
+            <br />
+            <label>Armor Class</label> 
+            <select className="select" ref={armorClassSelect}>
+                <option value="Default">15</option>
             </select>
             <br />
             <label>Weapon:</label> 
@@ -88,7 +96,7 @@ const CreateCharacterForm = (props) => {
             <select className="select" ref={catchphrasesSelect}>
                 <option value="Let's Do This!">'Let's Do This!'</option>
                 <option value="Can't we ever just have a normal field trip?">'Can't we ever just have a normal field trip?'</option>
-                <option value="Screw it, we're Gods!">'Screw it, we're Gods!'</option>
+                <option value="Screw it, we're basically Gods!">'Screw it, we're basically Gods!'</option>
             </select>
             <br />
             <input type="submit" value="Create Character" />

@@ -48,10 +48,6 @@ function GenerateCharComponent(props) {
       <h2>Generate a random character for me</h2>
       <button onClick={handleClick}
       >Generate</button>
-      <h2>Heres your char</h2>
-      <li>
-      {/* {generatedCharacter.name} */}
-      </li>
     </div>
   )
 }

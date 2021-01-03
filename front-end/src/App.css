@@ -1,4 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html body {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  margin: 0px;
+}
+
+button {
+  cursor: pointer;
+  padding: .5em;
+  margin: .5em;
+}
 
 .App {
   text-align: center;
@@ -6,7 +26,17 @@
   color: black;
   padding: 20px;
   font-family: "Roboto";
-  /* background-image: url("./party.jpg"); */
+  
+}
+
+.character-background {
+  background-image: url("./party.jpg");
+  padding: 20px;
+  color: white;
+}
+
+#character-list {
+  display: inline;
 }
 
 input {
@@ -98,9 +128,7 @@ p {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+
 
 @keyframes App-logo-spin {
   from {
@@ -119,12 +147,21 @@ li {
   padding: 10px;
   border-radius: 5px;
   font-size: 1.5rem;
+  box-shadow: 10px, 10px;
 }
 
-/* a {
-  font-size: 1.5rem;
-} */
+a {
+  text-decoration: none;
+}
+
+.create-generate-btns {
+  display: inline;
+}
 
 /* .myChars {
   text-align: left;
 } */
+
+#create-new {
+  display: inline;
+}

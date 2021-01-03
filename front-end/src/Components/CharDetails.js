@@ -8,7 +8,7 @@ function CharacterStats() {
 
   const fetchCharacter = async () => {
     try {
-        const response = await fetch(`http://localhost:7000/Characters/${characterDetailRouteMatch.params.id}`);
+        const response = await fetch(`http://localhost:7000/characters/${characterDetailRouteMatch.params.id}`);
         const data = await response.json();
         setCharacter(data);
     } catch (error) {
@@ -28,6 +28,7 @@ function CharacterStats() {
       {character.hp}<br />
       {character.weapon}<br />
       {character.attack}<br />
+      {character.armorClass}<br />
       {character.catchphrases}<br />
       <img src="./rand.jpg" />
     </div>

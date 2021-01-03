@@ -9,6 +9,7 @@ const UpdateCharacterForm = (props) => {
     const updateCharacterClassSelect = useRef(null);
     const updateHpSelect = useRef(null);
     const updateAttackSelect = useRef(null);
+    const updateArmorClass = useRef(null);
     const updateCatchphrasesSelect = useRef(null);
 
     const characterDetailRouteMatch = useRouteMatch("/UpdateCharacterForm/:id");
@@ -22,8 +23,9 @@ const UpdateCharacterForm = (props) => {
         const characterClass = updateCharacterClassSelect.current.value;
         const hp = updateHpSelect.current.value;
         const attack = updateAttackSelect.current.value;
+        const armorClass = updateArmorClass.current.value;
         const catchphrases = updateCatchphrasesSelect.current.value;
-        const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, catchphrases });
+        const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, armorClass, catchphrases });
 
 
         event.currentTarget.reset();
@@ -80,6 +82,10 @@ const UpdateCharacterForm = (props) => {
                     <option value="Default">Shoryuken</option>
                 </select>
                 <br />
+                <label> Armor Class:</label>
+                <select className="select"ref={updateArmorClass}>
+                    <option value="Default">15</option>
+                </select>
                 <label> Catchphrases:</label> 
                 <select className="select" ref={updateCatchphrasesSelect}>
                     <option value="Default">'Let's Do This!'</option>
