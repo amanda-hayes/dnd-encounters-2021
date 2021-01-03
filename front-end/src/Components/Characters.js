@@ -42,19 +42,27 @@ function AllCharPage() {
     try {
       const response = await fetch("http://localhost:7000/randomChar");
       const data = await response.json();
+
       setRandomCharacters(data);
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
   };
 
   const generateChar = async () => {
+    if (randomCharacters.length === 0) {
+      return;
+    }
     let randomIndex = Math.round(Math.random() * (randomCharacters.length - 1));
     let generatedCharacter = randomCharacters[randomIndex];
 
     try {
-      if (characters.includes(generatedCharacter._id) === false) {
+      if (characters.includes(generatedCharacter)) {
+        const filterDupe = randomCharacters.filter(rando => rando !== generatedCharacter);
+
+        setRandomCharacters(filterDupe);
+        generateChar();
+      } else {
         const response = await fetch("http://localhost:7000/characters", {
           method: "POST",
           headers: {
@@ -63,13 +71,9 @@ function AllCharPage() {
           body: JSON.stringify(generatedCharacter),
         });
 
-        setRandomCharacters(randomCharacters.filter(rando => rando._id != generatedCharacter._id));
-        characters.push(generatedCharacter);
-        setCharacters(characters);
-      } else {
-        // remove from list and grab another random character
-        setRandomCharacters(randomCharacters.filter(rando => rando._id != generatedCharacter._id));
-        generateChar();
+        const newRandomCharList = randomCharacters.filter(rando => rando !== generatedCharacter);
+        setRandomCharacters(newRandomCharList);
+        setCharacters([...characters, generatedCharacter]);
       }
     } catch (error) {
       console.log(error);
@@ -127,6 +131,12 @@ function AllCharPage() {
                 </li>
               );
             })}
+            <div>
+              <h1>Ready to start adventuring?</h1>
+              <Link to="/Battle">
+                <button>Let's Go!</button>
+              </Link>
+            </div>
           </>
         </ul>
       </div>

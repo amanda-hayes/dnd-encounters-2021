@@ -38,7 +38,7 @@ const CreateCharacterForm = (props) => {
             });
 
             props.history.push('/Characters');
-
+            alert("Character Created!")
         } catch (error) {
             console.error(error)
         };
