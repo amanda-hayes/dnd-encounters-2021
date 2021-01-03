@@ -1,42 +1,152 @@
 * {
   box-sizing: border-box;
+  margin: 0px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
-html body {
+html {
+  height: 100%;
   margin: 0px;
   padding: 0px;
 }
+
+@font-face {
+  font-family: 'Luminari';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Luminari'), url('Luminari-Regular.woff') format('woff');
+  }
+
+h1 {
+  font-family: 'Luminari';
+}
+
+
+p {
+  font-size: 1.5rem;
+}
+
 
 ul {
   margin: 0px;
 }
 
+
+li {
+  list-style: none;
+  background-color: brown;
+  margin: 10px;
+  width: 30%;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  /* font-size: 1.5rem; */
+  box-shadow: 5px 10px 8px #050505af;
+  display: inline-block;
+}
+
 button {
   cursor: pointer;
   padding: .5em;
-  margin: .5em;
+  margin-top: 1rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  background-color: white; 
+  border: none;
+  color: black;
+  box-shadow: 5px 8px 8px #050505af;
+  font-size: 1rem;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+  }
+
+button:hover {
+    background-color: #60636090; 
+    color: white;
 }
+
+#click-here {
+  color: white;
+}
+
+
+.stats {
+  text-align: left;
+  margin: 60px 60px 60px 500px;
+  font-size: 1.3rem;
+  max-width: 550px;
+}
+
 
 .App {
   text-align: center;
   background-size: cover;
   color: black;
   padding: 20px;
-  font-family: "Roboto";
-  
+  font-family: "Century Gothic";
+  height: 100vh;
 }
 
+
+
 .character-background {
-  background-image: url("./party.jpg");
+  background-image: url("./dnd-table-1.jpg");
+  height: 1000px;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding: 20px;
   color: white;
 }
 
-#character-list {
-  display: inline;
+/* #character-list {
+  background-color: rgba(0, 0, 0, 0.575);
+  box-shadow: 5px 10px 8px #050505af;
+  padding: 20px;
+} */
+
+.parchment-background {
+  background-image: url("./parchment-paper.jpg");
+  height: 100%;
+  padding: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+}
+
+.header-style {
+  background-color: rgba(2, 2, 2, 0.39);
+  padding: 20px;
+  box-shadow: 5px 10px 8px #050505af;
+}
+
+
+.my-characters-heading {
+  font-size: 3rem;
+  margin-bottom: 10px;
+
+}
+
+.update-background {
+  background-image: url('./party.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: white;
+}
+
+#create-char-form {
+  background-image: url('./dungeons-and-dragons.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: white;
+  margin: none;
+  padding-left: 20px;
 }
 
 input {
@@ -47,6 +157,7 @@ input {
 label {
   width: 200px;
   display: inline-block;
+  font-weight: bold;
 }
 
 .select {
@@ -54,40 +165,39 @@ label {
   font-size: 16px;
 }
 
+#update-char-h2 {
+  font-family: 'Luminari';
+  font-size: 3rem;
+  text-align: center;
+}
+
+.heading-with-form {
+  background-color: rgba(34, 32, 32, 0.514);
+  max-width: 800px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
 form {
   text-align: left;
   padding: 20px;
   font-size: 24px;
+  /* margin-left: 200px; */
+  /* margin-top: 200px; */
+  max-width: 600px;
 }
 
-.myCharList {
-  font-size: 24px;
-  box-shadow: 20px;
-
-}
 
 .form-box {
-  background-color: rgba(255, 255, 255, 0.432);
+  background-color: rgba(128, 128, 128, 0.454);
   width: 40%;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 10px;
 }
 
-p {
-  font-size: 1.5rem;
-}
 
-.updateChar {
-  width: 40%;
-  padding: 20px 0;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.432);
-  margin: 10px;
-  font-size: 1.5rem;
-  display: none;
-  border-radius: 5px;
-}
 
 .viewStats {
   width: 30%;
@@ -111,11 +221,6 @@ p {
   border-radius: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -130,38 +235,42 @@ p {
 
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-li {
-  list-style: none;
-  background-color: brown;
-  margin: 10px;
-  width: 30%;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.5rem;
-  box-shadow: 10px, 10px;
-}
-
-a {
-  text-decoration: none;
-}
-
 .create-generate-btns {
   display: inline;
 }
 
-/* .myChars {
-  text-align: left;
-} */
 
 #create-new {
   display: inline;
+  font-family: 'Century Gothic';
+}
+
+#create-char-h2 {
+  padding-top: 40px;
+  font-family: 'Luminari';
+  font-size: 3rem;
+}
+
+#character-sheet-heading {
+  font-size: 3rem;
+  text-align: center;
+}
+
+#breadcrumbs {
+  text-align: left;
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+#update-breadcrumbs {
+  text-align: left;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left: 30px;
+  padding-top: 30px;
 }

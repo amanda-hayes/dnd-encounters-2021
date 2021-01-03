@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 const CreateCharacterForm = (props) => {
     const nameInput = useRef(null);
@@ -11,6 +12,7 @@ const CreateCharacterForm = (props) => {
     const armorClassSelect = useRef(null);
     const weaponSelect = useRef(null);
     const catchphrasesSelect = useRef(null);
+    const backstoryInput = useRef(null);
 
     const createCharacter = async (event) => {
         event.preventDefault()
@@ -23,8 +25,10 @@ const CreateCharacterForm = (props) => {
         const armorClass = 15;
         const weapon = weaponSelect.current.value;
         const catchphrases = catchphrasesSelect.current.value;
+        const backstory = backstoryInput.current.value;
 
-        const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, armorClass, weapon, catchphrases });
+        const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, 
+            armorClass, weapon, catchphrases, backstory });
 
         event.currentTarget.reset();
 
@@ -45,6 +49,16 @@ const CreateCharacterForm = (props) => {
     }
 
     return (
+        <>
+        <div id="create-char-form">
+        <div id="update-breadcrumbs">
+                    <Link to="/Characters">Go Back</Link>
+                </div>
+        <h2 id="create-char-h2">Create New Character</h2>
+        <p>Feel free to play around with different characters and stats.
+        <br />
+        If you want more information on rolling a new character, <a href="https://www.instructables.com/Creating-a-DD-5e-Character-for-Beginners/" target='_blank' id="click-here">click here.</a> 
+        </p>
         <form onSubmit={createCharacter} method="post">
             <label>Character Name:</label>
             <input type="text" name="name" ref={nameInput} />
@@ -101,6 +115,8 @@ const CreateCharacterForm = (props) => {
             <br />
             <input type="submit" value="Create Character" />
         </form>
+        </div>
+        </>
     )
 };
 export default CreateCharacterForm;

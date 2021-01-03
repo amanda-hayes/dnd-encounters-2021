@@ -1,6 +1,7 @@
 import '../App.css';
 import { useState, useEffect } from 'react';
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, Link } from "react-router-dom";
+import rand from '../rand.jpg';
 
 function CharacterStats() {
   const [character, setCharacter] = useState({});
@@ -19,18 +20,35 @@ function CharacterStats() {
   useEffect(() => { fetchCharacter() }, []);
 
   return (
-    <div>
-      <h1>Character Details</h1>
-      {character.name}<br />
-      {character.race}<br />
-      {character.pronouns}<br />
-      {character.characterClass}<br />
-      {character.hp}<br />
-      {character.weapon}<br />
-      {character.attack}<br />
-      {character.armorClass}<br />
-      {character.catchphrases}<br />
-      <img src="./rand.jpg" />
+    <div className="parchment-background">
+      <div id="breadcrumbs">
+      <Link to="/Characters">Go Back</Link>
+      </div>
+      <h1 id="character-sheet-heading">{character.name}<br />Character Sheet</h1>
+      <div className="stats">
+      <label>Name:</label> {character.name}
+      <br />
+      <label>Race:</label> {character.race}
+      <br />
+      <label>Pronouns:</label> {character.pronouns}
+      <br />
+      <label>Class:</label> {character.characterClass}
+      <br />
+      <label>HP:</label> {character.HP}
+      <br />
+      <label>Main Weapon:</label> {character.weapon}
+      <br />
+      <label>Main Attack:</label> {character.attack}
+      <br />
+      <label>Armor Class:</label> {character.armorClass}
+      <br />
+      <label>Motto:</label> "{character.catchphrases}"
+      <br />
+      <label>Backstory:</label> "{character.backstory}"
+      {/* <img src={rand} alt="Rand" /> */}
+      <button>
+      <Link to={`/UpdateCharacterForm/${character._id}`}>EDIT</Link></button>
+      </div>
     </div>
   )
 }

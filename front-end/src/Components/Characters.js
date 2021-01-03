@@ -92,18 +92,22 @@ function AllCharPage() {
 
   return (
     <div className="character-background">
-      <h1>My Characters</h1>
+      <div className="header-style">
+      <h1 className="my-characters-heading">My Adventuring Party</h1>
       <p>View and manage all your characters, or create a new one.</p>
-      <br />
       <div>
-        <h2 id="create-new">Create a New Character</h2>
+        Create a New Character
+
         <Link to="/CreateCharacterForm">
-          <button>Create New Character</button>
+          <button>CREATE</button>
         </Link>
         <br />
-        <h2 id="create-new">Generate a random character for me</h2>
-        <button onClick={handleClick}>Generate</button>
+        Generate a random character for me
+        <button onClick={handleClick}>GENERATE</button>
       </div>
+      </div>
+      <br />
+      <br />
       <div id="character-list">
         <ul>
           <>
@@ -114,7 +118,7 @@ function AllCharPage() {
                   {character.characterClass}
                   <br />
                   <button type="button">
-                    <Link to={`characters/${character._id}`}>VIEW</Link>
+                    <Link to={`/characters/${character._id}`}>VIEW</Link>
                   </button>
                   <button>
                     <Link to={`/UpdateCharacterForm/${character._id}`}>
@@ -131,15 +135,19 @@ function AllCharPage() {
                 </li>
               );
             })}
+          </>
+        </ul>
+        </div>
             <div>
+              <br />
+              <br />
+              <br />
+              <br />
               <h1>Ready to start adventuring?</h1>
               <Link to="/Battle">
                 <button>Let's Go!</button>
               </Link>
             </div>
-          </>
-        </ul>
-      </div>
     </div>
   );
 }
