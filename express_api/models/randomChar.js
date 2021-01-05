@@ -13,7 +13,8 @@ const randomCharSchema = Schema({
     image: {type: String, required: false },
     backstory: {type: String, required: false },
     thumbnail: { type: String, required: false },
-    initiative: { type: Number, required: false }
+    initiative: { type: Number, required: false },
+    characterType: { type: String, required: false }
 });
 
 module.exports = model('Random Char', randomCharSchema);

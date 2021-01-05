@@ -1,12 +1,14 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import forest from '../forest.jpg'
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 function Battle() {
     const [playerCharacters, updatePlayerCharactersList] = useState([]);
-    const [nonPlayerCharacters, updateNonPlayerCharactersList] = useState([]);
-    const [modal, showModal] = useState([]);
+    const [open, setOpen] = useState(false);
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
 
     const fetchPlayerCharacters = async () => {
         try {
@@ -19,42 +21,32 @@ function Battle() {
         }
     };
 
-    const fetchNonPlayerCharacters = async () => {
-        try {
-            const response = await fetch("http://localhost:7000/monsters");
-            const monstersData = await response.json();
-
-            updateNonPlayerCharactersList(monstersData);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     useEffect(() => {
         fetchPlayerCharacters();
-        showModal();
-        //fetchNonPlayerCharacters();
       }, []);
 
-      function takeDamageClickHandler(event) {
+      function attackClickHandler(event) {
         const newPlayerCharacters = [...playerCharacters];
-        newPlayerCharacters.find(char => char._id === event.target.value).HP -= 1;
-
+        if (newPlayerCharacters.find(npc => npc.characterType !== "NPC")) {
+          newPlayerCharacters.find(npc => npc.characterType === "NPC").HP -= 4;
+        } else {
+          const randomPlayer = newPlayerCharacters[1];
+          newPlayerCharacters.find(player => player._id === randomPlayer._id).HP -= 8;
+        }
+        
         updatePlayerCharactersList(newPlayerCharacters);
       }
 
-      // function rollInitClickHandler(event) {
-      //   const playersInited = playerCharacters.map((player) => {
-      //  player.initiative = rollAD20();})
-      //   updatePlayerCharactersList(playersInited);
-      //   console.log(playersInited)
-      // }
-
       function rollInitClickHandler(event) {
-        const playersInited = playerCharacters.map((player) => {
-          player.initiative = rollAD20();
-            updatePlayerCharactersList(playersInited);
-        })
+        const newPlayerCharacters = [...playerCharacters];
+        const playersInited = newPlayerCharacters.map(
+          (player) => { 
+            player.initiative = rollAD20();
+            return player;
+          });
+
+          updatePlayerCharactersList(playersInited.sort((a, b) => b.initiative - a.initiative));
       }
 
 
@@ -73,13 +65,9 @@ function Battle() {
         } else {
           alert('You rolled a ' + diceRoll)
         }
+        return diceRoll;
       }
 
-      // modal = { show: false };
-  
-      // function openModal(e) {
-      //   modal = { show: true }
-      // }
  
     // function summon(summonType) {return monster/player}
 
@@ -100,9 +88,6 @@ function Battle() {
     // create an initial state
     // This would log the players HP, turn order, the round
 
-    // add components for players vs NPCs
-
-    
 
     return (
       <>
@@ -112,13 +97,18 @@ function Battle() {
                 <Link to="/createcharacterform">CREATE</Link>
                 <Link to="/battle">BATTLE</Link>
               </nav>
-        <div className="battle-background">
-
-        {/* <button  onClick={(event) => {
-              openModal();
-         }}
-          > Begin Combat </button> */}
-
+      <div className="battle-background">
+        <div>
+          <button onClick={onOpenModal}>BEGIN COMBAT</button>
+            <Modal open={open} onClose={onCloseModal} center className="battle-modal">
+             <h2>Oh no!</h2> 
+          <p>
+            A monster appears! It's time to roll for initiative! Click "ROLL"
+            next to your character's name to get started.
+          </p>
+        </Modal>
+      </div>
+      <button onClick={rollInitClickHandler}>ROLL INITIATIVE</button>
            <ul>
             {playerCharacters.map((player) => {
               return (
@@ -127,7 +117,7 @@ function Battle() {
                   {player.name} <br /> HP: {player.HP} | {player.initiative}
                   <br />
                   <button value={ player._id } onClick={shoutClickHandler}>SHOUT</button>
-                  <button value={ player._id } onClick={rollInitClickHandler}>ROLL</button>
+                  <button value={ player._id } onClick={attackClickHandler}>ATTACK</button>
                 </li>
               );
             })}

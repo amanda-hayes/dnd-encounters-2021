@@ -115,7 +115,7 @@ button:hover {
 
 
 .character-background {
-  background-image: url("./dnd-table-1.jpg");
+  background-image: url("./images/dnd-table-1.jpg");
   height: 1000px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -130,7 +130,7 @@ button:hover {
 } */
 
 .parchment-background {
-  background-image: url("./parchment-paper.png");
+  background-image: url("./images/parchment-paper.png");
   height: 2000px;
   width: 100%;
   padding: 50px;
@@ -153,7 +153,7 @@ button:hover {
 }
 
 .update-background {
-  background-image: url('./party.jpg');
+  background-image: url('./images/party.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -212,7 +212,7 @@ form {
 }
 
 #create-char-form {
-  background-image: url('./dungeons-and-dragons.jpg');
+  background-image: url('./images/dungeons-and-dragons.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 1000px;
@@ -301,7 +301,7 @@ form {
 
 
 .homepage {
-  background-image: url('./homepage-image.jpg');
+  background-image: url('./images/homepage-image.jpg');
   background-size: cover;
   height: 100vh;
   color: white;
@@ -348,8 +348,14 @@ img {
 }
 
 .battle-background {
-  background-image: url('./forest.jpg');
+  background-image: url('./images/forest.jpg');
   background-size: cover;
   height: 1500px;
   padding-top: 20px;
+}
+
+.battle-modal {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 5px;
 }

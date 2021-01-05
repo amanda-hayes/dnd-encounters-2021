@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const characterSchema = Schema({
+
     name: { type: String, required: true },
     race: { type: String, required: true },
     characterClass: { type: String, required: true },
@@ -13,7 +14,8 @@ const characterSchema = Schema({
     image: {type: String, required: false },
     backstory: {type: String, required: false },
     thumbnail: { type: String, required: false },
-    initiative: { type: Number, required: false }
+    initiative: { type: Number, required: false },
+    characterType: { type: String, required: false }
 }, {strict: false});
 
 module.exports = model('Character', characterSchema);

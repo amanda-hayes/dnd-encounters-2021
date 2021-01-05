@@ -56,9 +56,11 @@ function AllCharPage() {
     let randomIndex = Math.round(Math.random() * (randomCharacters.length - 1));
     let generatedCharacter = randomCharacters[randomIndex];
 
+    console.log("char dupe: " + characters.includes(generatedCharacter.name));
+    console.log(generatedCharacter.name);
     try {
-      if (characters.includes(generatedCharacter)) {
-        const filterDupe = randomCharacters.filter(rando => rando !== generatedCharacter);
+      if (characters.includes(generatedCharacter.name)) {
+        const filterDupe = randomCharacters.filter(rando => rando.name !== generatedCharacter.name);
 
         setRandomCharacters(filterDupe);
         generateChar();
@@ -71,8 +73,10 @@ function AllCharPage() {
           body: JSON.stringify(generatedCharacter),
         });
 
-        const newRandomCharList = randomCharacters.filter(rando => rando !== generatedCharacter);
+        const newRandomCharList = randomCharacters.filter(rando => rando.name !== generatedCharacter.name);
         setRandomCharacters(newRandomCharList);
+        const okREALLYnoDUPES = [...characters]; 
+
         setCharacters([...characters, generatedCharacter]);
       }
     } catch (error) {
@@ -119,6 +123,7 @@ function AllCharPage() {
         <ul>
           <>
             {characters.map((character) => {
+              if (character.characterType === "NPC"){ return; }
               return (
                 <li key={character._id}>
                   <img src={character.thumbnail} id="thumbnail" />
