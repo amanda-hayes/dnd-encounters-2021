@@ -14,6 +14,7 @@ const CreateCharacterForm = (props) => {
     const catchphrasesSelect = useRef(null);
     const backstoryInput = useRef(null);
 
+
     const createCharacter = async (event) => {
         event.preventDefault()
         const name = nameInput.current.value;
@@ -26,6 +27,7 @@ const CreateCharacterForm = (props) => {
         const weapon = weaponSelect.current.value;
         const catchphrases = catchphrasesSelect.current.value;
         const backstory = backstoryInput.current.value;
+
 
         const body = JSON.stringify({ name, pronouns, race, characterClass, hp, attack, 
             armorClass, weapon, catchphrases, backstory });
@@ -50,10 +52,13 @@ const CreateCharacterForm = (props) => {
 
     return (
         <>
+        <nav className="topnav">
+        <Link to="/">HOME</Link>
+        <Link to="/characters">CHARACTERS</Link>
+        <Link to="/createcharacterform">CREATE</Link>
+        <Link to="/battle">BATTLE</Link>
+      </nav>
         <div id="create-char-form">
-        <div id="update-breadcrumbs">
-                    <Link to="/Characters">Go Back</Link>
-                </div>
         <h2 id="create-char-h2">Create New Character</h2>
         <p>Feel free to play around with different characters and stats.
         <br />
@@ -72,6 +77,13 @@ const CreateCharacterForm = (props) => {
                 <option value="Half Elf">Elf</option>
                 <option value="Gnome">Gnome</option>
                 <option value="Half Orc">Half Orc</option>
+                <option value="Tiefling">Tiefling</option>
+                <option value="Aasimar">Aasimar</option>
+                <option value="Dragonborn">Dragonborn</option>
+                <option value="Tabaxi">Tabaxi</option>
+                <option value="Centaur">Centaur</option>
+                <option value="Halfling">Halfling</option>
+                <option value="Halfling">Dwarf</option>
             </select>
             <br />
             <label>Class:</label>
@@ -80,6 +92,12 @@ const CreateCharacterForm = (props) => {
                 <option value="Wizard">Wizard (DPS)</option>
                 <option value="Rogue">Rogue (stabby stabby)</option>
                 <option value="Cleric">Cleric (Healer)</option>
+                <option value="Druid">Druid</option>
+                <option value="Monk">Monk</option>
+                <option value="Paladin">Paladin</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Sorcerer">Sorcerer</option>
+                <option value="Sorcerer">Warlock</option>
             </select>
             <br />
             <label>HP</label> 
@@ -91,7 +109,10 @@ const CreateCharacterForm = (props) => {
             <select className="select" ref={attackSelect}>
                 <option value="Sword Slash">Sword Slash</option>
                 <option value="Magic Missile">Magic Missile</option>
-                <option value="Shoryuken">Shoryuken</option>
+                <option value="Druid">Shillelagh</option>
+                <option value="Monk">Fury of Blows</option>
+                <option value="Eldritch Blast">Eldritch Blast</option>
+                <option value="Acid Splash">Acid Splash</option>
             </select>
             <br />
             <label>Armor Class</label> 
@@ -101,9 +122,13 @@ const CreateCharacterForm = (props) => {
             <br />
             <label>Weapon:</label> 
             <select className="select" ref={weaponSelect}>
-                <option value="Sword Slash">Sword</option>
-                <option value="Magic Missile">Wand</option>
-                <option value="Shoryukem">Dagger</option>
+                <option value="Greatsword">Greatsword</option>
+                <option value="Wand">Wand</option>
+                <option value="Dagger">Dagger</option>
+                <option value="Longbow">Longbow</option>
+                <option value="Rapier">Rapier</option>
+                <option value="Maul">Maul</option>
+                <option value="Crossbow">Crossbow</option>
             </select>
             <br />
             <label>Catchphrases:</label> 
@@ -113,7 +138,10 @@ const CreateCharacterForm = (props) => {
                 <option value="Screw it, we're basically Gods!">'Screw it, we're basically Gods!'</option>
             </select>
             <br />
-            <input type="submit" value="Create Character" />
+            <label>Backstory:</label>
+            <input type="textarea" name="backstory" rows="10" cols="30" ref={backstoryInput} />
+            <br />
+            <input type="submit" value="Create Character" id="submit-btn"/>
         </form>
         </div>
         </>

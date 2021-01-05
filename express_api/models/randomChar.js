@@ -10,6 +10,10 @@ const randomCharSchema = Schema({
     attack: { type: String, required: false },
     armorClass: { type: Number, required: true },
     catchphrases: {type: String, required: false },
+    image: {type: String, required: false },
+    backstory: {type: String, required: false },
+    thumbnail: { type: String, required: false },
+    initiative: { type: Number, required: false }
 });
 
 module.exports = model('Random Char', randomCharSchema);

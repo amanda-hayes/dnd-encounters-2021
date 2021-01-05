@@ -6,15 +6,9 @@ import UpdateCharacterForm from './Components/UpdateCharacterForm';
 import CreateCharacterForm from './Components/CreateCharacterForm';
 import GenerateCharComponent from './Components/GenerateChar';
 import Battle from './Components/Battle';
+import Home from './Components/Home'
 
 function App() {
-  const Home = () => (
-    <div>
-      <h1>Home Page</h1>
-      <button>Login</button>
-      <button>Register</button>
-    </div>
-  );
 
   return (    
     <Router>

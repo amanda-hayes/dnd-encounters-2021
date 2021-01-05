@@ -13,7 +13,6 @@ const UpdateCharacterForm = (props) => {
     const updateArmorClass = useRef(null);
     const updateCatchphrasesSelect = useRef(null);
     const updateBackstory = useRef(null);
-
     const characterDetailRouteMatch = useRouteMatch("/UpdateCharacterForm/:id");
     const charId = characterDetailRouteMatch.params.id;
 
@@ -53,6 +52,12 @@ const UpdateCharacterForm = (props) => {
 
     return (
         <>
+        <nav className="topnav">
+        <Link to="/">HOME</Link>
+        <Link to="/characters">CHARACTERS</Link>
+        <Link to="/createcharacterform">CREATE</Link>
+        <Link to="/battle">BATTLE</Link>
+      </nav>
             <div className="update-background">
                 <div id="update-breadcrumbs">
                     <Link to="/Characters">Go Back</Link>
@@ -112,6 +117,9 @@ const UpdateCharacterForm = (props) => {
                 <option value="Can't we ever just have a normal field trip?">'Can't we ever just have a normal field trip?'</option>
                 <option value="Screw it, we're basically Gods!">'Screw it, we're basically Gods!'</option>
             </select>
+            <br />
+            <label>Backstory:</label>
+            <input type="textarea" name="backstory" ref={updateBackstory} />
             <br />
             <input type="submit" value="Create Character" />
         </form>

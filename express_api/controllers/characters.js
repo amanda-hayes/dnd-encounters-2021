@@ -34,6 +34,8 @@ charactersRouter.delete('/:id', async (req, res) => {
 ****************/
 charactersRouter.put('/:id', async (req, res) => {
     try {
+        console.log(req.body);
+        console.log(req.params.id);
         const updatedCharacter = await characterModel.findByIdAndUpdate(
             req.params.id,
             req.body,
@@ -64,6 +66,7 @@ charactersRouter.post('/', async (req, res) => {
 charactersRouter.get('/:id', async (req, res) => {
     try {
         const foundCharacter = await characterModel.findById(req.params.id);
+        console.log(foundCharacter);
         res.status(200).json(foundCharacter);
     } catch (error) {
         res.status(400).json(error);

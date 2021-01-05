@@ -1,10 +1,12 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import forest from '../forest.jpg'
 
 function Battle() {
     const [playerCharacters, updatePlayerCharactersList] = useState([]);
     const [nonPlayerCharacters, updateNonPlayerCharactersList] = useState([]);
+    const [modal, showModal] = useState([]);
 
     const fetchPlayerCharacters = async () => {
         try {
@@ -30,6 +32,7 @@ function Battle() {
 
     useEffect(() => {
         fetchPlayerCharacters();
+        showModal();
         //fetchNonPlayerCharacters();
       }, []);
 
@@ -40,15 +43,44 @@ function Battle() {
         updatePlayerCharactersList(newPlayerCharacters);
       }
 
-      function shoutClickHandler(event) {
-        const newPlayerCharacters = [...playerCharacters];
-        
-        alert(newPlayerCharacters.find(char => char._id === event.target.value).catchphrases.split(".")[0]);
+      // function rollInitClickHandler(event) {
+      //   const playersInited = playerCharacters.map((player) => {
+      //  player.initiative = rollAD20();})
+      //   updatePlayerCharactersList(playersInited);
+      //   console.log(playersInited)
+      // }
 
+      function rollInitClickHandler(event) {
+        const playersInited = playerCharacters.map((player) => {
+          player.initiative = rollAD20();
+            updatePlayerCharactersList(playersInited);
+        })
       }
 
 
-    // summon our players/monster
+      function shoutClickHandler(event) {
+        alert(playerCharacters.find(
+          char => char._id === event.target.value).catchphrases.split(".")[0]);
+      }
+
+      function rollAD20() {
+        let diceRoll = Math.floor(Math.random() * 20) + 1;
+
+        if (diceRoll === 20) {
+          alert('CRIT! You rolled a natural ' + diceRoll)
+        } else if (diceRoll === 1) {
+          alert('AUTOMATIC FAIL! You rolled a ' + diceRoll)
+        } else {
+          alert('You rolled a ' + diceRoll)
+        }
+      }
+
+      // modal = { show: false };
+  
+      // function openModal(e) {
+      //   modal = { show: true }
+      // }
+ 
     // function summon(summonType) {return monster/player}
 
     // Make monster talk (modal or smthg)
@@ -65,30 +97,43 @@ function Battle() {
 
     // roll
     
-
-
     // create an initial state
     // This would log the players HP, turn order, the round
 
     // add components for players vs NPCs
 
+    
+
     return (
-    <div id="character-list">
-        <ul>
-          <>
+      <>
+      <nav className="topnav">
+                <Link to="/">HOME</Link>
+                <Link to="/characters">CHARACTERS</Link>
+                <Link to="/createcharacterform">CREATE</Link>
+                <Link to="/battle">BATTLE</Link>
+              </nav>
+        <div className="battle-background">
+
+        {/* <button  onClick={(event) => {
+              openModal();
+         }}
+          > Begin Combat </button> */}
+
+           <ul>
             {playerCharacters.map((player) => {
               return (
-                <li key={player._id}>
-                  {player.name} | {player.HP} |{" "}
+                <li key={player._id} id="battle-character-list">
+                  <img src={player.thumbnail} id="thumbnail" /> 
+                  {player.name} <br /> HP: {player.HP} | {player.initiative}
                   <br />
                   <button value={ player._id } onClick={shoutClickHandler}>SHOUT</button>
-                  <button value={ player._id } onClick={takeDamageClickHandler}>PAIN</button>
+                  <button value={ player._id } onClick={rollInitClickHandler}>ROLL</button>
                 </li>
               );
             })}
-          </>
         </ul>
     </div>
+    </>
     )
 
 }

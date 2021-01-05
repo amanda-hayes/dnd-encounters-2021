@@ -91,6 +91,13 @@ function AllCharPage() {
   }, []);
 
   return (
+    <>
+    <nav className="topnav">
+        <Link to="/">HOME</Link>
+        <Link to="/characters">CHARACTERS</Link>
+        <Link to="/createcharacterform">CREATE</Link>
+        <Link to="/battle">BATTLE</Link>
+      </nav>
     <div className="character-background">
       <div className="header-style">
       <h1 className="my-characters-heading">My Adventuring Party</h1>
@@ -101,7 +108,7 @@ function AllCharPage() {
         <Link to="/CreateCharacterForm">
           <button>CREATE</button>
         </Link>
-        <br />
+
         Generate a random character for me
         <button onClick={handleClick}>GENERATE</button>
       </div>
@@ -114,6 +121,7 @@ function AllCharPage() {
             {characters.map((character) => {
               return (
                 <li key={character._id}>
+                  <img src={character.thumbnail} id="thumbnail" />
                   {character.name} | {character.race} |{" "}
                   {character.characterClass}
                   <br />
@@ -149,6 +157,7 @@ function AllCharPage() {
               </Link>
             </div>
     </div>
+    </>
   );
 }
 

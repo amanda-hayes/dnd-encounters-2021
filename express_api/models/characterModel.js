@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const characterSchema = Schema({
-    // type: { type: String, required: false },
     name: { type: String, required: true },
     race: { type: String, required: true },
     characterClass: { type: String, required: true },
@@ -11,7 +10,10 @@ const characterSchema = Schema({
     attack: { type: String, required: false },
     armorClass: { type: Number, required: true },
     catchphrases: {type: String, required: false },
-    backstory: {type: String, required: false }
-});
+    image: {type: String, required: false },
+    backstory: {type: String, required: false },
+    thumbnail: { type: String, required: false },
+    initiative: { type: Number, required: false }
+}, {strict: false});
 
 module.exports = model('Character', characterSchema);

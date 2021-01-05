@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  margin: 0px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap');
@@ -18,6 +17,7 @@ html {
   src: local('Luminari'), url('Luminari-Regular.woff') format('woff');
   }
 
+
 h1 {
   font-family: 'Luminari';
 }
@@ -30,23 +30,57 @@ p {
 
 ul {
   margin: 0px;
+  display: block;
 }
 
 
 li {
   list-style: none;
-  background-color: brown;
+  background-color: rgb(3, 65, 87);
   margin: 10px;
   width: 30%;
   padding: 10px;
+  padding-top: 40px;
   border-radius: 5px;
   font-weight: bold;
-  /* font-size: 1.5rem; */
+  /* height: 150px; */
   box-shadow: 5px 10px 8px #050505af;
   display: inline-block;
 }
 
+#thumbnail {
+  max-width: 60px;
+  float: left;
+  }
+
 button {
+  cursor: pointer;
+  padding: .5em;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  background-color: white; 
+  border: none;
+  color: black;
+  box-shadow: 5px 8px 8px #050505af;
+  font-size: 1rem;
+  font-weight: bold;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+  font-family: 'Century Gothic';
+  }
+
+button:hover {
+    background-color: #60636090; 
+    color: white;
+}
+
+#submit-btn {
   cursor: pointer;
   padding: .5em;
   margin-top: 1rem;
@@ -63,33 +97,19 @@ button {
   display: inline-block;
   border-radius: 5px;
   transition-duration: 0.4s;
-  }
-
-button:hover {
-    background-color: #60636090; 
-    color: white;
-}
+} 
 
 #click-here {
   color: white;
 }
 
 
-.stats {
+
+#stats-list {
   text-align: left;
-  margin: 60px 60px 60px 500px;
   font-size: 1.3rem;
-  max-width: 550px;
-}
-
-
-.App {
-  text-align: center;
-  background-size: cover;
-  color: black;
-  padding: 20px;
-  font-family: "Century Gothic";
-  height: 100vh;
+  max-width: 800px;
+  margin: 50px;
 }
 
 
@@ -110,12 +130,13 @@ button:hover {
 } */
 
 .parchment-background {
-  background-image: url("./parchment-paper.jpg");
-  height: 100%;
+  background-image: url("./parchment-paper.png");
+  height: 2000px;
+  width: 100%;
   padding: 50px;
   background-repeat: no-repeat;
-  background-position: center;
-  text-align: center;
+  background-size: cover;
+  /* text-align: center; */
 }
 
 .header-style {
@@ -139,15 +160,7 @@ button:hover {
   color: white;
 }
 
-#create-char-form {
-  background-image: url('./dungeons-and-dragons.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  color: white;
-  margin: none;
-  padding-left: 20px;
-}
+
 
 input {
   padding: 5px;
@@ -158,6 +171,7 @@ label {
   width: 200px;
   display: inline-block;
   font-weight: bold;
+  /* text-align: left;  */
 }
 
 .select {
@@ -197,20 +211,18 @@ form {
   box-shadow: 10px;
 }
 
-
-
-.viewStats {
-  width: 30%;
-  padding: 20px 0;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.432);
-  margin-top: 10px;
-  font-size: 1.5rem;
-  display: none;
-  border-radius: 5px;
+#create-char-form {
+  background-image: url('./dungeons-and-dragons.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 1000px;
+  min-width: 1500px;
+  color: white;
+  padding-top: 20px;
+  padding-left: 50px;
 }
 
-#newChar {
+.viewStats {
   width: 30%;
   padding: 20px 0;
   text-align: center;
@@ -246,7 +258,7 @@ form {
 }
 
 #create-char-h2 {
-  padding-top: 40px;
+  padding-top: 10px;
   font-family: 'Luminari';
   font-size: 3rem;
 }
@@ -256,21 +268,88 @@ form {
   text-align: center;
 }
 
-#breadcrumbs {
-  text-align: left;
-  text-decoration: none;
-  color: black;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-left: 30px;
-}
 
 #update-breadcrumbs {
   text-align: left;
   text-decoration: none;
-  color: white;
   font-size: 1.5rem;
   font-weight: bold;
   padding-left: 30px;
   padding-top: 30px;
+}
+
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+
+.homepage {
+  background-image: url('./homepage-image.jpg');
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  font-size: 2rem;
+  padding: 40px;
+}
+
+#home-heading {
+  text-shadow: 5px 10px 8px #050505af;
+}
+
+#homepage-content {
+  background-color: rgba(0, 0, 0, 0.623);
+  padding: 20px;
+  box-shadow: 5px 10px 8px #050505af;
+}
+
+#battle-character-list {
+  display: block;
+  color: white;
+  max-width: 300px;
+}
+
+.App {
+  text-align: center;
+  background-size: cover;
+  color: black;
+  padding: 20px;
+  font-family: "Century Gothic";
+  height: 100vh;
+}
+
+#character-container {
+  display: inline-flex;
+  height: 100%;
+}
+
+img {
+  width: 400px;
+  box-shadow: 5px 10px 8px #050505af;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: -10px;
+}
+
+.battle-background {
+  background-image: url('./forest.jpg');
+  background-size: cover;
+  height: 1500px;
+  padding-top: 20px;
 }

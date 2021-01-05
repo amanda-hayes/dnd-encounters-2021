@@ -1,7 +1,6 @@
 import '../App.css';
 import { useState, useEffect } from 'react';
 import { useRouteMatch, Link } from "react-router-dom";
-import rand from '../rand.jpg';
 
 function CharacterStats() {
   const [character, setCharacter] = useState({});
@@ -20,36 +19,54 @@ function CharacterStats() {
   useEffect(() => { fetchCharacter() }, []);
 
   return (
+    <>
+    <nav className="topnav">
+        <Link to="/">HOME</Link>
+        <Link to="/characters">CHARACTERS</Link>
+        <Link to="/createcharacterform">CREATE</Link>
+        <Link to="/battle">BATTLE</Link>
+      </nav>
     <div className="parchment-background">
-      <div id="breadcrumbs">
-      <Link to="/Characters">Go Back</Link>
-      </div>
+      <br />
+      <br />
+      <br />
+      <br />
       <h1 id="character-sheet-heading">{character.name}<br />Character Sheet</h1>
-      <div className="stats">
-      <label>Name:</label> {character.name}
+      <div id="character-container">
+        
+        <div id="character-stats-image">
+        <br />
+        <br />
+        <img src={character.image} />
+        </div>
+      <div id="stats-list">
+        <label>Name:</label> {character.name}
       <br />
-      <label>Race:</label> {character.race}
+        <label>Race:</label> {character.race}
       <br />
-      <label>Pronouns:</label> {character.pronouns}
+        <label>Pronouns:</label> {character.pronouns}
       <br />
-      <label>Class:</label> {character.characterClass}
+        <label>Class:</label> {character.characterClass}
       <br />
-      <label>HP:</label> {character.HP}
+        <label>HP:</label> {character.HP}
       <br />
-      <label>Main Weapon:</label> {character.weapon}
+        <label>Main Weapon:</label> {character.weapon}
       <br />
-      <label>Main Attack:</label> {character.attack}
+        <label>Main Attack:</label> {character.attack}
       <br />
-      <label>Armor Class:</label> {character.armorClass}
+        <label>Armor Class:</label> {character.armorClass}
       <br />
-      <label>Motto:</label> "{character.catchphrases}"
+        <label>Motto:</label><br /> "{character.catchphrases}"
       <br />
-      <label>Backstory:</label> "{character.backstory}"
-      {/* <img src={rand} alt="Rand" /> */}
+      <br />
+        <label>Backstory:</label><br /> "{character.backstory}"
+        <br />
       <button>
-      <Link to={`/UpdateCharacterForm/${character._id}`}>EDIT</Link></button>
+      <Link to={`/UpdateCharacterForm/${character._id}`}>EDIT CHARACTER</Link></button>
       </div>
     </div>
+    </div>
+    </>
   )
 }
 
