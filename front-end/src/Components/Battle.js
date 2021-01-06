@@ -110,17 +110,17 @@ function Battle() {
           player.name +
           ` rolled a natural ` +
           player.initiative +
-          `OH YEAH.....CRIT!` +
+          `....OH YEAH.....CRIT!` +
           ".";
       } else if (player.initiative === 1) {
         modalMessage +=
           player.name +
           ` rolled a natural ` +
           player.initiative +
-          `Oh boy.....AUTOMATIC FAIL! ` +
+          `....Oh boy.....AUTOMATIC FAIL! ` +
           ".";
       } else {
-        modalMessage += player.name + ` rolled a ` + player.initiative + ".";
+        modalMessage += player.name + ` rolled a ` + player.initiative + "        .      ";
       }
     });
 
@@ -163,11 +163,15 @@ function Battle() {
           <Modal
             open={open}
             onClose={onCloseModal}
-            center
-            className="battle-modal"
-          >
+            center>
+            
             <h2>On your way!</h2>
-            <p>You're traveling through the forest....</p>
+            <p classNames={{
+              overlay: 'tavern-overlay',
+              modal: 'tavern-modal',
+            }}>You're traveling through the forest....suddenly...you hear a terrifying sound. The
+              blood drains from your party member's faces as you search for the source. 
+            </p>
             <br />
             <button onClick={onCloseModal} id="tavern-button">
               OKAY
@@ -179,7 +183,7 @@ function Battle() {
             open={openBattle}
             onClose={onCloseBattle}
             center
-            className="battle-modal"
+            className="battle-modal p"
           >
             <h2>Oh no!</h2>
             <p>
@@ -201,7 +205,11 @@ function Battle() {
           center
           className="battle-modal"
         >
+          <h1>Initiative Rolls</h1>
+          <br />
+          <br />
           <p>{modalContent}</p>
+          <button onClick={onCloseDiceRollModal}>OKAY</button>
         </Modal>
         <br />
         <br />
@@ -211,7 +219,7 @@ function Battle() {
             return (
               <li key={player._id} id="battle-character-list">
                 <img src={player.thumbnail} id="thumbnail" />
-                {player.name} <br /> HP: {player.HP} | {player.initiative}
+                {player.name} <br /> HP: {player.HP} | Armor Class: {player.armorClass} | INIT: {player.initiative}
                 <br />
                 <button value={player._id} onClick={shoutClickHandler}>
                   SHOUT
