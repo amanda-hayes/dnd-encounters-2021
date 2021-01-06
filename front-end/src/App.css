@@ -415,3 +415,19 @@ img {
 #tavern-button {
   text-align: center;
 }
+
+#you-win-verbiage {
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 50px;
+  padding-bottom: 200px;
+}
+
+#you-win-h1 {
+  font-size: 3rem;
+}
+
+#wizard-book-image {
+  text-align: center;
+  max-width: 300px;
+}

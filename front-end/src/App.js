@@ -6,7 +6,9 @@ import UpdateCharacterForm from './Components/UpdateCharacterForm';
 import CreateCharacterForm from './Components/CreateCharacterForm';
 import Tavern from './Components/Tavern.js';
 import Battle from './Components/Battle';
-import Home from './Components/Home'
+import Home from './Components/Home';
+import YouWin from './Components/YouWin';
+import YouLose from './Components/YouLose';
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
         <Route path="/UpdateCharacterForm/:id" component={UpdateCharacterForm} />
         <Route path="/Tavern" component={Tavern} />
         <Route path="/Battle" component={Battle} />
+        <Route path="/YouWin" component={YouWin} />
+        <Route path="/YouLose" component={YouLose} />
       </Switch>
       </div>
     </Router>

@@ -4,6 +4,7 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { Link } from 'react-router-dom'
 import { useState } from "react";
+import wizardbook from '../images/wizardbook.png';
 
 function Tavern() {
     const [open, setOpen] = useState(true);
@@ -32,7 +33,6 @@ function Tavern() {
                 <Link to="/battle">BATTLE</Link>
               </nav>
         <div id="tavern-background-image">
-            
             <Modal open={open} onClose={onCloseModal} center>
              <h2>So it begins...</h2> 
           <p>
@@ -76,19 +76,29 @@ function Tavern() {
 
         <button onClick={onOpenWizChatModal}>TALK TO THE OLD WIZARD</button>
         <Modal open={openWizChat} onClose={onCloseWizChatModal} center>
-            <h2>Thanks for listening, Adventurer!</h2>
+            <h2>Pull up a chair!</h2>
+            <img src={wizardbook} id="wizard-book-image" />
           <p>
-            A long time ago I lost a valuable posession that is guarded by an ancient monster. Will
-            you fetch it for me? Treasures and reknown will be yours for the taking!
+          The old wizard tells you a tale of intrigue and courage, of treasure and toil,
+          of monsters and men. Suddenly, you see a glow coming from the tome in his hands. 
+          <br />
+          Finally, he says "Ahhh yes, so it seems the tome finds you worthy of 
+          such a quest. Well now, lets see here, where we are to send you...hmm?" 
+          He licks his index finger and turns a page. "It says: Behold, 
+          Adventurers! The quest is rather simple however the consequences 
+          are severe... I require, on the Isle of Sapphire, a small goldfish... 
+          For you'll find me in the depths of Xanthar's Lair. Think you're up
+          to the task?"
           </p>
-          <button onClick={onCloseWizChatModal}>WE ACCEPT</button>
+          <button onClick={onCloseWizChatModal}>ACCEPT QUEST</button>
         </Modal>
         <br />
         <button onClick={onOpenQuestChat}>LET'S DO THIS</button>
         <Modal open={openQuestChat} onClose={onCloseQuestChat} center>
             <h2>Wonderful!</h2>
           <p>
-            Get the item and meet me back in this tavern when you are done. Good luck!
+          "Retrieve the item and meet me back in this tavern when you are done. 
+          Now get a move on...and good luck, adventurer. You're going to need it."
           </p>
           <form action="./battle">
             <input type="submit"/></form>
