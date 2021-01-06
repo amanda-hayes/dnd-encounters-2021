@@ -30,3 +30,5 @@ mongoose.connection.once('open', () => {
 app.listen(PORT, () => {
     console.log('🎉🎊', 'celebrations happening on port', PORT, '🎉🎊');
 });
+
+module.exports = app;
