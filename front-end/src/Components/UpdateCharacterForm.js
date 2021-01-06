@@ -77,6 +77,13 @@ const UpdateCharacterForm = (props) => {
                 <option value="Half Elf">Elf</option>
                 <option value="Gnome">Gnome</option>
                 <option value="Half Orc">Half Orc</option>
+                <option value="Tiefling">Tiefling</option>
+                <option value="Aasimar">Aasimar</option>
+                <option value="Dragonborn">Dragonborn</option>
+                <option value="Tabaxi">Tabaxi</option>
+                <option value="Centaur">Centaur</option>
+                <option value="Halfling">Halfling</option>
+                <option value="Halfling">Dwarf</option>
             </select>
             <br />
             <label>Class:</label>
@@ -85,6 +92,12 @@ const UpdateCharacterForm = (props) => {
                 <option value="Wizard">Wizard (DPS)</option>
                 <option value="Rogue">Rogue (stabby stabby)</option>
                 <option value="Cleric">Cleric (Healer)</option>
+                <option value="Druid">Druid</option>
+                <option value="Monk">Monk</option>
+                <option value="Paladin">Paladin</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Sorcerer">Sorcerer</option>
+                <option value="Sorcerer">Warlock</option>
             </select>
             <br />
             <label>HP</label> 
@@ -94,9 +107,12 @@ const UpdateCharacterForm = (props) => {
             <br />
             <label>Attack:</label> 
             <select className="select" ref={updateAttackSelect}>
-                <option value="Sword Slash">Sword Slash</option>
+            <option value="Sword Slash">Sword Slash</option>
                 <option value="Magic Missile">Magic Missile</option>
-                <option value="Shoryuken">Shoryuken</option>
+                <option value="Druid">Shillelagh</option>
+                <option value="Monk">Fury of Blows</option>
+                <option value="Eldritch Blast">Eldritch Blast</option>
+                <option value="Acid Splash">Acid Splash</option>
             </select>
             <br />
             <label>Armor Class</label> 
@@ -106,16 +122,26 @@ const UpdateCharacterForm = (props) => {
             <br />
             <label>Weapon:</label> 
             <select className="select" ref={updateWeaponSelect}>
-                <option value="Sword Slash">Sword</option>
-                <option value="Magic Missile">Wand</option>
-                <option value="Shoryukem">Dagger</option>
+            <option value="Greatsword">Greatsword</option>
+                <option value="Wand">Wand</option>
+                <option value="Dagger">Dagger</option>
+                <option value="Longbow">Longbow</option>
+                <option value="Rapier">Rapier</option>
+                <option value="Maul">Maul</option>
+                <option value="Crossbow">Crossbow</option>
             </select>
             <br />
             <label>Catchphrases:</label> 
             <select className="select" ref={updateCatchphrasesSelect}>
-                <option value="Let's Do This!">'Let's Do This!'</option>
+                <option value="Nobody makes me bleed my own blood!">'Nobody makes me bleed my own blood!'</option>
+                <option value="LEEEEROYYYYY JENKIIIINNNNSSSS!">'LEEEEROYYYYY JENKIIIINNNNSSSS!'</option>
+                <option value="I attack the darkness!">'I attack the darkness!'</option>
                 <option value="Can't we ever just have a normal field trip?">'Can't we ever just have a normal field trip?'</option>
                 <option value="Screw it, we're basically Gods!">'Screw it, we're basically Gods!'</option>
+                <option value="I’m a lover, not a fighter">'I’m a lover, not a fighter'</option>
+                <option value="Today is a good day to die.">'Today is a good day to die.'</option>
+                <option value="Last name Ever, first name Greatest">'Last name Ever, first name Greatest'</option>
+                <option value="I don't think that's such a good idea, Tommy">'I don't think that's such a good idea, Tommy'</option>
             </select>
             <br />
             <label>Backstory:</label>

@@ -127,7 +127,7 @@ function AllCharPage() {
               return (
                 <li key={character._id}>
                   <img src={character.thumbnail} id="thumbnail" />
-                  {character.name} | {character.race} |{" "}
+                  {character.name} <br />{character.race} |{" "}
                   {character.characterClass}
                   <br />
                   <button type="button">
@@ -157,7 +157,7 @@ function AllCharPage() {
               <br />
               <br />
               <h1>Ready to start adventuring?</h1>
-              <Link to="/Battle">
+              <Link to="/Tavern">
                 <button>Let's Go!</button>
               </Link>
             </div>

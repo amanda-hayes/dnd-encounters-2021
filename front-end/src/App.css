@@ -4,6 +4,54 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap');
 
+.D20-photo {
+  height: 17vmin;
+  width: 16vmin;
+  pointer-events: none;
+  position: fixed;
+  right: 80px;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .D20-photo {
+    animation: D20-photo-spin infinite 5s linear;
+  }
+}
+
+@keyframes D20-photo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.D20natone-photo {
+  height: 20vmin;
+  width: 16vmin;
+  pointer-events: none;
+  position: fixed;
+  left: 80px;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .D20natone-photo {
+    animation: D20natone-photo-spin infinite 5s linear;
+  }
+}
+
+@keyframes D20natone-photo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 html {
   height: 100%;
   margin: 0px;
@@ -40,7 +88,7 @@ li {
   margin: 10px;
   width: 30%;
   padding: 10px;
-  padding-top: 40px;
+  padding-top: 20px;
   border-radius: 5px;
   font-weight: bold;
   /* height: 150px; */
@@ -48,10 +96,19 @@ li {
   display: inline-block;
 }
 
-#thumbnail {
-  max-width: 60px;
-  float: left;
-  }
+input {
+  padding: 5px;
+  font-size: 14px;
+}
+
+label {
+  width: 200px;
+  display: inline-block;
+  font-weight: bold;
+  /* text-align: left;  */
+}
+
+
 
 button {
   cursor: pointer;
@@ -104,6 +161,12 @@ button:hover {
 }
 
 
+#thumbnail {
+  max-width: 70px;
+  padding-top: 10px;
+  float: left;
+  }
+
 
 #stats-list {
   text-align: left;
@@ -111,7 +174,6 @@ button:hover {
   max-width: 800px;
   margin: 50px;
 }
-
 
 
 .character-background {
@@ -123,11 +185,6 @@ button:hover {
   color: white;
 }
 
-/* #character-list {
-  background-color: rgba(0, 0, 0, 0.575);
-  box-shadow: 5px 10px 8px #050505af;
-  padding: 20px;
-} */
 
 .parchment-background {
   background-image: url("./images/parchment-paper.png");
@@ -136,7 +193,6 @@ button:hover {
   padding: 50px;
   background-repeat: no-repeat;
   background-size: cover;
-  /* text-align: center; */
 }
 
 .header-style {
@@ -161,19 +217,6 @@ button:hover {
 }
 
 
-
-input {
-  padding: 5px;
-  font-size: 14px;
-}
-
-label {
-  width: 200px;
-  display: inline-block;
-  font-weight: bold;
-  /* text-align: left;  */
-}
-
 .select {
   padding: 5px;
   font-size: 16px;
@@ -197,8 +240,6 @@ form {
   text-align: left;
   padding: 20px;
   font-size: 24px;
-  /* margin-left: 200px; */
-  /* margin-top: 200px; */
   max-width: 600px;
 }
 
@@ -263,6 +304,12 @@ form {
   font-size: 3rem;
 }
 
+#battle-page-h2 {
+  font-family: 'Luminari';
+  font-size: 3rem;
+  color: white;
+}
+
 #character-sheet-heading {
   font-size: 3rem;
   text-align: center;
@@ -320,9 +367,10 @@ form {
 }
 
 #battle-character-list {
-  display: block;
+  display: inline-block;
   color: white;
-  max-width: 300px;
+  width: 500px;
+  background-color: rgb(30, 79, 131);
 }
 
 .App {
@@ -354,8 +402,16 @@ img {
   padding-top: 20px;
 }
 
-.battle-modal {
-  max-width: 500px;
-  width: 100%;
-  border-radius: 5px;
+
+
+#tavern-background-image {
+  background-image: url('./images/tavern.jpg');
+  background-size: contain;
+  height: 1500px;
+  padding-top: 20px;
+}
+
+
+#tavern-button {
+  text-align: center;
 }

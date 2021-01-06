@@ -4,7 +4,7 @@ import AllCharPage from './Components/Characters'
 import CharacterStats from './Components/CharDetails';
 import UpdateCharacterForm from './Components/UpdateCharacterForm';
 import CreateCharacterForm from './Components/CreateCharacterForm';
-import GenerateCharComponent from './Components/GenerateChar';
+import Tavern from './Components/Tavern.js';
 import Battle from './Components/Battle';
 import Home from './Components/Home'
 
@@ -19,7 +19,7 @@ function App() {
         <Route path="/Characters/:id" component={CharacterStats} />
         <Route path="/CreateCharacterForm" exact component={CreateCharacterForm} />
         <Route path="/UpdateCharacterForm/:id" component={UpdateCharacterForm} />
-        <Route path="/GenerateChar" exact component={GenerateCharComponent} />
+        <Route path="/Tavern" component={Tavern} />
         <Route path="/Battle" component={Battle} />
       </Switch>
       </div>

@@ -133,9 +133,15 @@ const CreateCharacterForm = (props) => {
             <br />
             <label>Catchphrases:</label> 
             <select className="select" ref={catchphrasesSelect}>
-                <option value="Let's Do This!">'Let's Do This!'</option>
+            <option value="Nobody makes me bleed my own blood!">'Nobody makes me bleed my own blood!'</option>
+                <option value="LEEEEROYYYYY JENKIIIINNNNSSSS!">'LEEEEROYYYYY JENKIIIINNNNSSSS!'</option>
+                <option value="I attack the darkness!">'I attack the darkness!'</option>
                 <option value="Can't we ever just have a normal field trip?">'Can't we ever just have a normal field trip?'</option>
                 <option value="Screw it, we're basically Gods!">'Screw it, we're basically Gods!'</option>
+                <option value="I’m a lover, not a fighter">'I’m a lover, not a fighter'</option>
+                <option value="Today is a good day to die.">'Today is a good day to die.'</option>
+                <option value="Last name Ever, first name Greatest">'Last name Ever, first name Greatest'</option>
+                <option value="I don't think that's such a good idea, Tommy">'I don't think that's such a good idea, Tommy'</option>
             </select>
             <br />
             <label>Backstory:</label>

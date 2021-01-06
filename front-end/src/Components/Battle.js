@@ -1,14 +1,31 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import 'react-responsive-modal/styles.css';
+import 'react-responsive-modal/styles.css' 
 import { Modal } from 'react-responsive-modal';
+import beholder from '../beholder.jpeg';
+import d20 from '../images/d20.png';
+import d20natone from '../images/d20natone.png';
 
 function Battle() {
     const [playerCharacters, updatePlayerCharactersList] = useState([]);
-    const [open, setOpen] = useState(false);
+    const [playerRoll, setPlayerRoll] = useState([]);
+
+
+    const [open, setOpen] = useState(true);
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
+
+    const [openBattle, setOpenBattle] = useState(false);
+    const onOpenBattle = () => setOpenBattle(true);
+    const onCloseBattle = () => setOpenBattle(false);
+
+
+    const [openDiceModal, setOpenDiceModal] = useState(false);
+    const onOpenDiceRollModal = () => setOpenDiceModal(true);
+    const onCloseDiceRollModal = () => setOpenDiceModal(false);
+
+    const [modalContent, setModalContent] = useState([]);
 
     const fetchPlayerCharacters = async () => {
         try {
@@ -21,21 +38,36 @@ function Battle() {
         }
     };
 
-
-    useEffect(() => {
-        fetchPlayerCharacters();
-      }, []);
+      function rollAD20() {
+        let diceRoll = Math.floor(Math.random() * 20) + 1;
+        return diceRoll;
+      }
 
       function attackClickHandler(event) {
         const newPlayerCharacters = [...playerCharacters];
-        if (newPlayerCharacters.find(npc => npc.characterType !== "NPC")) {
-          newPlayerCharacters.find(npc => npc.characterType === "NPC").HP -= 4;
+        const monster = newPlayerCharacters.find(npc => npc.characterType === "NPC");
+        // TODO: create random function that selects a random player
+        const randomPlayer = newPlayerCharacters[Math.floor(Math.random() * newPlayerCharacters.length)];
+        // console.log(randomPlayer);
+        const characterAttacked = newPlayerCharacters.find(player => player._id === randomPlayer._id);
+
+        if (monster) {
+          monster.HP -= 4;
+          alert(`The Beholder was hit for 4 damage!`)
         } else {
-          const randomPlayer = newPlayerCharacters[1];
-          newPlayerCharacters.find(player => player._id === randomPlayer._id).HP -= 8;
+          characterAttacked.HP -= 8;
+          alert(randomPlayer.name `was attacked and hit for 8 damage!`)
+          
+          if (randomPlayer.HP <= 0) {
+            alert(`Oh no!` + randomPlayer.name + ` passed out!`)
+            const nowWithNoDeadPlayers = newPlayerCharacters.filter(player => player === characterAttacked);
+            updatePlayerCharactersList([...newPlayerCharacters, nowWithNoDeadPlayers]);
+            return;
+          }
         }
-        
-        updatePlayerCharactersList(newPlayerCharacters);
+
+        const turnOver = newPlayerCharacters.shift();
+        updatePlayerCharactersList([...newPlayerCharacters, turnOver]);
       }
 
       function rollInitClickHandler(event) {
@@ -43,50 +75,44 @@ function Battle() {
         const playersInited = newPlayerCharacters.map(
           (player) => { 
             player.initiative = rollAD20();
+            onOpenDiceRollModal();
+            
             return player;
           });
 
+
+          let modalMessage = "";
+
+          playersInited.map(player => {
+            if (player.initiative === 20) {
+              modalMessage += `OH YEAH.....CRIT!` + player.name + ` rolled a natural ` + player.initiative + '.';
+            } else if (player.initiative === 1) {
+              modalMessage += `Oh boy.....AUTOMATIC FAIL! ` + player.name + ` rolled a natural ` + player.initiative + '.';
+            } else {
+              modalMessage += player.name + ` rolled a ` + player.initiative + '.';
+            }
+          });
+          
+
+
+          setModalContent(modalMessage);
+          
+
           updatePlayerCharactersList(playersInited.sort((a, b) => b.initiative - a.initiative));
       }
-
 
       function shoutClickHandler(event) {
         alert(playerCharacters.find(
           char => char._id === event.target.value).catchphrases.split(".")[0]);
       }
 
-      function rollAD20() {
-        let diceRoll = Math.floor(Math.random() * 20) + 1;
-
-        if (diceRoll === 20) {
-          alert('CRIT! You rolled a natural ' + diceRoll)
-        } else if (diceRoll === 1) {
-          alert('AUTOMATIC FAIL! You rolled a ' + diceRoll)
-        } else {
-          alert('You rolled a ' + diceRoll)
-        }
-        return diceRoll;
-      }
-
- 
-    // function summon(summonType) {return monster/player}
-
-    // Make monster talk (modal or smthg)
-    // Monster.talk() {return from catchphrase list}
-
-    // Click begin to initialize
-    // Roll init for each player (random d20)
-    // var init[] that stores turn order
-    // player with highest init goes first
-
-    // modal or alert with player's roll & turn number
-
-    // Do first attack
-
-    // roll
-    
-    // create an initial state
-    // This would log the players HP, turn order, the round
+      useEffect(() => {
+        fetchPlayerCharacters();
+        setModalContent();
+        setOpenDiceModal()
+        setPlayerRoll();
+        setOpenBattle();
+      }, []);
 
 
     return (
@@ -95,20 +121,44 @@ function Battle() {
                 <Link to="/">HOME</Link>
                 <Link to="/characters">CHARACTERS</Link>
                 <Link to="/createcharacterform">CREATE</Link>
-                <Link to="/battle">BATTLE</Link>
+                <Link to="/tavern">ADVENTURE</Link>
               </nav>
       <div className="battle-background">
         <div>
-          <button onClick={onOpenModal}>BEGIN COMBAT</button>
-            <Modal open={open} onClose={onCloseModal} center className="battle-modal">
+          <br />
+        <img src={d20natone} alt="d20natone" className="D20natone-photo" />
+        <img src={d20} alt="d20" className="D20-photo" />
+        <br />
+       <Modal open={open} onClose={onCloseModal} center className="battle-modal">
+             <h2>On your way!</h2> 
+          <p>
+            You're traveling through the forest....
+          </p>
+          <br />
+          <button onClick={onCloseModal} id="tavern-button">OKAY</button>
+        </Modal>
+
+          <button onClick={onOpenBattle}>WHAT'S THAT SOUND?</button>
+            <Modal open={openBattle} onClose={onCloseBattle} center className="battle-modal">
              <h2>Oh no!</h2> 
           <p>
-            A monster appears! It's time to roll for initiative! Click "ROLL"
-            next to your character's name to get started.
+            A Beholder appears and it's guarding the treasure you so desperately need! 
+            There's no getting out of this without a fight. It's time to roll for initiative!
           </p>
+          <img src={beholder} alt="beholder" />
+          <br />
+          <button onClick={onCloseBattle} id="tavern-button">FIGHT</button>
         </Modal>
+        
+
       </div>
       <button onClick={rollInitClickHandler}>ROLL INITIATIVE</button>
+      <Modal open={openDiceModal} onClose={onCloseDiceRollModal} center className="battle-modal">
+          <p>{modalContent}</p> 
+        </Modal>
+        <br />
+        <br />
+        <h2 id="battle-page-h2">Characters</h2>
            <ul>
             {playerCharacters.map((player) => {
               return (
