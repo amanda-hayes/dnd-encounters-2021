@@ -11,8 +11,8 @@ const MONGOURI = process.env.MONGODB_URI;
 
 app.use(cors());
 app.use(express.json());
-app.use("api/characters", charactersController);
-app.use("api/randomChar", randomCharController);
+app.use("/api/characters", charactersController);
+app.use("/api/randomChar", randomCharController);
 
 mongoose.connection.on("error", (err) =>
   console.log(err.message + " is Mongod not running?")
