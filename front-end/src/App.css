@@ -178,9 +178,9 @@ button:hover {
 
 .character-background {
   background-image: url("./images/dnd-table-1.jpg");
-  height: 1000px;
+  height: 1500px;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   padding: 20px;
   color: white;
 }
