@@ -23,7 +23,7 @@ function Battle() {
   const fetchPlayerCharacters = async () => {
     try {
       const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/characters"
+        "https://dnd-encounters-2021.herokuapp.com/api/characters"
       );
       const charactersData = await response.json();
 

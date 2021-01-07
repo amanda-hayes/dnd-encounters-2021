@@ -7,7 +7,7 @@ const UpdateCharacterForm = (props) => {
   const updatePronounsInput = useRef(null);
   const updateRaceSelect = useRef(null);
   const updateCharacterClassSelect = useRef(null);
-  const updateHpSelect = useRef(null);
+  const updateHPSelect = useRef(null);
   const updateWeaponSelect = useRef(null);
   const updateAttackSelect = useRef(null);
   const updateArmorClass = useRef(null);
@@ -19,10 +19,10 @@ const UpdateCharacterForm = (props) => {
   const updateCharacter = async (event) => {
     event.preventDefault();
     const name = updateNameInput.current.value;
-    const pronouns = updatePronounsInput.current.value;
     const race = updateRaceSelect.current.value;
+    const pronouns = updatePronounsInput.current.value;
     const characterClass = updateCharacterClassSelect.current.value;
-    const hp = updateHpSelect.current.value;
+    const HP = updateHPSelect.current.value;
     const weapon = updateWeaponSelect.current.value;
     const attack = updateAttackSelect.current.value;
     const armorClass = updateArmorClass.current.value;
@@ -30,10 +30,10 @@ const UpdateCharacterForm = (props) => {
     const backstory = updateBackstory.current.value;
     const body = JSON.stringify({
       name,
-      pronouns,
       race,
+      pronouns,
       characterClass,
-      hp,
+      HP,
       weapon,
       attack,
       armorClass,
@@ -55,7 +55,7 @@ const UpdateCharacterForm = (props) => {
         }
       );
 
-      props.history.push("/Characters");
+      props.history.push("/characters");
     } catch (error) {
       console.error(error);
     }
@@ -75,7 +75,7 @@ const UpdateCharacterForm = (props) => {
         </div>
         <div className="heading-with-form">
           <h2 id="update-char-h2">Update Character</h2>
-          <form onSubmit={updateCharacter} method="put">
+          <form onSubmit={updateCharacter}>
             <label>Character Name:</label>
             <input type="text" name="name" ref={updateNameInput} />
             <br />
@@ -112,7 +112,7 @@ const UpdateCharacterForm = (props) => {
             </select>
             <br />
             <label>HP</label>
-            <select className="select" ref={updateHpSelect}>
+            <select className="select" ref={updateHPSelect}>
               <option value="Default">12</option>
             </select>
             <br />
