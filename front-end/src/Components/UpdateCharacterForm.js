@@ -45,7 +45,7 @@ const UpdateCharacterForm = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:7000/characters/${charId}`,
+        `https://dnd-encounters-2021.herokuapp.com/characters/${charId}`,
         {
           method: "PUT",
           headers: {
@@ -176,7 +176,7 @@ const UpdateCharacterForm = (props) => {
             <label>Backstory:</label>
             <input type="textarea" name="backstory" ref={updateBackstory} />
             <br />
-            <input type="submit" value="Create Character" />
+            <input type="submit" value="UPDATE CHARACTER" />
           </form>
         </div>
       </div>
