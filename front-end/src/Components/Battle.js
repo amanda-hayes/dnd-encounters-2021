@@ -151,6 +151,8 @@ function Battle() {
     );
   }
 
+ 
+
   useEffect(() => {
     fetchPlayerCharacters();
     setModalContent();
