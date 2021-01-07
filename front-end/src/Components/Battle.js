@@ -7,6 +7,7 @@ import beholder from "../beholder.jpeg";
 import d20 from "../images/d20.png";
 import d20natone from "../images/d20natone.png";
 
+
 function Battle() {
   const [playerCharacters, updatePlayerCharactersList] = useState([]);
   const [open, setOpen] = useState(true);
