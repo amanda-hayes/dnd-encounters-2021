@@ -75,7 +75,7 @@ const UpdateCharacterForm = (props) => {
         </div>
         <div className="heading-with-form">
           <h2 id="update-char-h2">Update Character</h2>
-          <form onSubmit={updateCharacter} method="post">
+          <form onSubmit={updateCharacter} method="put">
             <label>Character Name:</label>
             <input type="text" name="name" ref={updateNameInput} />
             <br />

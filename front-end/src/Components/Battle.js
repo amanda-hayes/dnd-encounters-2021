@@ -48,7 +48,7 @@ function Battle() {
       const roll = rollAD20();
 
       if (roll >= monster.armorClass) {
-        monster.HP -= 5;
+        monster.HP -= 4;
         alert(`It's a hit! The Beholder takes 4 damage!`);
 
         if (monster.HP <= 0) {
@@ -67,10 +67,7 @@ function Battle() {
       );
 
       const mathFunc = Math.floor(Math.random() * playableCharacters.length);
-      console.log("MathFunc " + mathFunc);
-
       const characterAttacked = playableCharacters[mathFunc];
-      console.log("character Attacked: " + characterAttacked);
 
       characterAttacked.HP -= 8;
       alert(characterAttacked.name + ` was attacked and hit for 8 damage!`);
@@ -84,6 +81,9 @@ function Battle() {
 
         const turnOver = nowWithNoDeadPlayers.shift();
         updatePlayerCharactersList([...nowWithNoDeadPlayers, turnOver]);
+      } else {
+        const turnOverMon = newPlayerCharacters.shift();
+        updatePlayerCharactersList([...newPlayerCharacters, turnOverMon]);
       }
     }
 
