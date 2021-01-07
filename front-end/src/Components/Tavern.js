@@ -5,7 +5,6 @@ import "react-responsive-modal/styles.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import wizardbook from "../images/wizardbook.png";
-import Sound from "react-sound";
 
 function Tavern() {
   const [open, setOpen] = useState(true);
@@ -26,12 +25,6 @@ function Tavern() {
 
   return (
     <>
-      <Sound
-        url="../tavern_music.mp3"
-        playStatus={Sound.status.PLAYING}
-        autoLoad={true}
-      />
-      ;
       <nav className="topnav">
         <Link to="/">HOME</Link>
         <Link to="/characters">CHARACTERS</Link>
