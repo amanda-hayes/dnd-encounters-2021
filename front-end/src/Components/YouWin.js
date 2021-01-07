@@ -4,6 +4,12 @@ import wizard from "../images/wizard.png";
 function YouWin() {
   return (
     <>
+      <nav className="topnav">
+        <Link to="/">HOME</Link>
+        <Link to="/characters">CHARACTERS</Link>
+        <Link to="/createcharacterform">CREATE</Link>
+        <Link to="/battle">BATTLE</Link>
+      </nav>
       <div id="you-win-page">
         <h1 id="you-win-h1">Congratulations!</h1>
         <img src={wizard} alt="wizard" />
