@@ -1,5 +1,6 @@
 import "../App.css";
 import wizard from "../images/wizard.png";
+import { Link } from 'react-router-dom';
 
 function YouWin() {
   return (
