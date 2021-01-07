@@ -20,8 +20,8 @@ const UpdateCharacterForm = (props) => {
     event.preventDefault();
     const name = updateNameInput.current.value;
     const race = updateRaceSelect.current.value;
-    const pronouns = updatePronounsInput.current.value;
     const characterClass = updateCharacterClassSelect.current.value;
+    const pronouns = updatePronounsInput.current.value;
     const HP = updateHPSelect.current.value;
     const weapon = updateWeaponSelect.current.value;
     const attack = updateAttackSelect.current.value;
@@ -31,14 +31,14 @@ const UpdateCharacterForm = (props) => {
     const body = JSON.stringify({
       name,
       race,
-      pronouns,
       characterClass,
+      pronouns,
       HP,
       weapon,
       attack,
       armorClass,
       catchphrases,
-      backstory
+      backstory,
     });
 
     event.currentTarget.reset();
@@ -55,6 +55,7 @@ const UpdateCharacterForm = (props) => {
         }
       );
 
+      alert("Character Updated!");
       props.history.push("/characters");
     } catch (error) {
       console.error(error);

@@ -20,7 +20,7 @@ function App() {
         <Route path="/Characters" exact component={AllCharPage} />
         <Route path="/Characters/:id" component={CharacterStats} />
         <Route path="/CreateCharacterForm" exact component={CreateCharacterForm} />
-        <Route path="/UpdateCharacterForm/:id" component={UpdateCharacterForm} />
+        <Route path="/UpdateCharacterForm/:id" exact component={UpdateCharacterForm} />
         <Route path="/Tavern" component={Tavern} />
         <Route path="/Battle" component={Battle} />
         <Route path="/YouWin" component={YouWin} />

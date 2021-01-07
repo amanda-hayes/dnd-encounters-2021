@@ -53,7 +53,7 @@ function Battle() {
 
         if (monster.HP <= 0) {
           history.push("/YouWin");
-          alert(`You did it!`);
+          alert(`You did it! You looted the monster and retrieved the precious goldfish!`);
         }
       } else {
         alert(`You rolled a ${roll} . You missed!`);
@@ -68,9 +68,15 @@ function Battle() {
 
       const mathFunc = Math.floor(Math.random() * playableCharacters.length);
       const characterAttacked = playableCharacters[mathFunc];
+      const roll = rollAD20();
 
-      characterAttacked.HP -= 8;
-      alert(characterAttacked.name + ` was attacked and hit for 8 damage!`);
+      if (roll >= characterAttacked.armorClass) {
+        characterAttacked.HP -= 8;
+        alert(characterAttacked.name + ` was attacked and hit for 8 damage!`);
+      } else {
+        alert(`Monster rolled a ${roll} . It's a miss!`);
+      }
+      
 
       if (characterAttacked.HP <= 0) {
         alert(`Oh no! ` + characterAttacked.name + ` passed out!`);
