@@ -7,7 +7,6 @@ import beholder from "../beholder.jpeg";
 import d20 from "../images/d20.png";
 import d20natone from "../images/d20natone.png";
 
-
 function Battle() {
   const [playerCharacters, updatePlayerCharactersList] = useState([]);
   const [open, setOpen] = useState(true);
@@ -23,7 +22,9 @@ function Battle() {
 
   const fetchPlayerCharacters = async () => {
     try {
-      const response = await fetch("http://localhost:7000/characters");
+      const response = await fetch(
+        "https://dnd-encounters-2021.herokuapp.com/characters"
+      );
       const charactersData = await response.json();
 
       updatePlayerCharactersList(charactersData);
@@ -45,7 +46,7 @@ function Battle() {
 
     if (monster._id !== event.target.value) {
       const roll = rollAD20();
-      
+
       if (roll >= monster.armorClass) {
         monster.HP -= 5;
         alert(`It's a hit! The Beholder takes 4 damage!`);
@@ -60,7 +61,6 @@ function Battle() {
 
       const turnOverMonster = newPlayerCharacters.shift();
       updatePlayerCharactersList([...newPlayerCharacters, turnOverMonster]);
-      
     } else {
       const playableCharacters = newPlayerCharacters.filter(
         (pc) => pc.characterType !== "NPC"
@@ -87,11 +87,15 @@ function Battle() {
       }
     }
 
-    if (playerCharacters.length === 1 && playerCharacters[0]._id === monster._id) {
-      alert("Oh no! Congratulations on your TPK! You lose Dungeons and Dragons and now have to create new characters and form a new party. Bummer!")
+    if (
+      playerCharacters.length === 1 &&
+      playerCharacters[0]._id === monster._id
+    ) {
+      alert(
+        "Oh no! Congratulations on your TPK! You lose Dungeons and Dragons and now have to create new characters and form a new party. Bummer!"
+      );
       history.push("/YouLose");
     }
-
   }
 
   function rollInitClickHandler(event) {
@@ -121,7 +125,8 @@ function Battle() {
           `....Oh boy.....AUTOMATIC FAIL! ` +
           ".";
       } else {
-        modalMessage += player.name + ` rolled a ` + player.initiative + "        .      ";
+        modalMessage +=
+          player.name + ` rolled a ` + player.initiative + "        .      ";
       }
     });
 
@@ -161,17 +166,17 @@ function Battle() {
           <img src={d20natone} alt="d20natone" className="D20natone-photo" />
           <img src={d20} alt="d20" className="D20-photo" />
           <br />
-          <Modal
-            open={open}
-            onClose={onCloseModal}
-            center>
-            
+          <Modal open={open} onClose={onCloseModal} center>
             <h2>On your way!</h2>
-            <p classNames={{
-              overlay: 'tavern-overlay',
-              modal: 'tavern-modal',
-            }}>You're traveling through the forest....suddenly...you hear a terrifying sound. The
-              blood drains from your party member's faces as you search for the source. 
+            <p
+              classNames={{
+                overlay: "tavern-overlay",
+                modal: "tavern-modal",
+              }}
+            >
+              You're traveling through the forest....suddenly...you hear a
+              terrifying sound. The blood drains from your party member's faces
+              as you search for the source.
             </p>
             <br />
             <button onClick={onCloseModal} id="tavern-button">
@@ -220,7 +225,8 @@ function Battle() {
             return (
               <li key={player._id} id="battle-character-list">
                 <img src={player.thumbnail} id="thumbnail" />
-                {player.name} <br /> HP: {player.HP} | Armor Class: {player.armorClass} | INIT: {player.initiative}
+                {player.name} <br /> HP: {player.HP} | Armor Class:{" "}
+                {player.armorClass} | INIT: {player.initiative}
                 <br />
                 <button value={player._id} onClick={shoutClickHandler}>
                   SHOUT

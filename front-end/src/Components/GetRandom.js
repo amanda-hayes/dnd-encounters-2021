@@ -1,33 +1,31 @@
-import { useState, useEffect } from 'react';
-import '../App.css';
+import { useState, useEffect } from "react";
+import "../App.css";
 
 function GetRandom(props) {
-    const [randomChars, setRandomCharacters] = useState([]);
-  
-    const fetchRandomCharacters = async () => {
-      try {
-        const response = await fetch('http://localhost:7000/randomchar');
-        const data = await response.json();
-        setRandomCharacters(data);
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const [randomChars, setRandomCharacters] = useState([]);
 
-    useEffect(() => { 
-        fetchRandomCharacters()
-      }, []);
-
-     
-      return (
-        <div>
-          <h1>Hey</h1>
-
-        </div>
-      )
-      
-
+  const fetchRandomCharacters = async () => {
+    try {
+      const response = await fetch(
+        "https://dnd-encounters-2021.herokuapp.com/randomchar"
+      );
+      const data = await response.json();
+      setRandomCharacters(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
     }
+  };
 
-    export default GetRandom;
+  useEffect(() => {
+    fetchRandomCharacters();
+  }, []);
+
+  return (
+    <div>
+      <h1>Hey</h1>
+    </div>
+  );
+}
+
+export default GetRandom;

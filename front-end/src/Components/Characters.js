@@ -7,7 +7,9 @@ function AllCharPage() {
 
   const fetchCharacters = async () => {
     try {
-      const response = await fetch("http://localhost:7000/characters");
+      const response = await fetch(
+        "https://dnd-encounters-2021.herokuapp.com/characters"
+      );
       const data = await response.json();
       setCharacters(data);
     } catch (error) {
@@ -17,12 +19,15 @@ function AllCharPage() {
 
   const deleteCharacter = async (id) => {
     try {
-      const response = await fetch(`http://localhost:7000/characters/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://dnd-encounters-2021.herokuapp.com/characters/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
       const filteredCharacters = characters.filter(
@@ -40,7 +45,9 @@ function AllCharPage() {
 
   const fetchRandomCharacters = async () => {
     try {
-      const response = await fetch("http://localhost:7000/randomChar");
+      const response = await fetch(
+        "https://dnd-encounters-2021.herokuapp.com/randomChar"
+      );
       const data = await response.json();
 
       setRandomCharacters(data);
@@ -60,22 +67,29 @@ function AllCharPage() {
     console.log(generatedCharacter.name);
     try {
       if (characters.includes(generatedCharacter.name)) {
-        const filterDupe = randomCharacters.filter(rando => rando.name !== generatedCharacter.name);
+        const filterDupe = randomCharacters.filter(
+          (rando) => rando.name !== generatedCharacter.name
+        );
 
         setRandomCharacters(filterDupe);
         generateChar();
       } else {
-        const response = await fetch("http://localhost:7000/characters", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(generatedCharacter),
-        });
+        const response = await fetch(
+          "https://dnd-encounters-2021.herokuapp.com/characters",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(generatedCharacter),
+          }
+        );
 
-        const newRandomCharList = randomCharacters.filter(rando => rando.name !== generatedCharacter.name);
+        const newRandomCharList = randomCharacters.filter(
+          (rando) => rando.name !== generatedCharacter.name
+        );
         setRandomCharacters(newRandomCharList);
-        const okREALLYnoDUPES = [...characters]; 
+        const okREALLYnoDUPES = [...characters];
 
         setCharacters([...characters, generatedCharacter]);
       }
@@ -96,72 +110,72 @@ function AllCharPage() {
 
   return (
     <>
-    <nav className="topnav">
+      <nav className="topnav">
         <Link to="/">HOME</Link>
         <Link to="/characters">CHARACTERS</Link>
         <Link to="/createcharacterform">CREATE</Link>
         <Link to="/battle">BATTLE</Link>
       </nav>
-    <div className="character-background">
-      <div className="header-style">
-      <h1 className="my-characters-heading">My Adventuring Party</h1>
-      <p>View and manage all your characters, or create a new one.</p>
-      <div>
-        Create a New Character
-
-        <Link to="/CreateCharacterForm">
-          <button>CREATE</button>
-        </Link>
-
-        Generate a random character for me
-        <button onClick={handleClick}>GENERATE</button>
-      </div>
-      </div>
-      <br />
-      <br />
-      <div id="character-list">
-        <ul>
-          <>
-            {characters.map((character) => {
-              if (character.characterType === "NPC"){ return; }
-              return (
-                <li key={character._id}>
-                  <img src={character.thumbnail} id="thumbnail" />
-                  {character.name} <br />{character.race} |{" "}
-                  {character.characterClass}
-                  <br />
-                  <button type="button">
-                    <Link to={`/characters/${character._id}`}>VIEW</Link>
-                  </button>
-                  <button>
-                    <Link to={`/UpdateCharacterForm/${character._id}`}>
-                      EDIT
-                    </Link>
-                  </button>
-                  <button
-                    onClick={(event) => {
-                      deleteCharacter(character._id);
-                    }}
-                  >
-                    DELETE{" "}
-                  </button>
-                </li>
-              );
-            })}
-          </>
-        </ul>
+      <div className="character-background">
+        <div className="header-style">
+          <h1 className="my-characters-heading">My Adventuring Party</h1>
+          <p>View and manage all your characters, or create a new one.</p>
+          <div>
+            Create a New Character
+            <Link to="/CreateCharacterForm">
+              <button>CREATE</button>
+            </Link>
+            Generate a random character for me
+            <button onClick={handleClick}>GENERATE</button>
+          </div>
         </div>
-            <div>
-              <br />
-              <br />
-              <br />
-              <br />
-              <h1>Ready to start adventuring?</h1>
-              <Link to="/Tavern">
-                <button>Let's Go!</button>
-              </Link>
-            </div>
-    </div>
+        <br />
+        <br />
+        <div id="character-list">
+          <ul>
+            <>
+              {characters.map((character) => {
+                if (character.characterType === "NPC") {
+                  return;
+                }
+                return (
+                  <li key={character._id}>
+                    <img src={character.thumbnail} id="thumbnail" />
+                    {character.name} <br />
+                    {character.race} | {character.characterClass}
+                    <br />
+                    <button type="button">
+                      <Link to={`/characters/${character._id}`}>VIEW</Link>
+                    </button>
+                    <button>
+                      <Link to={`/UpdateCharacterForm/${character._id}`}>
+                        EDIT
+                      </Link>
+                    </button>
+                    <button
+                      onClick={(event) => {
+                        deleteCharacter(character._id);
+                      }}
+                    >
+                      DELETE{" "}
+                    </button>
+                  </li>
+                );
+              })}
+            </>
+          </ul>
+        </div>
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <h1>Ready to start adventuring?</h1>
+          <Link to="/Tavern">
+            <button>Let's Go!</button>
+          </Link>
+        </div>
+      </div>
     </>
   );
 }
