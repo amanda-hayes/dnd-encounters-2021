@@ -38,7 +38,7 @@ const UpdateCharacterForm = (props) => {
       attack,
       armorClass,
       catchphrases,
-      backstory,
+      backstory
     });
 
     event.currentTarget.reset();
