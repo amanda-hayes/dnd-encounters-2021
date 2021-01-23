@@ -464,3 +464,13 @@ img {
 .battle-modal p{
   border-radius: 5px;
 }
+
+/* MOBILE DESIGN */
+
+/* PHONES */
+
+@media only screen and (max-width: 360px) {
+  .topnav {
+    max-width: 350px;
+  }
+}
