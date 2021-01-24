@@ -1,24 +1,24 @@
 const express = require("express");
 const charactersRouter = express.Router();
 const characterModel = require("../models/characterModel.js"); 
-// const jwt = require('jsonwebtoken');
-// const SECRET = 'thedeathofabachelorohlettingthewaterfall'
+const jwt = require('jsonwebtoken');
+const SECRET = 'thedeathofabachelorohlettingthewaterfall'
 
-// const auth = async (req, res, next) => {
-//   const { authorization } = req.headers;
-//   if(authorization){
-//     const token = authorization.split(' ')[1];
-//     try {
-//       const payload = await jwt.verify(token, SECRET)
-//       req.user = payload;
-//       next();
-//     } catch (error) {
-//       res.status(400).json(error)
-//     }
-//   } else {
-//     res.status(400).json( new Error('no token in header'))
-//   }
-// }
+const auth = async (req, res, next) => {
+  const { authorization } = req.headers;
+  if(authorization){
+    const token = authorization.split(' ')[1];
+    try {
+      const payload = await jwt.verify(token, SECRET)
+      req.user = payload;
+      next();
+    } catch (error) {
+      res.status(400).json(error)
+    }
+  } else {
+    res.status(400).json( new Error('no token in header'))
+  }
+}
 
 /***************
  * INDEX ROUTE *
@@ -35,7 +35,7 @@ charactersRouter.get("/", async (req, res) => {
 /***************
  * DELETE ROUTE *
  ****************/
-charactersRouter.delete("/:id", async (req, res) => {
+charactersRouter.delete("/:id", auth, async (req, res) => {
   try {
     const deletedCharacter = await characterModel.findByIdAndRemove(
       req.params.id

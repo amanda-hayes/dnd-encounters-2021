@@ -74,3 +74,11 @@ Resources
 MOBILE NAVBAR HAMBURGER MENU
 
 https://www.w3schools.com/howto/howto_js_mobile_navbar.asp
+
+Issues
+
+1/24/21 Right after revisiting this project, I had to change the links from Heroku to my localhost to pull data
+and continue working on the site locally. I went through all of my routes one by one and didn't see anything
+different and my debugging hit a standstill. I went to office hours and Riana showed me that on my app.js
+page, I had some middleware that was pointing to api/characterController, which was still from Heroku. After
+changing that, all my routes were functioning again. 
