@@ -44,7 +44,7 @@ const CreateCharacterForm = (props) => {
 
     try {
       const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/characters",
+        "http://localhost:7000/characters",
         {
           method: "POST",
           headers: {

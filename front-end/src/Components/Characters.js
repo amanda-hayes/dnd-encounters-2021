@@ -8,7 +8,7 @@ function AllCharPage() {
   const fetchCharacters = async () => {
     try {
       const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/characters"
+        "http://localhost:7000/characters"
       );
       const data = await response.json();
       setCharacters(data);
@@ -20,7 +20,7 @@ function AllCharPage() {
   const deleteCharacter = async (id) => {
     try {
       const response = await fetch(
-        `https://dnd-encounters-2021.herokuapp.com/api/characters/${id}`,
+        `http://localhost:7000/characters/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -46,7 +46,7 @@ function AllCharPage() {
   const fetchRandomCharacters = async () => {
     try {
       const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/randomChar"
+        "http://localhost:7000/randomChar"
       );
       const data = await response.json();
 
@@ -75,7 +75,7 @@ function AllCharPage() {
         generateChar();
       } else {
         const response = await fetch(
-          "https://dnd-encounters-2021.herokuapp.com/api/characters",
+          "http://localhost:7000/characters",
           {
             method: "POST",
             headers: {

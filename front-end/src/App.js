@@ -9,6 +9,8 @@ import Battle from './Components/Battle';
 import Home from './Components/Home';
 import YouWin from './Components/YouWin';
 import YouLose from './Components/YouLose';
+import Register from './Components/Register';
+import Login from './Components/Login';
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
         <Route path="/Battle" component={Battle} />
         <Route path="/YouWin" component={YouWin} />
         <Route path="/YouLose" component={YouLose} />
+        <Route path="/Register" component={Register} />
+        <Route path="/Login" component={Login} />
       </Switch>
       </div>
     </Router>
