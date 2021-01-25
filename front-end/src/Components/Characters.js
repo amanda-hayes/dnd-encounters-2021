@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 function AllCharPage() {
   const [characters, setCharacters] = useState([]);
   const [token, setToken] = useState('');
-  const nameInput = useRef(null);
-  const passwordInput = useRef(null);
-  const regNameInput = useRef(null);
-  const regPasswordInput = useRef(null);
+  // const nameInput = useRef(null);
+  // const passwordInput = useRef(null);
+  // const regNameInput = useRef(null);
+  // const regPasswordInput = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [state, setState] = useState([]);
 
@@ -73,7 +73,16 @@ function AllCharPage() {
     });
     localStorage.clear();
     alert('You have been logged out.')
-    props.history.push('/Login')
+    // props.history.push('/Login')
+  };
+
+  // check if logged in function add notice to corner of page
+  const checkLogin = (props) => {
+    if (token) {
+    console.log("LOGGED IN")
+    } else {
+      console.log("LOGGED OUT")
+    }
   };
 
 
@@ -212,33 +221,7 @@ function AllCharPage() {
         <Link to="/register">REGISTER</Link>
       </nav>
       <div className="character-background">
-      {/* <div>
-            <h2>Register</h2>
-            <form onSubmit={register} method="post">
-                <label>Username</label>
-                <input type="text" name="username" ref={regNameInput} />
-                <br />
-                <label>Password</label>
-                <input type="password" name="password" ref={regPasswordInput} />
-                <br />
-                <input type="submit" value="REGISTER" id="submit-btn" />
-            </form>
-        </div>
-      <div>
-            <h2>Login</h2>
-            <p>
-                Welcome back, Adventurer! Please login below.
-            </p>
-            <form onSubmit={login} method="post">
-                <label>Username</label>
-                <input type="text" name="username" ref={nameInput} />
-                <br />
-                <label>Password</label>
-                <input type="password" name="password" ref={passwordInput} />
-                <br />
-                <input type="submit" value="LOGIN" id="submit-btn" />
-            </form>
-        </div> */}
+       <button onClick={checkLogin}>Logged In?</button>
       <button onClick={handleLogOut}>LOGOUT</button>
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
