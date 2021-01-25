@@ -20,7 +20,7 @@ const RegisterForm = (props) => {
 
         try {
             const response = await fetch(
-                "http://localhost:7000/User",
+                "http://localhost:7000/register",
                 {
                     method: "POST",
                     headers: {
@@ -29,7 +29,7 @@ const RegisterForm = (props) => {
                     body: body,
                 }
             );
-            props.history.push('/Users');
+            props.history.push('/Characters');
             alert('Account created!');
         } catch (error) {
             console.error(error);
@@ -59,7 +59,7 @@ const RegisterForm = (props) => {
                 <input type="text" name="username" ref={usernameInput} />
                 <br />
                 <label>Password</label>
-                <input type="text" name="password" ref={passwordInput} />
+                <input type="password" name="password" ref={passwordInput} />
                 <br />
                 <input type="submit" value="REGISTER" id="submit-btn" />
             </form>

@@ -25,6 +25,7 @@ function AllCharPage() {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
+            // 'Authorization': token
           },
         }
       );
