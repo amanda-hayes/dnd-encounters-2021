@@ -116,6 +116,10 @@ const login = async (event) => {
           },
         }
       );
+        if(!token) {
+          return alert("Please Login before continuing!")
+        }
+  
       const data = await response.json();
       const filteredCharacters = characters.filter(
         (character) => character._id !== data._id
