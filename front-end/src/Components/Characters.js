@@ -9,7 +9,8 @@ function AllCharPage() {
   const passwordInput = useRef(null);
   const regNameInput = useRef(null);
   const regPasswordInput = useRef(null);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [state, setState] = useState([]);
 
 
   const register = async (event) => {
@@ -63,24 +64,16 @@ const login = async (event) => {
   }
 };
 
-  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
-  // function checkToken(token){
-  //   if(!token) {
-  //     return alert("Please Login before continuing!")
-  //   }
-  // };
-
-  // const handleLogOut = (props) => {
-  //   setState({
-  //     username: "",
-  //     password: "",
-  //     isLoggedIn: false,
-  //   });
-  //   localStorage.clear();
-  //   alert('You have been logged out.')
-  //   props.history.push('/Home');
-  // };
+  const handleLogOut = (props) => {
+    setState({
+      username: "",
+      password: "",
+      isLoggedIn: false,
+    });
+    localStorage.clear();
+    alert('You have been logged out.')
+  };
 
 
 
@@ -244,7 +237,7 @@ const login = async (event) => {
                 <input type="submit" value="LOGIN" id="submit-btn" />
             </form>
         </div>
-      {/* <button onClick={handleLogOut}>LOGOUT</button> */}
+      <button onClick={handleLogOut}>LOGOUT</button>
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
           <p>View and manage all your characters, or create a new one.</p>
