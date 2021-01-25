@@ -13,56 +13,56 @@ function AllCharPage() {
   const [state, setState] = useState([]);
 
 
-  const register = async (event) => {
-    event.preventDefault();
-    const body = JSON.stringify({
-        username: regNameInput.current.value,
-        password: regPasswordInput.current.value
-    });
-    event.currentTarget.reset();
-    try {
-        const response = await fetch(
-            "http://localhost:7000/register",
-            {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body
-            }
-        );
-        alert('Account created!');
-    } catch (error) {
-        console.error(error);
-    }
-};
+//   const register = async (event) => {
+//     event.preventDefault();
+//     const body = JSON.stringify({
+//         username: regNameInput.current.value,
+//         password: regPasswordInput.current.value
+//     });
+//     event.currentTarget.reset();
+//     try {
+//         const response = await fetch(
+//             "http://localhost:7000/register",
+//             {
+//                 method: "POST",
+//                 headers: {
+//                     "Content-type": "application/json"
+//                 },
+//                 body
+//             }
+//         );
+//         alert('Account created!');
+//     } catch (error) {
+//         console.error(error);
+//     }
+// };
 
-const login = async (event) => {
-  event.preventDefault();
-  const body = JSON.stringify({
-      username: nameInput.current.value,
-      password: passwordInput.current.value
-  });
-  event.currentTarget.reset();
-  try {
-      const response = await fetch(
-          "http://localhost:7000/login",
-          {
-              method: "POST",
-              headers: {
-                  "Content-type": "application/json"
-              },
-              body
-          }
-      );
-      const data = await response.json();
-      window.localStorage.setItem('token', `Bearer ${data.token}`);
-      setToken(`Bearer ${data.token}`)
-      alert('Logged In!');
-  } catch (error) {
-      console.error(error);
-  }
-};
+// const login = async (event) => {
+//   event.preventDefault();
+//   const body = JSON.stringify({
+//       username: nameInput.current.value,
+//       password: passwordInput.current.value
+//   });
+//   event.currentTarget.reset();
+//   try {
+//       const response = await fetch(
+//           "http://localhost:7000/login",
+//           {
+//               method: "POST",
+//               headers: {
+//                   "Content-type": "application/json"
+//               },
+//               body
+//           }
+//       );
+//       const data = await response.json();
+//       window.localStorage.setItem('token', `Bearer ${data.token}`);
+//       setToken(`Bearer ${data.token}`)
+//       alert('Logged In!');
+//   } catch (error) {
+//       console.error(error);
+//   }
+// };
 
   
   const handleLogOut = (props) => {
@@ -73,6 +73,7 @@ const login = async (event) => {
     });
     localStorage.clear();
     alert('You have been logged out.')
+    props.history.push('/Login')
   };
 
 
@@ -193,6 +194,7 @@ const login = async (event) => {
 
   useEffect(() => {
     fetchCharacters();
+    setIsLoggedIn();
     fetchRandomCharacters();
     if(window.localStorage.getItem('token')){
       setToken(window.localStorage.getItem('token'))
@@ -210,7 +212,7 @@ const login = async (event) => {
         <Link to="/register">REGISTER</Link>
       </nav>
       <div className="character-background">
-      <div>
+      {/* <div>
             <h2>Register</h2>
             <form onSubmit={register} method="post">
                 <label>Username</label>
@@ -236,7 +238,7 @@ const login = async (event) => {
                 <br />
                 <input type="submit" value="LOGIN" id="submit-btn" />
             </form>
-        </div>
+        </div> */}
       <button onClick={handleLogOut}>LOGOUT</button>
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>

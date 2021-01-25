@@ -6,18 +6,13 @@ const RegisterForm = (props) => {
     const usernameInput = useRef(null);
     const passwordInput = useRef(null);
 
-    const registerUser = async (event) => {
+    const register = async (event) => {
         event.preventDefault();
-        const username = usernameInput.current.value;
-        const password = passwordInput.current.value;
-
         const body = JSON.stringify({
-            username,
-            password
+            username: usernameInput.current.value,
+            password: passwordInput.current.value
         });
-
         event.currentTarget.reset();
-
         try {
             const response = await fetch(
                 "http://localhost:7000/register",
@@ -26,11 +21,11 @@ const RegisterForm = (props) => {
                     headers: {
                         "Content-type": "application/json"
                     },
-                    body: body,
+                    body
                 }
             );
             alert('Account created!');
-            props.history.push('/Characters');
+            props.history.push('/Login')
         } catch (error) {
             console.error(error);
         }
@@ -54,7 +49,7 @@ const RegisterForm = (props) => {
                 We suggest passwords be at least 8 characters with letters,
                 numbers, and special characters.
             </p>
-            <form onSubmit={registerUser} method="post">
+            <form onSubmit={register} method="post">
                 <label>Username</label>
                 <input type="text" name="username" ref={usernameInput} />
                 <br />
