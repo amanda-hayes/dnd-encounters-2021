@@ -106,7 +106,7 @@ function Tavern() {
           }}
         >
           <h1>Pull up a chair!</h1>
-          <img src={wizardbook} id="wizard-book-image" />
+          <img src={wizardbook} id="wizard-book-image" alt="wizard-book" />
           <p>
             The old wizard tells you a tale of intrigue and courage, of magic
             and mystery, of treasure and toil, of monsters and men. Suddenly,

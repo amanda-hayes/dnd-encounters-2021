@@ -14,7 +14,6 @@ const LoginForm = (props) => {
             username: usernameInput.current.value,
             password: passwordInput.current.value
         });
-        // event.currentTarget.reset();
         try {
             const response = await fetch(
                 "http://localhost:7000/login",
@@ -28,7 +27,7 @@ const LoginForm = (props) => {
             const data = await response.json();
             window.localStorage.setItem('token', `Bearer ${data.token}`);
             setToken(`Bearer ${data.token}`)
-            
+            console.log(token)
             alert('Logged In!');
             props.history.push('/Characters');
         } catch (error) {

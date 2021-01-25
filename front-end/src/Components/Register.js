@@ -29,8 +29,8 @@ const RegisterForm = (props) => {
                     body: body,
                 }
             );
-            props.history.push('/Characters');
             alert('Account created!');
+            props.history.push('/Characters');
         } catch (error) {
             console.error(error);
         }
