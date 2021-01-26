@@ -1,11 +1,12 @@
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useEffect, useRef, useState } from 'react';
 
 const LoginForm = (props) => {
     const nameInput = useRef(null);
     const passwordInput = useRef(null);
     const [token, setToken] = useState('');
+    let history = useHistory();
 
     const login = async (event) => {
         event.preventDefault();
@@ -13,7 +14,6 @@ const LoginForm = (props) => {
             username: nameInput.current.value,
             password: passwordInput.current.value
         });
-        event.currentTarget.reset();
         try {
             const response = await fetch(
                 "http://localhost:7000/login",
@@ -29,7 +29,7 @@ const LoginForm = (props) => {
             window.localStorage.setItem('token', `Bearer ${data.token}`);
             setToken(`Bearer ${data.token}`)
             alert('Logged In!');
-            props.history.push('/Characters');
+            history.push('/Characters');
         } catch (error) {
             console.error(error);
         }
