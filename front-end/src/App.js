@@ -26,7 +26,7 @@ function App() {
       <Nav className="mr-auto">
       <Nav.Link href='/'> Home</Nav.Link>
       <Nav.Link href='/Characters'> Characters</Nav.Link>
-      {/* <Nav.Link href='/EditQuote'> Edit Quote </Nav.Link> */}
+      <Nav.Link href='/Register'> Register </Nav.Link>
       <Nav.Link href='/Login'>Login</Nav.Link>
       </Nav>
       </Navbar.Collapse>

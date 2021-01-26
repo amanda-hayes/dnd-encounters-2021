@@ -1,15 +1,16 @@
 import "../App.css";
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
 function Home() {
   return (
     <>
-      <nav className="topnav">
+      {/* <nav className="topnav">
         <Link to="/">HOME</Link>
         <Link to="/characters">CHARACTERS</Link>
         <Link to="/createcharacterform">CREATE</Link>
         <Link to="/battle">BATTLE</Link>
-      </nav>
+      </nav> */}
       <div className="homepage">
         <div id="homepage-content">
           <h1 id="home-heading"> Welcome to D&D Encounters</h1>
@@ -18,7 +19,7 @@ function Home() {
             adventure!
           </p>
           <Link to="/characters">
-            <button>GET STARTED</button>
+            <Button>GET STARTED</Button>
           </Link>
         </div>
       </div>
