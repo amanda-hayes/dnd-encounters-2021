@@ -1,12 +1,12 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
 
 function AllCharPage() {
   const [characters, setCharacters] = useState([]);
   const [token, setToken] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [state, setState] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState([]);
   let history = useHistory();
 
   /*****************
@@ -25,11 +25,20 @@ function AllCharPage() {
 
   const checkLogin = (props) => {
     if (token) {
-      console.log("LOGGED IN");
+      setIsLoggedIn("LOGGED IN");
     } else {
-      console.log("LOGGED OUT");
+      setIsLoggedIn("LOGGED OUT");
     }
   };
+
+  // const printStatus = props => {
+  //   if (token) {
+  //       setIsLoggedIn(true)
+      
+  //   } else {
+  //     setIsLoggedIn(false)
+  //   }
+  // }
 
   /*****************
    * GET ALL CHARS *
@@ -149,17 +158,18 @@ function AllCharPage() {
 
   return (
     <>
-      <nav className="topnav">
+      {/* <nav className="topnav">
         <Link to="/">HOME</Link>
         <Link to="/characters">CHARACTERS</Link>
         <Link to="/createcharacterform">CREATE</Link>
         <Link to="/battle">BATTLE</Link>
         <Link to="/login">LOGIN</Link>
         <Link to="/register">REGISTER</Link>
-      </nav>
+      </nav> */}
       <div className="character-background">
-        <button onClick={checkLogin}>Logged In?</button>
         <button onClick={handleLogOut}>LOGOUT</button>
+        <button onClick={checkLogin}>Logged In?</button>
+        <h2>{isLoggedIn}</h2>
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
           <p>View and manage all your characters, or create a new one.</p>

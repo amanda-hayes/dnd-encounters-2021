@@ -11,12 +11,26 @@ import YouWin from './Components/YouWin';
 import YouLose from './Components/YouLose';
 import Register from './Components/Register';
 import Login from './Components/Login';
+import { Navbar, Nav } from 'react-bootstrap';
+
 
 function App() {
 
   return (    
     <Router>
       <div className="App">
+      <div className='nav-routes'/>
+     <Navbar bg="light" expand="lg">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="mr-auto">
+      <Nav.Link href='/'> Home</Nav.Link>
+      <Nav.Link href='/Characters'> Characters</Nav.Link>
+      {/* <Nav.Link href='/EditQuote'> Edit Quote </Nav.Link> */}
+      <Nav.Link href='/Login'>Login</Nav.Link>
+      </Nav>
+      </Navbar.Collapse>
+      </Navbar>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/Characters" exact component={AllCharPage} />
