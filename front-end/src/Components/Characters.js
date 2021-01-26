@@ -1,101 +1,43 @@
 import "../App.css";
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 function AllCharPage() {
   const [characters, setCharacters] = useState([]);
-  const [token, setToken] = useState('');
-  // const nameInput = useRef(null);
-  // const passwordInput = useRef(null);
-  // const regNameInput = useRef(null);
-  // const regPasswordInput = useRef(null);
+  const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [state, setState] = useState([]);
+  let history = useHistory();
 
+  /*****************
+   * LOGOUT *
+   ****************/
 
-//   const register = async (event) => {
-//     event.preventDefault();
-//     const body = JSON.stringify({
-//         username: regNameInput.current.value,
-//         password: regPasswordInput.current.value
-//     });
-//     event.currentTarget.reset();
-//     try {
-//         const response = await fetch(
-//             "http://localhost:7000/register",
-//             {
-//                 method: "POST",
-//                 headers: {
-//                     "Content-type": "application/json"
-//                 },
-//                 body
-//             }
-//         );
-//         alert('Account created!');
-//     } catch (error) {
-//         console.error(error);
-//     }
-// };
-
-// const login = async (event) => {
-//   event.preventDefault();
-//   const body = JSON.stringify({
-//       username: nameInput.current.value,
-//       password: passwordInput.current.value
-//   });
-//   event.currentTarget.reset();
-//   try {
-//       const response = await fetch(
-//           "http://localhost:7000/login",
-//           {
-//               method: "POST",
-//               headers: {
-//                   "Content-type": "application/json"
-//               },
-//               body
-//           }
-//       );
-//       const data = await response.json();
-//       window.localStorage.setItem('token', `Bearer ${data.token}`);
-//       setToken(`Bearer ${data.token}`)
-//       alert('Logged In!');
-//   } catch (error) {
-//       console.error(error);
-//   }
-// };
-
-  
   const handleLogOut = (props) => {
-    setState({
-      username: "",
-      password: "",
-      isLoggedIn: false,
-    });
     localStorage.clear();
-    alert('You have been logged out.')
-    // props.history.push('/Login')
+    alert("You have been logged out.");
+    history.push('/Login')
   };
 
-  // check if logged in function add notice to corner of page
+  /*****************
+   * CHECK LOGIN *
+   ****************/
+
   const checkLogin = (props) => {
     if (token) {
-    console.log("LOGGED IN")
+      console.log("LOGGED IN");
     } else {
-      console.log("LOGGED OUT")
+      console.log("LOGGED OUT");
     }
   };
 
-
-
-/*****************
- * GET ALL CHARS *
- ****************/
+  /*****************
+   * GET ALL CHARS *
+   ****************/
 
   const fetchCharacters = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:7000/characters"
-      );
+      const response = await fetch("http://localhost:7000/characters");
       const data = await response.json();
       setCharacters(data);
     } catch (error) {
@@ -104,25 +46,21 @@ function AllCharPage() {
   };
 
   /***************
- * DELETE CHAR *
- ****************/
+   * DELETE CHAR *
+   ****************/
 
   const deleteCharacter = async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:7000/characters/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-type": "application/json",
-            "Authorization": token
-          },
-        }
-      );
-        if(!token) {
-          return alert("Please Login before continuing!")
-        }
-  
+      const response = await fetch(`http://localhost:7000/characters/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: token,
+        },
+      });
+      if (!token) {
+        return alert("Please Login before deleting!");
+      }
       const data = await response.json();
       const filteredCharacters = characters.filter(
         (character) => character._id !== data._id
@@ -133,17 +71,15 @@ function AllCharPage() {
     }
   };
 
-/***************
- * GENERATE CHAR *
- ****************/
+  /*****************
+   * GENERATE CHAR *
+   ****************/
 
   const [randomCharacters, setRandomCharacters] = useState([]);
 
   const fetchRandomCharacters = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:7000/randomChar"
-      );
+      const response = await fetch("http://localhost:7000/randomChar");
       const data = await response.json();
 
       setRandomCharacters(data);
@@ -169,16 +105,17 @@ function AllCharPage() {
         setRandomCharacters(filterDupe);
         generateChar();
       } else {
-        const response = await fetch(
-          "http://localhost:7000/characters",
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify(generatedCharacter),
-          }
-        );
+        const response = await fetch("http://localhost:7000/characters", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: token
+          },
+          body: JSON.stringify(generatedCharacter),
+        });
+        if (!token) {
+          return alert("Please Login before continuing!");
+        }
         const newRandomCharList = randomCharacters.filter(
           (rando) => rando.name !== generatedCharacter.name
         );
@@ -198,16 +135,16 @@ function AllCharPage() {
   }
 
   /***************
- * USE EFFECT *
- ****************/
+   * USE EFFECT *
+   ****************/
 
   useEffect(() => {
     fetchCharacters();
     setIsLoggedIn();
     fetchRandomCharacters();
-    if(window.localStorage.getItem('token')){
-      setToken(window.localStorage.getItem('token'))
-      }
+    if (window.localStorage.getItem("token")) {
+      setToken(window.localStorage.getItem("token"));
+    }
   }, []);
 
   return (
@@ -221,8 +158,8 @@ function AllCharPage() {
         <Link to="/register">REGISTER</Link>
       </nav>
       <div className="character-background">
-       <button onClick={checkLogin}>Logged In?</button>
-      <button onClick={handleLogOut}>LOGOUT</button>
+        <button onClick={checkLogin}>Logged In?</button>
+        <button onClick={handleLogOut}>LOGOUT</button>
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
           <p>View and manage all your characters, or create a new one.</p>

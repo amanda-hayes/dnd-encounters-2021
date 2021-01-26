@@ -49,7 +49,7 @@ charactersRouter.delete("/:id", auth, async (req, res) => {
 /***************
  * UPDATE ROUTE *
  ****************/
-charactersRouter.put("/:id", async (req, res) => {
+charactersRouter.put("/:id", auth, async (req, res) => {
   try {
     console.log(req.body);
     console.log(req.params.id);
@@ -67,7 +67,7 @@ charactersRouter.put("/:id", async (req, res) => {
 /***************
  * CREATE ROUTE *
  ****************/
-charactersRouter.post("/", async (req, res) => {
+charactersRouter.post("/", auth, async (req, res) => {
   try {
     const createdCharacter = await characterModel.create(req.body);
     res.status(200).json(createdCharacter);
@@ -79,7 +79,7 @@ charactersRouter.post("/", async (req, res) => {
 /***************
  * SHOW ROUTE *
  ****************/
-charactersRouter.get("/:id", async (req, res) => {
+charactersRouter.get("/:id", auth, async (req, res) => {
   try {
     const foundCharacter = await characterModel.findById(req.params.id);
     console.log(foundCharacter);
