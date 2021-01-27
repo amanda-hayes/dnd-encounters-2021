@@ -2,7 +2,7 @@ const express = require("express");
 const charactersRouter = express.Router();
 const characterModel = require("../models/characterModel.js"); 
 const jwt = require('jsonwebtoken');
-const SECRET = 'thedeathofabachelorohlettingthewaterfall'
+const SECRET = process.env.SECRET_KEY;
 
 const auth = async (req, res, next) => {
   const { authorization } = req.headers;
@@ -40,6 +40,8 @@ charactersRouter.delete("/:id", auth, async (req, res) => {
     const deletedCharacter = await characterModel.findByIdAndRemove(
       req.params.id
     );
+    alert('Are you sure you want to delete this character?')
+    // if player clicks yes, then delete character, if no, go back to characters screen
     res.status(200).json(deletedCharacter);
   } catch (error) {
     res.status(400).json(error);

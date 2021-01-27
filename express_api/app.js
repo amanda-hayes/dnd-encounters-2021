@@ -12,8 +12,7 @@ const PORT = process.env.PORT || 7000;
 const charactersController = require("./controllers/characters");
 const randomCharController = require("./controllers/randomChar");
 const MONGOURI = process.env.MONGODB_URI;
-
-const SECRET = 'thedeathofabachelorohlettingthewaterfall'
+const SECRET = process.env.SECRET_KEY;
 
 const auth = async (req, res, next) => {
     const { authorization } = req.headers;

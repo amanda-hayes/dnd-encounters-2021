@@ -1,10 +1,12 @@
 import "../App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 function AllCharPage() {
   const [characters, setCharacters] = useState([]);
   const [token, setToken] = useState("");
+  const userMode = useContext(UserContext);
   // const [isLoggedIn, setIsLoggedIn] = useState([]);
   let history = useHistory();
 
@@ -30,14 +32,6 @@ function AllCharPage() {
   //   }
   // };
 
-  // const printStatus = props => {
-  //   if (token) {
-  //       setIsLoggedIn(true)
-      
-  //   } else {
-  //     setIsLoggedIn(false)
-  //   }
-  // }
 
   /*****************
    * GET ALL CHARS *
@@ -157,14 +151,6 @@ function AllCharPage() {
 
   return (
     <>
-      {/* <nav className="topnav">
-        <Link to="/">HOME</Link>
-        <Link to="/characters">CHARACTERS</Link>
-        <Link to="/createcharacterform">CREATE</Link>
-        <Link to="/battle">BATTLE</Link>
-        <Link to="/login">LOGIN</Link>
-        <Link to="/register">REGISTER</Link>
-      </nav> */}
       <div className="character-background">
         <button onClick={handleLogOut}>LOGOUT</button>
         {/* <button onClick={checkLogin}>Logged In?</button>

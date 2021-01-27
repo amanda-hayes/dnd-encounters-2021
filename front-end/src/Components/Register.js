@@ -1,5 +1,4 @@
 import "../App.css";
-import { Link } from "react-router-dom";
 import { useRef } from "react";
 
 const RegisterForm = (props) => {
@@ -36,15 +35,6 @@ const RegisterForm = (props) => {
 
   return (
     <>
-      {/* <nav className="topnav">
-        <Link to="/">HOME</Link>
-        <Link to="/characters">CHARACTERS</Link>
-        <Link to="/createcharacterform">CREATE</Link>
-        <Link to="/battle">BATTLE</Link>
-        <Link to="/login">LOGIN</Link>
-        <Link to="/register">REGISTER</Link>
-      </nav> */}
-
       <div>
         <h2>Register</h2>
         <p>

@@ -12,9 +12,23 @@ import YouLose from './Components/YouLose';
 import Register from './Components/Register';
 import Login from './Components/Login';
 import { Navbar, Nav } from 'react-bootstrap';
+import { UserContext } from './Components/UserContext.js';
 
 
 function App() {
+  <UserContext.Provider value="null">
+    <Home />
+    <AllCharPage />
+    <Register />
+    <Login />
+    <Tavern />
+    <YouWin />
+    <YouLose />
+    <Battle />
+    <CreateCharacterForm />
+    <UpdateCharacterForm />
+    <CharacterStats />
+  </UserContext.Provider>
 
   return (    
     <Router>
