@@ -1,7 +1,7 @@
 import "../App.css";
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Card } from "react-bootstrap";
 
 function AllCharPage() {
   const [characters, setCharacters] = useState([]);
@@ -170,11 +170,55 @@ function AllCharPage() {
                 }
                 return (
                   <li key={character._id}>
-                    <img src={character.thumbnail} id="thumbnail" />
-                    {character.name} <br />
+                    {/* <img src={character.thumbnail} id="thumbnail" /> */}
+                    {/* {character.name} <br />
                     {character.race} | {character.characterClass}
-                    <br />
-                    <button type="button">
+                    <br /> */}
+                    {/* <button type="button">
+                      <Link to={`/characters/${character._id}`}>VIEW</Link>
+                    </button> */}
+                    {/* <button>
+                      <Link to={`/UpdateCharacterForm/${character._id}`}>
+                        EDIT
+                      </Link>
+                    </button> */}
+                    {/* <Button variant="primary" onClick={handleShow}>
+                      DELETE
+                    </Button> */}
+                    {/* <Modal show={showModal} onHide={handleClose}>
+                      <Modal.Header>
+                        <Modal.Title>Delete Character</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Are you sure you want to delete this character?
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Close
+                        </Button>
+                        <Button
+                          variant="primary"
+                          onClick={() => {
+                            deleteCharacter(character._id);
+                            handleClose();
+                          }}
+                        >
+                          DELETE
+                        </Button>
+                      </Modal.Footer>
+                    </Modal> */}
+                    <Card style={{ width: "18rem" }}>
+                      <Card.Img
+                        variant="top"
+                        src={character.thumbnail}
+                        id="thumbnail"
+                      />
+                      <Card.Body>
+                        <Card.Title>{character.name}</Card.Title>
+                        <Card.Text>
+                          {character.race} | {character.characterClass}
+                        </Card.Text>
+                        <button type="button">
                       <Link to={`/characters/${character._id}`}>VIEW</Link>
                     </button>
                     <button>
@@ -198,9 +242,8 @@ function AllCharPage() {
                         </Button>
                         <Button
                           variant="primary"
-                          
                           onClick={() => {
-                            deleteCharacter(character._id); 
+                            deleteCharacter(character._id);
                             handleClose();
                           }}
                         >
@@ -208,12 +251,16 @@ function AllCharPage() {
                         </Button>
                       </Modal.Footer>
                     </Modal>
+                        {/* <Button variant="primary">VIEW</Button> */}
+                      </Card.Body>
+                    </Card>
                   </li>
                 );
               })}
             </>
           </ul>
         </div>
+
         <div>
           <br />
           <br />

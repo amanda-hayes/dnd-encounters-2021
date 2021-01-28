@@ -84,16 +84,16 @@ ul {
 
 li {
   list-style: none;
-  background-color: rgb(3, 65, 87);
+   /* background-color: rgb(3, 65, 87);
   margin: 10px;
   width: 30%;
   padding: 10px;
   padding-top: 20px;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: bold; */
   /* height: 150px; */
-  box-shadow: 5px 10px 8px #050505af;
-  display: inline-block;
+  /* box-shadow: 5px 10px 8px #050505af;
+  display: inline-block; */ 
 }
 
 input {
@@ -177,12 +177,12 @@ button:hover {
 
 
 .character-background {
-  background-image: url("./images/dnd-table-1.jpg");
+  /* background-image: url("./images/dnd-table-1.jpg"); */
   height: 1500px;
   background-size: cover;
   background-repeat: repeat;
   padding: 20px;
-  color: white;
+  /* color: white; */
 }
 
 

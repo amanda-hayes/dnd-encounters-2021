@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory, Link } from "react-router-dom";
 import AllCharPage from "./Components/Characters";
 import CharacterStats from "./Components/CharDetails";
 import UpdateCharacterForm from "./Components/UpdateCharacterForm";
@@ -11,13 +11,19 @@ import YouWin from "./Components/YouWin";
 import YouLose from "./Components/YouLose";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
-import GoogleLogin from './Components/GoogleLogin';
-import GoogleLogout from './Components/GoogleLogout';
+import { useContext, useState } from 'react'
 import { Navbar, Nav, Button } from "react-bootstrap";
+import UserContext from "./Components/UserContext";
 
 function App() {
 
   let history = useHistory();
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [token, setToken] = useState("");
+
+  // function toggleLogin() {
+  //   setLoggedIn(prevLoggedIn => !prevLoggedIn)
+  // }
 
   /*****************
    * LOGOUT *
@@ -30,6 +36,27 @@ function App() {
   };
 
   return (
+    <>
+    {/* <UserContext.Provider value={{
+            userLoggedIn: [loggedIn, setLoggedIn],
+            tokenData: [token, setToken],
+          }}>
+      {loggedIn.username ? (
+          <>
+            {" "}
+            <span className="">Welcome back, {loggedIn.username}</span>
+            <button href="/" onClick={handleLogOut}>
+              Log Out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Log In</Link>
+          </>
+        )}
+        <UserContext />
+    </UserContext.Provider> */}
 
     <Router>
       <div className="App">
@@ -71,6 +98,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </>
   );
 }
 export default App;
