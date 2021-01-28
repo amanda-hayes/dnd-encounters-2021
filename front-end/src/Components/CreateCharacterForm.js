@@ -57,18 +57,28 @@ const CreateCharacterForm = (props) => {
       props.history.push("/Characters");
       alert("Character Created!");
     } catch (error) {
+      alert('Something went wrong. Please try again.')
       console.error(error);
     }
   };
 
+    /***************
+   * ROLL A D6+6 *
+   ****************/
+
+function rollStats() {
+  return Math.floor(Math.random() * 6) + 7; 
+}
+let rolls = [];
+
+for (var i = 0; i < 6; i++) {
+  var result = rollStats();
+  rolls.push(result);
+} 
+console.log(rolls);  
+
   return (
     <>
-      <nav className="topnav">
-        <Link to="/">HOME</Link>
-        <Link to="/characters">CHARACTERS</Link>
-        <Link to="/createcharacterform">CREATE</Link>
-        <Link to="/battle">BATTLE</Link>
-      </nav>
       <div id="create-char-form">
         <h2 id="create-char-h2">Create New Character</h2>
         <p>
@@ -192,6 +202,11 @@ const CreateCharacterForm = (props) => {
           <br />
           <input type="submit" value="Create Character" id="submit-btn" />
         </form>
+      </div>
+      <div>
+        {/* Roll a Character */}
+        
+ 
       </div>
     </>
   );
