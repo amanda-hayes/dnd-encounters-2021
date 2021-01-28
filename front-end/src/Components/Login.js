@@ -1,13 +1,14 @@
 import "../App.css";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { OurContext } from './UserContext';
+import { GoogleLogin } from 'react-google-login';
 
 const LoginForm = (props) => {
   const nameInput = useRef(null);
   const passwordInput = useRef(null);
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState([]);
+
   let history = useHistory();
 
   const login = async (event) => {
@@ -17,8 +18,6 @@ const LoginForm = (props) => {
       password: passwordInput.current.value,
     });
 
-    
-
     try {
       const response = await fetch("http://localhost:7000/login", {
         method: "POST",
@@ -27,17 +26,17 @@ const LoginForm = (props) => {
         },
         body,
       });
-      
+
       const data = await response.json();
       window.localStorage.setItem("token", `Bearer ${data.token}`);
       setToken(`Bearer ${data.token}`);
 
-      const loggedIn = isLoggedIn;
-      loggedIn = "LOGGED IN";
+      // const loggedIn = isLoggedIn;
+      // loggedIn = "LOGGED IN";
 
-      setIsLoggedIn(loggedIn);
-      alert("Logged In!");
-      //   history.push("/Characters");
+      setIsLoggedIn();
+      // alert("Logged In!");
+      history.push("/Characters");
     } catch (error) {
       console.error(error);
     }
@@ -47,21 +46,20 @@ const LoginForm = (props) => {
    * CHECK LOGIN *
    ****************/
 
-  const checkLogin = (event) => {
-      event.preventDefault();
-    if (token) {
-      let loggedIn = isLoggedIn;
-      loggedIn = "LOGGED IN";
-      setIsLoggedIn(loggedIn);
-      return true;
-    } else {
-        const loggedOut = isLoggedIn;
-        loggedOut = "LOGGED OUT";
-        setIsLoggedIn(loggedOut);
-        return false;
-    }
-  };
-
+  // const checkLogin = (event) => {
+  //     event.preventDefault();
+  //   if (token) {
+  //     let loggedIn = isLoggedIn;
+  //     loggedIn = "LOGGED IN";
+  //     setIsLoggedIn(loggedIn);
+  //     return true;
+  //   } else {
+  //       const loggedOut = isLoggedIn;
+  //       loggedOut = "LOGGED OUT";
+  //       setIsLoggedIn(loggedOut);
+  //       return false;
+  //   }
+  // };
 
   useEffect(() => {
     if (window.localStorage.getItem("token")) {
@@ -72,15 +70,6 @@ const LoginForm = (props) => {
 
   return (
     <>
-      {/* <nav className="topnav">
-            <Link to="/">HOME</Link>
-            <Link to="/characters">CHARACTERS</Link>
-            <Link to="/createcharacterform">CREATE</Link>
-            <Link to="/battle">BATTLE</Link>
-            <Link to="/login">LOGIN</Link>
-            <Link to="/register">REGISTER</Link>
-        </nav> */}
-
       <div>
         <h2>Login</h2>
         <p>Welcome back, Adventurer! Please login below.</p>
@@ -94,8 +83,60 @@ const LoginForm = (props) => {
           <input type="submit" value="LOGIN" id="submit-btn" />
         </form>
         <div>
-          <h2>status: {checkLogin ? "Logged In" : "Logged Out"} </h2>
+          {/* <h2>status: {checkLogin ? "Logged In" : "Logged Out"} </h2> */}
         </div>
+      </div>
+
+      {/* <!-- Modal --> */}
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">Hey bro</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <!-- Button trigger modal --> */}
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >
+          Launch demo modal
+        </button>
       </div>
     </>
   );

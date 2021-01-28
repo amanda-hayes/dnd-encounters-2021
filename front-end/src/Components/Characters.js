@@ -1,14 +1,29 @@
 import "../App.css";
 import { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { UserContext } from "./UserContext";
+import { Modal, Button } from "react-bootstrap";
 
 function AllCharPage() {
   const [characters, setCharacters] = useState([]);
   const [token, setToken] = useState("");
-  const userMode = useContext(UserContext);
-  // const [isLoggedIn, setIsLoggedIn] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState([]);
+  const [showModal, setShowModal] = useState([false]);
   let history = useHistory();
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
+  /*****************
+   * CHECK LOGIN *
+   ****************/
+
+  const checkLogin = (props) => {
+    if (token) {
+      setIsLoggedIn("LOGGED IN");
+    } else {
+      setIsLoggedIn("LOGGED OUT");
+    }
+  };
 
   /*****************
    * LOGOUT *
@@ -17,21 +32,8 @@ function AllCharPage() {
   const handleLogOut = (props) => {
     localStorage.clear();
     alert("You have been logged out.");
-    history.push('/Login')
+    history.push("/Login");
   };
-
-  /*****************
-   * CHECK LOGIN *
-   ****************/
-
-  // const checkLogin = (props) => {
-  //   if (token) {
-  //     setIsLoggedIn("LOGGED IN");
-  //   } else {
-  //     setIsLoggedIn("LOGGED OUT");
-  //   }
-  // };
-
 
   /*****************
    * GET ALL CHARS *
@@ -111,7 +113,7 @@ function AllCharPage() {
           method: "POST",
           headers: {
             "Content-type": "application/json",
-            Authorization: token
+            Authorization: token,
           },
           body: JSON.stringify(generatedCharacter),
         });
@@ -142,7 +144,8 @@ function AllCharPage() {
 
   useEffect(() => {
     fetchCharacters();
-    // setIsLoggedIn();
+    setIsLoggedIn();
+    setShowModal();
     fetchRandomCharacters();
     if (window.localStorage.getItem("token")) {
       setToken(window.localStorage.getItem("token"));
@@ -152,9 +155,8 @@ function AllCharPage() {
   return (
     <>
       <div className="character-background">
-        <button onClick={handleLogOut}>LOGOUT</button>
-        {/* <button onClick={checkLogin}>Logged In?</button>
-        <h2>{isLoggedIn}</h2> */}
+        <button onClick={checkLogin}>Logged In?</button>
+        <h2>{isLoggedIn}</h2>
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
           <p>View and manage all your characters, or create a new one.</p>
@@ -190,13 +192,32 @@ function AllCharPage() {
                         EDIT
                       </Link>
                     </button>
-                    <button
-                      onClick={(event) => {
-                        deleteCharacter(character._id);
-                      }}
-                    >
-                      DELETE{" "}
-                    </button>
+                    <Button variant="primary" onClick={handleShow}>
+                      DELETE
+                    </Button>
+                    <Modal show={showModal} onHide={handleClose}>
+                      <Modal.Header>
+                        <Modal.Title>Delete Character</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Are you sure you want to delete this character?
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Close
+                        </Button>
+                        <Button
+                          variant="primary"
+                          
+                          onClick={() => {
+                            deleteCharacter(character._id); 
+                            handleClose();
+                          }}
+                        >
+                          DELETE
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
                   </li>
                 );
               })}
@@ -212,6 +233,7 @@ function AllCharPage() {
           <Link to="/Tavern">
             <button>Let's Go!</button>
           </Link>
+          <br />
         </div>
       </div>
     </>

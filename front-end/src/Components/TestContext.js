@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
 import { OurContext } from './UserContext';
 import Samplejr from './Samplejr';
+import App from '../App';
 
 const TestContext = (props) => {
     const [token, setToken] = useState("");
@@ -35,3 +36,44 @@ const TestContext = (props) => {
 };
 
 export default TestContext;
+
+
+<UserContext.Provider
+          value={{
+            userLoggedIn: [isLoggedIn, setIsLoggedIn],
+            tokenData: [token, setToken],
+          }}
+        >
+          <Home />
+          <AllCharPage />
+          <Register />
+          <Login />
+          <Tavern />
+          <YouWin />
+          <YouLose />
+          <Battle />
+          <CreateCharacterForm />
+          <UpdateCharacterForm />
+          <CharacterStats />
+        </UserContext.Provider>
+
+        {isLoggedIn.username ? (
+          <>
+            {" "}
+            <span className="">Welcome back, {isLoggedIn.username}</span>
+            <button href="/" onClick={handleLogOut}>
+              Log Out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Log In</Link>
+          </>
+        )}
+
+        // On other components: 
+        const { isLoggedIn } = useContext(UserContext)
+        const [ userLoggedIn] = isLoggedIn;
+
+        import { UserContext } from "./UserContext.js"
