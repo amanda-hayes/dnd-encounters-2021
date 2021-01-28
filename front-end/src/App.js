@@ -68,8 +68,6 @@ function App() {
           <Route path="/YouLose" component={YouLose} />
           <Route path="/Register" component={Register} />
           <Route path="/Login" component={Login} />
-          <Route path="/GoogleLogin" component={GoogleLogin} />
-          <Route path="/GoogleLogout" component={GoogleLogout} />
         </Switch>
       </div>
     </Router>

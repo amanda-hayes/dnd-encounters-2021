@@ -1,13 +1,17 @@
 import "../App.css";
 import { useHistory } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from "react-google-login";
+import { GoogleLogout } from "react-google-login";
+import { refreshTokenSetup } from "./RefreshToken";
 
 const LoginForm = (props) => {
   const nameInput = useRef(null);
   const passwordInput = useRef(null);
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState([]);
+  const clientId =
+    "279098454783-6ifmp48rjph5516k7i7hajcsfshh8h2a.apps.googleusercontent.com";
 
   let history = useHistory();
 
@@ -42,6 +46,20 @@ const LoginForm = (props) => {
     }
   };
 
+  const onSuccess = (res) => {
+    console.log("[Login Success] currentUser:", res.profileObj);
+
+    refreshTokenSetup(res);
+  };
+
+  const onFailure = (res) => {
+    console.log("[Login Failed] res:", res);
+  };
+
+  const onLogoutSuccess = () => {
+    alert("Logged Out Successfully");
+  };
+
   /*****************
    * CHECK LOGIN *
    ****************/
@@ -71,8 +89,18 @@ const LoginForm = (props) => {
   return (
     <>
       <div>
-        <h2>Login</h2>
         <p>Welcome back, Adventurer! Please login below.</p>
+        <div>
+          <GoogleLogin
+            clientId={clientId}
+            buttonText="Login with Google"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            style={{ marginTop: "100px" }}
+            isSignedIn={true}
+          />
+        </div>
         <form onSubmit={login} method="post">
           <label>Username</label>
           <input type="text" name="username" ref={nameInput} />
@@ -82,62 +110,14 @@ const LoginForm = (props) => {
           <br />
           <input type="submit" value="LOGIN" id="submit-btn" />
         </form>
-        <div>
-          {/* <h2>status: {checkLogin ? "Logged In" : "Logged Out"} </h2> */}
-        </div>
       </div>
-
-      {/* <!-- Modal --> */}
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">Hey bro</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* <!-- Button trigger modal --> */}
-      <div>
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#exampleModal"
-        >
-          Launch demo modal
-        </button>
-      </div>
+      {/* <div>
+        <GoogleLogout
+          clientId={clientId}
+          buttonText="Logout with Google"
+          onLogoutSuccess={onLogoutSuccess}
+        ></GoogleLogout>
+      </div> */}
     </>
   );
 };

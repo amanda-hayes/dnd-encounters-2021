@@ -1,6 +1,6 @@
 import "../App.css";
 import { useState, useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 
 function AllCharPage() {
@@ -8,7 +8,7 @@ function AllCharPage() {
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState([]);
   const [showModal, setShowModal] = useState([false]);
-  let history = useHistory();
+  // let history = useHistory();
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -23,16 +23,6 @@ function AllCharPage() {
     } else {
       setIsLoggedIn("LOGGED OUT");
     }
-  };
-
-  /*****************
-   * LOGOUT *
-   ****************/
-
-  const handleLogOut = (props) => {
-    localStorage.clear();
-    alert("You have been logged out.");
-    history.push("/Login");
   };
 
   /*****************
