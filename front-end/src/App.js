@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, useHistory, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory, Link, withRouter } from "react-router-dom";
 import AllCharPage from "./Components/Characters";
 import CharacterStats from "./Components/CharDetails";
 import UpdateCharacterForm from "./Components/UpdateCharacterForm";
@@ -11,54 +11,51 @@ import YouWin from "./Components/YouWin";
 import YouLose from "./Components/YouLose";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { Navbar, Nav, Button } from "react-bootstrap";
-import UserContext from "./Components/UserContext";
 
-function App() {
+function App(props) {
 
-  let history = useHistory();
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
 
-  // function toggleLogin() {
-  //   setLoggedIn(prevLoggedIn => !prevLoggedIn)
-  // }
 
   /*****************
    * LOGOUT *
    ****************/
 
-  const handleLogOut = (props) => {
+  const handleLogOut = () => {
     localStorage.clear();
+    setIsLoggedIn(false);
     alert("You have been logged out.");
-    history.push("/Login");
+    props.history.push("/Login");
   };
 
+  const userLogin = async (body) => {
+    try {
+      const response = await fetch("http://localhost:7000/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body,
+      });
+
+      const data = await response.json();
+      window.localStorage.setItem("token", `Bearer ${data.token}`);
+      setToken(`Bearer ${data.token}`);
+
+
+      setIsLoggedIn(true);
+      alert("Logged In!");
+      props.history.push("/Characters");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  console.log(props);
   return (
     <>
-    {/* <UserContext.Provider value={{
-            userLoggedIn: [loggedIn, setLoggedIn],
-            tokenData: [token, setToken],
-          }}>
-      {loggedIn.username ? (
-          <>
-            {" "}
-            <span className="">Welcome back, {loggedIn.username}</span>
-            <button href="/" onClick={handleLogOut}>
-              Log Out
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Log In</Link>
-          </>
-        )}
-        <UserContext />
-    </UserContext.Provider> */}
-
-    <Router>
       <div className="App">
         <div className="nav-routes" />
         <Navbar bg="light" expand="lg">
@@ -69,9 +66,8 @@ function App() {
               <Nav.Link href="/Characters"> Characters</Nav.Link>
               <Nav.Link href="/Register"> Register </Nav.Link>
               <Nav.Link href="/Login">Login</Nav.Link>
-              <Nav.Link href="/GoogleLogin">Google Login</Nav.Link>
-              <Nav.Link href="/GoogleLogout">Google Logout</Nav.Link>
-              <Button onClick={handleLogOut}>LOGOUT</Button>
+              <button onClick={handleLogOut}>LOGOUT</button>
+              {loggedIn ? "You are logged in" : "You are not logged in"}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -94,11 +90,11 @@ function App() {
           <Route path="/YouWin" component={YouWin} />
           <Route path="/YouLose" component={YouLose} />
           <Route path="/Register" component={Register} />
-          <Route path="/Login" component={Login} />
+          <Route path="/Login" render={() => <Login userLogin={userLogin} setToken={setToken} setIsLoggedIn={setIsLoggedIn}/>} />
         </Switch>
       </div>
-    </Router>
+  
     </>
   );
 }
-export default App;
+export default withRouter(App);

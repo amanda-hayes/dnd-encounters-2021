@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 
@@ -62,7 +62,7 @@ const CreateCharacterForm = (props) => {
     }
   };
 
-    /***************
+  /****************
    * ROLL A D6+6 *
    ****************/
 
@@ -75,7 +75,7 @@ for (var i = 0; i < 6; i++) {
   var result = rollStats();
   rolls.push(result);
 } 
-console.log(rolls);  
+console.log(rolls);
 
   return (
     <>
@@ -204,9 +204,6 @@ console.log(rolls);
         </form>
       </div>
       <div>
-        {/* Roll a Character */}
-        
- 
       </div>
     </>
   );
