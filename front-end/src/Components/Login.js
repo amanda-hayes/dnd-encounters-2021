@@ -1,6 +1,5 @@
 import "../App.css";
-import { useHistory } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { GoogleLogin } from "react-google-login";
 import { GoogleLogout } from "react-google-login";
 import { refreshTokenSetup } from "./RefreshToken";
@@ -8,11 +7,8 @@ import { refreshTokenSetup } from "./RefreshToken";
 const LoginForm = (props) => {
   const nameInput = useRef(null);
   const passwordInput = useRef(null);
-  const [isLoggedIn, setIsLoggedIn] = useState([]);
   const clientId =
     "279098454783-6ifmp48rjph5516k7i7hajcsfshh8h2a.apps.googleusercontent.com";
-
-  let history = useHistory();
 
   const login = async (event) => {
     event.preventDefault();
@@ -20,7 +16,7 @@ const LoginForm = (props) => {
       username: nameInput.current.value,
       password: passwordInput.current.value,
     });
-    props.userLogin(body)
+    props.userLogin(body);
   };
 
   const onSuccess = (res) => {
@@ -43,7 +39,6 @@ const LoginForm = (props) => {
     if (window.localStorage.getItem("token")) {
       props.setToken(window.localStorage.getItem("token"));
     }
-    setIsLoggedIn(window.localStorage.getItem("token"));
   }, []);
 
   return (
@@ -71,13 +66,13 @@ const LoginForm = (props) => {
           <input type="submit" value="LOGIN" id="submit-btn" />
         </form>
       </div>
-      {/* <div>
+      {<div>
         <GoogleLogout
           clientId={clientId}
           buttonText="Logout with Google"
           onLogoutSuccess={onLogoutSuccess}
         ></GoogleLogout>
-      </div> */}
+      </div>}
     </>
   );
 };

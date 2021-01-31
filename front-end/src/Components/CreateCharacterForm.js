@@ -20,6 +20,7 @@ const CreateCharacterForm = (props) => {
   const intelligenceInput = useRef(null);
   const wisdomInput = useRef(null);
   const charismaInput = useRef(null);
+  const createdBy = useRef(null);
 
   const createCharacter = async (event) => {
     event.preventDefault();
@@ -39,6 +40,7 @@ const CreateCharacterForm = (props) => {
     const intelligence = intelligenceInput.current.value;
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
+    const createdBy = "600cdecd78275026de953dee";
 
     const body = JSON.stringify({
       name,
@@ -51,6 +53,7 @@ const CreateCharacterForm = (props) => {
       weapon,
       catchphrases,
       backstory,
+      createdBy,
       strength,
       dexterity,
       constitution,

@@ -13,8 +13,15 @@ const UpdateCharacterForm = (props) => {
   const updateArmorClass = useRef(null);
   const updateCatchphrasesSelect = useRef(null);
   const updateBackstory = useRef(null);
+  const strengthInput = useRef(null);
+  const dexterityInput = useRef(null);
+  const constitutionInput = useRef(null);
+  const intelligenceInput = useRef(null);
+  const wisdomInput = useRef(null);
+  const charismaInput = useRef(null);
   const characterDetailRouteMatch = useRouteMatch("/UpdateCharacterForm/:id");
   const charId = characterDetailRouteMatch.params.id;
+  const createdBy = useRef(null);
 
   const updateCharacter = async (event) => {
     event.preventDefault();
@@ -28,6 +35,13 @@ const UpdateCharacterForm = (props) => {
     const armorClass = updateArmorClass.current.value;
     const catchphrases = updateCatchphrasesSelect.current.value;
     const backstory = updateBackstory.current.value;
+    const strength = strengthInput.current.value;
+    const dexterity = dexterityInput.current.value;
+    const constitution = constitutionInput.current.value;
+    const intelligence = intelligenceInput.current.value;
+    const wisdom = wisdomInput.current.value;
+    const charisma = charismaInput.current.value;
+    const createdBy = "600cdecd78275026de953dee";
     const body = JSON.stringify({
       name,
       race,
@@ -39,13 +53,20 @@ const UpdateCharacterForm = (props) => {
       armorClass,
       catchphrases,
       backstory,
+      strength,
+      dexterity,
+      constitution,
+      intelligence,
+      wisdom,
+      charisma,
+      createdBy
     });
 
     event.currentTarget.reset();
 
     try {
       const response = await fetch(
-        `http://localhost:7000/${charId}`,
+        `http://localhost:7000/characters/${charId}`,
         {
           method: "PUT",
           headers: {
@@ -55,7 +76,7 @@ const UpdateCharacterForm = (props) => {
         }
       );
 
-      alert("Character Updated!");
+      // alert("Character Updated!");
       props.history.push("/characters");
     } catch (error) {
       console.error(error);
@@ -171,6 +192,13 @@ const UpdateCharacterForm = (props) => {
             <label>Backstory:</label>
             <input type="textarea" name="backstory" ref={updateBackstory} />
             <br />
+            <input type="hidden" name="createdBy" ref={createdBy} />
+            <input type="hidden" name="strength" ref={strengthInput} />
+            <input type="hidden" name="dexterity" ref={dexterityInput} />
+            <input type="hidden" name="constitution" ref={constitutionInput} />
+            <input type="hidden" name="intelligence" ref={intelligenceInput} />
+            <input type="hidden" name="wisdom" ref={wisdomInput} />
+            <input type="hidden" name="charisma" ref={charismaInput} />
             <input type="submit" value="UPDATE CHARACTER" />
           </form>
         </div>

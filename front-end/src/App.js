@@ -1,5 +1,12 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, useHistory, Link, withRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+  Link,
+  withRouter,
+} from "react-router-dom";
 import AllCharPage from "./Components/Characters";
 import CharacterStats from "./Components/CharDetails";
 import UpdateCharacterForm from "./Components/UpdateCharacterForm";
@@ -11,14 +18,30 @@ import YouWin from "./Components/YouWin";
 import YouLose from "./Components/YouLose";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
-import { useState } from 'react'
+import { useState } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
 function App(props) {
-
   const [loggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
+  const [userId, setUserId] = useState(null);
 
+  // Get a user id
+  const fetchUserId = async () => {
+    // try {
+    //   const response = await fetch("http://localhost:7000/login");
+    //   const data = await response.json();
+    //   console.log("data: " + data);
+
+    //   return data._id;
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    // return null;
+    return "600cdecd78275026de953dee";
+  };
+
+  
 
   /*****************
    * LOGOUT *
@@ -45,14 +68,13 @@ function App(props) {
       window.localStorage.setItem("token", `Bearer ${data.token}`);
       setToken(`Bearer ${data.token}`);
 
-
       setIsLoggedIn(true);
       alert("Logged In!");
       props.history.push("/Characters");
     } catch (error) {
       console.error(error);
     }
-  }
+  };
   console.log(props);
   return (
     <>
@@ -90,10 +112,18 @@ function App(props) {
           <Route path="/YouWin" component={YouWin} />
           <Route path="/YouLose" component={YouLose} />
           <Route path="/Register" component={Register} />
-          <Route path="/Login" render={() => <Login userLogin={userLogin} setToken={setToken} setIsLoggedIn={setIsLoggedIn}/>} />
+          <Route
+            path="/Login"
+            render={() => (
+              <Login
+                userLogin={userLogin}
+                setToken={setToken}
+                setIsLoggedIn={setIsLoggedIn}
+              />
+            )}
+          />
         </Switch>
       </div>
-  
     </>
   );
 }

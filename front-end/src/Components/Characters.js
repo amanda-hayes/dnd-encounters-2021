@@ -25,6 +25,8 @@ function AllCharPage() {
     }
   };
 
+
+
   /*****************
    * GET ALL CHARS *
    ****************/
@@ -114,8 +116,6 @@ function AllCharPage() {
           (rando) => rando.name !== generatedCharacter.name
         );
         setRandomCharacters(newRandomCharList);
-        const okREALLYnoDUPES = [...characters];
-
         setCharacters([...characters, generatedCharacter]);
       }
     } catch (error) {
@@ -145,8 +145,6 @@ function AllCharPage() {
   return (
     <>
       <div className="character-background">
-        <button onClick={checkLogin}>Logged In?</button>
-        <h2>{isLoggedIn}</h2>
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
           <p>View and manage all your characters, or create a new one.</p>
@@ -154,12 +152,12 @@ function AllCharPage() {
             Create a New Character
             <br />
             <Link to="/CreateCharacterForm">
-              <button>CREATE</button>
+              <Button>CREATE</Button>
             </Link>
             <br />
             Generate a random character for me
             <br />
-            <button onClick={handleClick}>GENERATE</button>
+            <Button onClick={handleClick}>GENERATE</Button>
           </div>
         </div>
         <br />
@@ -173,43 +171,6 @@ function AllCharPage() {
                 }
                 return (
                   <li key={character._id}>
-                    {/* <img src={character.thumbnail} id="thumbnail" /> */}
-                    {/* {character.name} <br />
-                    {character.race} | {character.characterClass}
-                    <br /> */}
-                    {/* <button type="button">
-                      <Link to={`/characters/${character._id}`}>VIEW</Link>
-                    </button> */}
-                    {/* <button>
-                      <Link to={`/UpdateCharacterForm/${character._id}`}>
-                        EDIT
-                      </Link>
-                    </button> */}
-                    {/* <Button variant="primary" onClick={handleShow}>
-                      DELETE
-                    </Button> */}
-                    {/* <Modal show={showModal} onHide={handleClose}>
-                      <Modal.Header>
-                        <Modal.Title>Delete Character</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        Are you sure you want to delete this character?
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                          Close
-                        </Button>
-                        <Button
-                          variant="primary"
-                          onClick={() => {
-                            deleteCharacter(character._id);
-                            handleClose();
-                          }}
-                        >
-                          DELETE
-                        </Button>
-                      </Modal.Footer>
-                    </Modal> */}
                     <Card style={{ width: "18rem" }}>
                       <Card.Img
                         variant="top"
@@ -254,7 +215,6 @@ function AllCharPage() {
                         </Button>
                       </Modal.Footer>
                     </Modal>
-                        {/* <Button variant="primary">VIEW</Button> */}
                       </Card.Body>
                     </Card>
                   </li>
