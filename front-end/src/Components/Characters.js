@@ -152,10 +152,13 @@ function AllCharPage() {
           <p>View and manage all your characters, or create a new one.</p>
           <div>
             Create a New Character
+            <br />
             <Link to="/CreateCharacterForm">
               <button>CREATE</button>
             </Link>
+            <br />
             Generate a random character for me
+            <br />
             <button onClick={handleClick}>GENERATE</button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -17,9 +17,9 @@
   .D20-photo {
     animation: D20-photo-spin infinite 5s linear;
   }
-}
+} */
 
-@keyframes D20-photo-spin {
+/* @keyframes D20-photo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -79,7 +79,7 @@ p {
 ul {
   margin: 0px;
   display: block;
-}
+} */
 
 
 li {
@@ -110,7 +110,7 @@ label {
 
 
 
-button {
+/* button {
   cursor: pointer;
   padding: .5em;
   margin-top: 1.5rem;
@@ -122,17 +122,17 @@ button {
   color: black;
   box-shadow: 5px 8px 8px #050505af;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: bold; */
   /* padding: 15px 32px; */
-  text-align: center;
+  /* text-align: center;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
   transition-duration: 0.4s;
   font-family: 'Century Gothic';
-  }
+  } */
 
-button:hover {
+/* button:hover {
     background-color: #60636090; 
     color: white;
 }
@@ -147,9 +147,9 @@ button:hover {
   border: none;
   color: black;
   box-shadow: 5px 8px 8px #050505af;
-  font-size: 1rem;
+  font-size: 1rem; */
   /* padding: 15px 32px; */
-  text-align: center;
+  /* text-align: center;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
@@ -158,10 +158,10 @@ button:hover {
 
 #click-here {
   color: white;
-}
+} */
 
 
-#thumbnail {
+/* #thumbnail {
   max-width: 70px;
   padding-top: 10px;
   float: left;
@@ -173,20 +173,20 @@ button:hover {
   font-size: 1.3rem;
   max-width: 800px;
   margin-left: 100px;
-}
+} */
 
 
 .character-background {
   /* background-image: url("./images/dnd-table-1.jpg"); */
-  height: 1500px;
+  /* height: 1500px;
   background-size: cover;
   background-repeat: repeat;
-  padding: 20px;
+  padding: 20px; */
   /* color: white; */
 }
 
 
-.parchment-background {
+/* .parchment-background {
   background-image: url("./images/parchment-paper.png");
   height: 2000px;
   width: 100%;
@@ -250,9 +250,9 @@ form {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 10px;
-}
+} */
 
-#create-char-form {
+/* #create-char-form {
   background-image: url('./images/dungeons-and-dragons.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -323,9 +323,9 @@ form {
   font-weight: bold;
   padding-left: 30px;
   padding-top: 30px;
-}
+} */
 
-.topnav {
+/* .topnav {
   background-color: #333;
   overflow: hidden;
 }
@@ -401,11 +401,11 @@ img {
   background-size: cover;
   height: 1500px;
   padding-top: 20px;
-}
+} */
 
 
 
-#tavern-background-image {
+/* #tavern-background-image {
   background-image: url('./images/tavern.jpg');
   background-size: contain;
   height: 1500px;
@@ -443,9 +443,9 @@ img {
   background-color: brown;
   color: white;
 
-}
+} */
 
-.tavern-modal {
+/* .tavern-modal {
   border-radius: 5px;
 }
 
@@ -463,7 +463,7 @@ img {
 
 .battle-modal p{
   border-radius: 5px;
-}
+} */
 
 /* MOBILE DESIGN */
 

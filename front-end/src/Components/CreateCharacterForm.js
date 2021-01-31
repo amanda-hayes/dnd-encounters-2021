@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const CreateCharacterForm = (props) => {
   const nameInput = useRef(null);
@@ -43,39 +44,39 @@ const CreateCharacterForm = (props) => {
     event.currentTarget.reset();
 
     try {
-      const response = await fetch(
-        "http://localhost:7000/characters",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: body,
-        }
-      );
+      const response = await fetch("http://localhost:7000/characters", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: body,
+      });
 
       props.history.push("/Characters");
       alert("Character Created!");
     } catch (error) {
-      alert('Something went wrong. Please try again.')
+      alert("Something went wrong. Please try again.");
       console.error(error);
     }
   };
 
   /****************
-   * ROLL A D6+6 *
+   * ROLL  2D6+6 *
    ****************/
 
-function rollStats() {
-  return Math.floor(Math.random() * 6) + 7; 
-}
-let rolls = [];
+  let rolls = [];
+  const rollBaseStats = () => {
+    for (let i = 0; i < 6; i++) {
+      let result = rollBaseD6();
+      result += rollBaseD6();
+      rolls.push(result += 6);
+    }
+    console.log(rolls);
+  }
 
-for (var i = 0; i < 6; i++) {
-  var result = rollStats();
-  rolls.push(result);
-} 
-console.log(rolls);
+  function rollBaseD6() {
+    return Math.floor(Math.random() * 6);
+  }
 
   return (
     <>
@@ -200,11 +201,12 @@ console.log(rolls);
             ref={backstoryInput}
           />
           <br />
+          <Button onClick={rollBaseStats}>Roll Stats</Button>
+          <br />
           <input type="submit" value="Create Character" id="submit-btn" />
         </form>
       </div>
-      <div>
-      </div>
+      <div></div>
     </>
   );
 };
