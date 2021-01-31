@@ -24,12 +24,6 @@ function CharacterStats() {
 
   return (
     <>
-      <nav className="topnav">
-        <Link to="/">HOME</Link>
-        <Link to="/characters">CHARACTERS</Link>
-        <Link to="/createcharacterform">CREATE</Link>
-        <Link to="/battle">BATTLE</Link>
-      </nav>
       <div className="parchment-background">
         <br />
         <br />
@@ -64,11 +58,24 @@ function CharacterStats() {
             <label>Armor Class:</label> {character.armorClass}
             <br />
             <label>Motto:</label>
-            <br /> "{character.catchphrases}"
+            <br />"{character.catchphrases}"
             <br />
             <br />
             <label>Backstory:</label>
-            <br /> "{character.backstory}"
+            <br />"{character.backstory}"
+            <br />
+            <label>Strength:</label> {character.strength}
+            <br />
+            <label>Dexterity:</label> {character.dexterity}
+            <br />
+            <label>Constitution</label> {character.constitution}
+            <br />
+            <label>Intelligence:</label> {character.intelligence}
+            <br />
+            <label>Wisdom</label> {character.wisdom}
+            <br />
+            <label>Charisma:</label> {character.charisma}
+            <br />
             <br />
             <button>
               <Link to={`/UpdateCharacterForm/${character._id}`}>

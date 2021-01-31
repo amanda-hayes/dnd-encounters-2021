@@ -14,6 +14,12 @@ const CreateCharacterForm = (props) => {
   const weaponSelect = useRef(null);
   const catchphrasesSelect = useRef(null);
   const backstoryInput = useRef(null);
+  const strengthInput = useRef(null);
+  const dexterityInput = useRef(null);
+  const constitutionInput = useRef(null);
+  const intelligenceInput = useRef(null);
+  const wisdomInput = useRef(null);
+  const charismaInput = useRef(null);
 
   const createCharacter = async (event) => {
     event.preventDefault();
@@ -27,6 +33,12 @@ const CreateCharacterForm = (props) => {
     const weapon = weaponSelect.current.value;
     const catchphrases = catchphrasesSelect.current.value;
     const backstory = backstoryInput.current.value;
+    const strength = strengthInput.current.value;
+    const dexterity = dexterityInput.current.value;
+    const constitution = constitutionInput.current.value;
+    const intelligence = intelligenceInput.current.value;
+    const wisdom = wisdomInput.current.value;
+    const charisma = charismaInput.current.value;
 
     const body = JSON.stringify({
       name,
@@ -39,6 +51,12 @@ const CreateCharacterForm = (props) => {
       weapon,
       catchphrases,
       backstory,
+      strength,
+      dexterity,
+      constitution,
+      intelligence,
+      wisdom,
+      charisma
     });
 
     event.currentTarget.reset();
@@ -49,7 +67,7 @@ const CreateCharacterForm = (props) => {
         headers: {
           "Content-type": "application/json",
         },
-        body: body,
+        body: body
       });
 
       props.history.push("/Characters");
@@ -64,13 +82,19 @@ const CreateCharacterForm = (props) => {
    * ROLL  2D6+6 *
    ****************/
 
-  let rolls = [];
   const rollBaseStats = () => {
+    let rolls = [];
     for (let i = 0; i < 6; i++) {
       let result = rollBaseD6();
       result += rollBaseD6();
       rolls.push(result += 6);
     }
+    strengthInput.current.value = rolls[0];
+    dexterityInput.current.value = rolls[1];
+    constitutionInput.current.value = rolls[2];
+    intelligenceInput.current.value = rolls[3];
+    wisdomInput.current.value = rolls[4];
+    charismaInput.current.value = rolls[5];
     console.log(rolls);
   }
 
@@ -200,6 +224,29 @@ const CreateCharacterForm = (props) => {
             cols="30"
             ref={backstoryInput}
           />
+          <br />
+          <label>Strength:</label>
+          <br />
+          <input type="text" name="strength" ref={strengthInput} />
+          <br />
+          <label>Dexterity:</label>
+          <br />
+          <input type="text" name="dexterity" ref={dexterityInput} />
+          <br />
+          <label>Constitution</label>
+          <br />
+          <input type="text" name="constitution" ref={constitutionInput} />
+          <br />
+          <label>Intelligence:</label>
+          <br />
+          <input type="text" name="intelligence" ref={intelligenceInput} />
+          <label>Wisdom:</label>
+          <br />
+          <input type="text" name="wisdom" ref={wisdomInput} />
+          <br />
+          <label>Charisma:</label>
+          <br />
+          <input type="text" name="charisma" ref={charismaInput} />
           <br />
           <Button onClick={rollBaseStats}>Roll Stats</Button>
           <br />
