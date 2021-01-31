@@ -30,7 +30,7 @@ function CharacterStats() {
         <br />
         <br />
         <h1 id="character-sheet-heading">
-          {character.name}
+          {character.name}'s
           <br />
           Character Sheet
         </h1>

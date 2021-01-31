@@ -51,7 +51,7 @@ const UpdateCharacterForm = (props) => {
           headers: {
             "Content-type": "application/json",
           },
-          body: body,
+          body: body
         }
       );
 
@@ -64,12 +64,6 @@ const UpdateCharacterForm = (props) => {
 
   return (
     <>
-      <nav className="topnav">
-        <Link to="/">HOME</Link>
-        <Link to="/characters">CHARACTERS</Link>
-        <Link to="/createcharacterform">CREATE</Link>
-        <Link to="/battle">BATTLE</Link>
-      </nav>
       <div className="update-background">
         <div id="update-breadcrumbs">
           <Link to="/Characters">Go Back</Link>
