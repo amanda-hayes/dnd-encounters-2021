@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
@@ -13,6 +13,7 @@ import rogue from "../images/rogue.png";
 import sorcerer from "../images/sorcerer.png";
 
 const CreateCharacterForm = (props) => {
+
   const nameInput = useRef(null);
   const pronounsInput = useRef(null);
   const raceSelect = useRef(null);
@@ -71,7 +72,13 @@ const CreateCharacterForm = (props) => {
       charisma,
     });
 
+    const [avatar, setAvatar] = useState("aasimar");
+
     // event.currentTarget.reset();
+
+    useEffect (() => {
+      setAvatar();
+    })
 
     try {
       const response = await fetch("http://localhost:7000/characters", {
@@ -115,8 +122,13 @@ const CreateCharacterForm = (props) => {
     return Math.floor(Math.random() * 6);
   }
 
+  
+
+
   return (
+    
     <>
+   
       <div id="create-char-form">
         <h2 id="create-char-h2">Create New Character</h2>
         <p>
@@ -237,9 +249,13 @@ const CreateCharacterForm = (props) => {
           <div>
             <input
               type="radio"
+              checked={avatar === "aasimar"}
               name="avatars"
               value="aasimar"
               id="aasimar"
+              onChange={(e) => {
+                setAvatar(e.target.value)
+              }}
             ></input>
             <label for="aasimar">Aasimar</label>
             <img src={aasimar} id="avatar"></img>
@@ -247,9 +263,13 @@ const CreateCharacterForm = (props) => {
           <div>
             <input
               type="radio"
+              checked={avatar === "dwarf"}
               name="avatars"
               value="dwarf"
               id="dwarf"
+              onChange={(e) => {
+                setAvatar(e.target.value)
+              }}
             ></input>
             <label for="dwarf">Dwarf</label>
             <img src={dwarf} id="avatar"></img>
