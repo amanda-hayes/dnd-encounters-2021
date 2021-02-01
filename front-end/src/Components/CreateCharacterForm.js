@@ -27,7 +27,7 @@ const CreateCharacterForm = (props) => {
   const armorClassSelect = useRef(null);
   const weaponSelect = useRef(null);
   const catchphrasesSelect = useRef(null);
-  const backstoryInput = useRef(null);
+  const backstoryTextarea = useRef(null);
   const imageInput = useRef(null);
   const strengthInput = useRef(null);
   const dexterityInput = useRef(null);
@@ -50,7 +50,7 @@ const CreateCharacterForm = (props) => {
     const armorClass = 15;
     const weapon = weaponSelect.current.value;
     const catchphrases = catchphrasesSelect.current.value;
-    const backstory = backstoryInput.current.value;
+    const backstory = backstoryTextarea.current.value;
     const image = imageInput.current.value;
     const strength = strengthInput.current.value;
     const dexterity = dexterityInput.current.value;
@@ -249,7 +249,7 @@ const CreateCharacterForm = (props) => {
           </select>
           <br />
           <label>Backstory:</label>
-          <input type="textarea" name="backstory" ref={backstoryInput} />
+          <textarea name="backstory" cols="50" rows="10" ref={backstoryTextarea}></textarea>
           <br />
           <label>Avatar:</label>
           <br />
