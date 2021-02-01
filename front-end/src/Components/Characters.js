@@ -165,7 +165,7 @@ function AllCharPage() {
                 }
                 return (
                   <li key={character._id}>
-                    <Card style={{backgroundColor: "red"}} >
+                    <Card style={{backgroundColor: "rgb(44 90 117)"}} >
                     {/* p-2 mb-2 bg-dark text-white */}
                       <Card.Img
                         variant="top"
@@ -174,16 +174,16 @@ function AllCharPage() {
                         className="rounded mx-auto d-block"
                       />
                       <Card.Body>
-                        <Card.Title>{character.name}</Card.Title>
-                        <Card.Text>
+                        <Card.Title style={{color: "white"}}>{character.name}</Card.Title>
+                        <Card.Text style={{color: "white"}}>
                           {character.race} | {character.characterClass}
                         </Card.Text>
                         <button id="btn">
-                      <Link to={`/characters/${character._id}`}>VIEW</Link>
+                      <Link to={`/characters/${character._id}`} style={{color: "white"}}>VIEW</Link>
                     </button>
                     <button id="btn">
                       <div id="link">
-                      <Link to={`/UpdateCharacterForm/${character._id}`}>
+                      <Link to={`/UpdateCharacterForm/${character._id}`} style={{color: "white"}}>
                         EDIT
                       </Link>
                       </div>

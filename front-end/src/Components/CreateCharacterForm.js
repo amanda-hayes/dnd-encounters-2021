@@ -50,7 +50,6 @@ const CreateCharacterForm = (props) => {
     const intelligence = intelligenceInput.current.value;
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
-    // const createdBy = createdByInput.current.value;
 
     const body = JSON.stringify({
       name,
