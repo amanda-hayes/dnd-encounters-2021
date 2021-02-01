@@ -2,8 +2,8 @@ import "../App.css";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
-// import { Modal } from "react-responsive-modal";
-import { Image, Button, Modal } from 'react-bootstrap';
+import { Modal } from "react-responsive-modal";
+import { Card } from "react-bootstrap";
 import beholder from "../beholder.jpeg";
 import d20 from "../images/d20.png";
 import d20natone from "../images/d20natone.png";
@@ -23,9 +23,7 @@ function Battle() {
 
   const fetchPlayerCharacters = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:7000/characters"
-      );
+      const response = await fetch("http://localhost:7000/characters");
       const charactersData = await response.json();
 
       updatePlayerCharactersList(charactersData);
@@ -54,7 +52,9 @@ function Battle() {
 
         if (monster.HP <= 0) {
           history.push("/YouWin");
-          alert(`You did it! You looted the monster and retrieved the precious goldfish!`);
+          alert(
+            `You did it! You looted the monster and retrieved the precious goldfish!`
+          );
         }
       } else {
         alert(`You rolled a ${roll} . You missed!`);
@@ -77,7 +77,6 @@ function Battle() {
       } else {
         alert(`Monster rolled a ${roll} . It's a miss!`);
       }
-      
 
       if (characterAttacked.HP <= 0) {
         alert(`Oh no! ` + characterAttacked.name + ` passed out!`);
@@ -152,8 +151,6 @@ function Battle() {
     );
   }
 
- 
-
   useEffect(() => {
     fetchPlayerCharacters();
     setModalContent();
@@ -163,12 +160,11 @@ function Battle() {
 
   return (
     <>
-
+      <div className="battle-background">
         <div>
-          <Image src={d20natone} alt="d20natone" className="D20natone-photo" />
-          <Image src={d20} alt="d20" className="D20-photo" />
           <br />
-          <br />
+          <img src={d20natone} alt="d20natone" className="D20natone-photo" />
+          <img src={d20} alt="d20" className="D20-photo" />
           <br />
           <Modal open={open} onClose={onCloseModal} center>
             <h2>On your way!</h2>
@@ -183,34 +179,32 @@ function Battle() {
               as you search for the source.
             </p>
             <br />
-            <Button onClick={onCloseModal} id="tavern-button">
+            <button onClick={onCloseModal} id="tavern-button">
               OKAY
-            </Button>
+            </button>
           </Modal>
-              <br />
-          <Button onClick={onOpenBattle}>WHAT'S THAT SOUND?</Button>
-          {/* <Modal
+
+          <button onClick={onOpenBattle}>WHAT'S THAT SOUND?</button>
+          <Modal
             open={openBattle}
             onClose={onCloseBattle}
             center
-            className="battle-modal p"
+            className="battle-modal"
           >
             <h2>Oh no!</h2>
             <p>
               A Beholder appears and it's guarding the treasure you so
-              desperately need! There's no getting out of this without a fight.
-              It's time to roll for initiative!
+              desperately need! It's time to roll for initiative!
             </p>
-            <Image src={beholder} alt="beholder" />
+            <img src={beholder} alt="beholder" />
             <br />
-            <Button onClick={onCloseBattle} id="tavern-button">
+            <button onClick={onCloseBattle} id="tavern-button">
               FIGHT
-            </Button>
-          </Modal> */}
+            </button>
+          </Modal>
         </div>
-        <br />
-        <Button onClick={rollInitClickHandler}>ROLL INITIATIVE</Button>
-        {/* <Modal
+        <button onClick={rollInitClickHandler}>ROLL INITIATIVE</button>
+        <Modal
           open={openDiceModal}
           onClose={onCloseDiceRollModal}
           center
@@ -221,17 +215,28 @@ function Battle() {
           <br />
           <p>{modalContent}</p>
           <button onClick={onCloseDiceRollModal}>OKAY</button>
-        </Modal> */}
+        </Modal>
         <br />
         <br />
-        <h2 id="battle-page-h2">Characters</h2>
+        <h2 id="battle-page-h2">Players</h2>
         <ul>
           {playerCharacters.map((player) => {
             return (
               <li key={player._id} id="battle-character-list">
-                <img src={player.thumbnail} id="thumbnail" />
+                {/* <img src={player.thumbnail} id="thumbnail" />
                 {player.name} <br /> HP: {player.HP} | Armor Class:{" "}
-                {player.armorClass} | INIT: {player.initiative}
+                {player.armorClass} | INIT: {player.initiative} */}
+                <Card style={{ width: "18rem" }}>
+                  <Card.Img variant="top" src={player.thumbnail} />
+                  <Card.Body>
+                    <Card.Title>{player.name}</Card.Title>
+                    <Card.Text>
+                      {player.race} | {player.characterClass} <br />
+                      HP: {player.HP} | Armor Class: {player.armorClass} | INIT:{" "}
+                      {player.initiative}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
                 <br />
                 <button value={player._id} onClick={shoutClickHandler}>
                   SHOUT
@@ -243,7 +248,7 @@ function Battle() {
             );
           })}
         </ul>
-   
+      </div>
     </>
   );
 }

@@ -8,8 +8,6 @@ function AllCharPage() {
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState([]);
   const [showModal, setShowModal] = useState([false]);
-  // let history = useHistory();
-
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
@@ -147,17 +145,15 @@ function AllCharPage() {
       <div className="character-background">
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
-          <p>View and manage all your characters, or create a new one.</p>
+          <p id="my-characters-p">View and manage all your characters, or create a new one.</p>
           <div>
-            Create a New Character
-            <br />
+
             <Link to="/CreateCharacterForm">
-              <Button>CREATE</Button>
+              <button>CREATE</button>
             </Link>
             <br />
-            Generate a random character for me
-            <br />
-            <Button onClick={handleClick}>GENERATE</Button>
+            <button onClick={handleClick} >GENERATE</button>
+            <p id="my-characters-p">Generate a random character for me</p>
           </div>
         </div>
         <br />
@@ -171,11 +167,13 @@ function AllCharPage() {
                 }
                 return (
                   <li key={character._id}>
-                    <Card style={{ width: "18rem" }}>
+         
+                    <Card style={{ width: "18rem" }} className="p-3 mb-2 bg-dark text-white">
                       <Card.Img
                         variant="top"
                         src={character.thumbnail}
                         id="thumbnail"
+                        className="rounded mx-auto d-block"
                       />
                       <Card.Body>
                         <Card.Title>{character.name}</Card.Title>
@@ -190,9 +188,9 @@ function AllCharPage() {
                         EDIT
                       </Link>
                     </button>
-                    <Button variant="primary" onClick={handleShow}>
+                    <button variant="primary" onClick={handleShow}>
                       DELETE
-                    </Button>
+                    </button>
                     <Modal show={showModal} onHide={handleClose}>
                       <Modal.Header>
                         <Modal.Title>Delete Character</Modal.Title>
@@ -217,6 +215,7 @@ function AllCharPage() {
                     </Modal>
                       </Card.Body>
                     </Card>
+                  
                   </li>
                 );
               })}
@@ -227,12 +226,11 @@ function AllCharPage() {
         <div>
           <br />
           <br />
-          <br />
-          <br />
-          <h1>Ready to start adventuring?</h1>
+          <h1 id="ready">Ready to start adventuring?</h1>
           <Link to="/Tavern">
             <button>Let's Go!</button>
           </Link>
+          <br />
           <br />
         </div>
       </div>

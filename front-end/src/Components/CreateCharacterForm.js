@@ -125,7 +125,7 @@ const CreateCharacterForm = (props) => {
           <label>Character Name:</label>
           <input type="text" name="name" ref={nameInput} />
           <br />
-          <label>Character Pronouns:</label>
+          <label>Pronouns:</label>
           <input type="text" name="pronouns" ref={pronounsInput} />
           <br />
           <label>Race:</label>
@@ -157,9 +157,9 @@ const CreateCharacterForm = (props) => {
             <option value="Sorcerer">Warlock</option>
           </select>
           <br />
-          <label>HP</label>
+          <label>HP:</label>
           <select className="select" ref={hpSelect}>
-            <option value="Default">12</option>
+            <option value="Default">12 (Default)</option>
           </select>
           <br />
           <label>Attack:</label>
@@ -174,7 +174,7 @@ const CreateCharacterForm = (props) => {
           <br />
           <label>Armor Class</label>
           <select className="select" ref={armorClassSelect}>
-            <option value="Default">15</option>
+            <option value="Default">15 (Default)</option>
           </select>
           <br />
           <label>Weapon:</label>
@@ -251,7 +251,7 @@ const CreateCharacterForm = (props) => {
           <br />
           <input type="text" name="charisma" ref={charismaInput} />
           <br />
-          <Button onClick={rollBaseStats}>Roll Stats</Button>
+          <button onClick={rollBaseStats} id="roll">Roll Stats</button>
           <br />
           <input type="submit" value="Create Character" id="submit-btn" />
         </form>

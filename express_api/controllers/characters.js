@@ -1,24 +1,24 @@
 const express = require("express");
 const charactersRouter = express.Router();
-const characterModel = require("../models/characterModel.js"); 
-const jwt = require('jsonwebtoken');
+const characterModel = require("../models/characterModel.js");
+const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET_KEY;
 
 const auth = async (req, res, next) => {
   const { authorization } = req.headers;
-  if(authorization){
-    const token = authorization.split(' ')[1];
+  if (authorization) {
+    const token = authorization.split(" ")[1];
     try {
-      const payload = await jwt.verify(token, SECRET)
+      const payload = await jwt.verify(token, SECRET);
       req.user = payload;
       next();
     } catch (error) {
       res.status(400).json(error);
     }
   } else {
-    res.status(400).json( new Error('no token in header'));
+    res.status(400).json(new Error("no token in header"));
   }
-}
+};
 
 /***************
  * INDEX ROUTE *
@@ -49,19 +49,23 @@ charactersRouter.delete("/:id", auth, async (req, res) => {
 /***************
  * UPDATE ROUTE *
  ****************/
-charactersRouter.put("/:id", async (req, res) => {
-  try {
+try {
+  charactersRouter.put("/:charId/:userId", async (req, res) => {
     console.log(req.body);
-    console.log(req.params.id);
+    console.log(req.match.params.charId);
+    console.log(req.match.params.userId);
+    
     const updatedCharacter = await characterModel.findByIdAndUpdate(
-      req.params.id,
+      req.match.params.charId,
+      req.params.userId,
       req.body
     );
+
     res.status(200).json(updatedCharacter);
-  } catch (error) {
-    res.status(400).json(error);
-  }
-});
+  });
+} catch (error) {
+  res.status(400).json(error);
+}
 
 /***************
  * CREATE ROUTE *
