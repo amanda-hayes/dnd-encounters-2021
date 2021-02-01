@@ -1,6 +1,7 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
+import { Image } from 'react-bootstrap';
 
 function CharacterStats() {
   const [character, setCharacter] = useState({});
@@ -35,10 +36,10 @@ function CharacterStats() {
           Character Sheet
         </h1>
         <div id="character-container">
-          <div id="character-stats-image">
+          {/* <div id="character-stats-image"> */}
             <br />
             <br />
-            <img src={character.image} />
+            <Image src={character.image} thumbnail/>
           </div>
           <div id="stats-list">
             <label>Name:</label> {character.name}
@@ -84,7 +85,7 @@ function CharacterStats() {
             </button>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }

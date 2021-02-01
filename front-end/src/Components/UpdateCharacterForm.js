@@ -66,7 +66,7 @@ const UpdateCharacterForm = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:7000/characters/${charId}`,
+        `http://localhost:7000/characters/${charId}/${createdBy}`,
         {
           method: "PUT",
           headers: {
@@ -76,7 +76,6 @@ const UpdateCharacterForm = (props) => {
         }
       );
 
-      // alert("Character Updated!");
       props.history.push("/characters");
     } catch (error) {
       console.error(error);

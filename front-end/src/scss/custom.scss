@@ -5,5 +5,10 @@ $body-bg: rgb(224, 8, 8);
 
 $body-color: #111;
 
+$theme-colors: (
+  "primary": #0074d9,
+  "danger": #ff4136
+);
+
 
 @import "../node_modules/bootstrap/scss/bootstrap";

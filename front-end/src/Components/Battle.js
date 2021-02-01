@@ -2,7 +2,8 @@ import "../App.css";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
+// import { Modal } from "react-responsive-modal";
+import { Image, Button, Modal } from 'react-bootstrap';
 import beholder from "../beholder.jpeg";
 import d20 from "../images/d20.png";
 import d20natone from "../images/d20natone.png";
@@ -162,17 +163,12 @@ function Battle() {
 
   return (
     <>
-      <nav className="topnav">
-        <Link to="/">HOME</Link>
-        <Link to="/characters">CHARACTERS</Link>
-        <Link to="/createcharacterform">CREATE</Link>
-        <Link to="/tavern">ADVENTURE</Link>
-      </nav>
-      <div className="battle-background">
+
         <div>
+          <Image src={d20natone} alt="d20natone" className="D20natone-photo" />
+          <Image src={d20} alt="d20" className="D20-photo" />
           <br />
-          <img src={d20natone} alt="d20natone" className="D20natone-photo" />
-          <img src={d20} alt="d20" className="D20-photo" />
+          <br />
           <br />
           <Modal open={open} onClose={onCloseModal} center>
             <h2>On your way!</h2>
@@ -187,13 +183,13 @@ function Battle() {
               as you search for the source.
             </p>
             <br />
-            <button onClick={onCloseModal} id="tavern-button">
+            <Button onClick={onCloseModal} id="tavern-button">
               OKAY
-            </button>
+            </Button>
           </Modal>
-
-          <button onClick={onOpenBattle}>WHAT'S THAT SOUND?</button>
-          <Modal
+              <br />
+          <Button onClick={onOpenBattle}>WHAT'S THAT SOUND?</Button>
+          {/* <Modal
             open={openBattle}
             onClose={onCloseBattle}
             center
@@ -205,15 +201,16 @@ function Battle() {
               desperately need! There's no getting out of this without a fight.
               It's time to roll for initiative!
             </p>
-            <img src={beholder} alt="beholder" />
+            <Image src={beholder} alt="beholder" />
             <br />
-            <button onClick={onCloseBattle} id="tavern-button">
+            <Button onClick={onCloseBattle} id="tavern-button">
               FIGHT
-            </button>
-          </Modal>
+            </Button>
+          </Modal> */}
         </div>
-        <button onClick={rollInitClickHandler}>ROLL INITIATIVE</button>
-        <Modal
+        <br />
+        <Button onClick={rollInitClickHandler}>ROLL INITIATIVE</Button>
+        {/* <Modal
           open={openDiceModal}
           onClose={onCloseDiceRollModal}
           center
@@ -224,7 +221,7 @@ function Battle() {
           <br />
           <p>{modalContent}</p>
           <button onClick={onCloseDiceRollModal}>OKAY</button>
-        </Modal>
+        </Modal> */}
         <br />
         <br />
         <h2 id="battle-page-h2">Characters</h2>
@@ -246,7 +243,7 @@ function Battle() {
             );
           })}
         </ul>
-      </div>
+   
     </>
   );
 }

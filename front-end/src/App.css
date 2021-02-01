@@ -1,15 +1,15 @@
-/* * {
+ * {
   box-sizing: border-box;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap');
 
 .D20-photo {
-  height: 17vmin;
-  width: 16vmin;
+  height: 20vmin;
+  width: 18vmin;
   pointer-events: none;
   position: fixed;
-  right: 80px;
+  right: 20px;
   box-shadow: none;
 }
 
@@ -17,9 +17,9 @@
   .D20-photo {
     animation: D20-photo-spin infinite 5s linear;
   }
-} */
+}
 
-/* @keyframes D20-photo-spin {
+@keyframes D20-photo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -29,11 +29,11 @@
 }
 
 .D20natone-photo {
-  height: 20vmin;
-  width: 16vmin;
+  height: 22vmin;
+  width: 18vmin;
   pointer-events: none;
   position: fixed;
-  left: 80px;
+  left: 20px;
   box-shadow: none;
 }
 
