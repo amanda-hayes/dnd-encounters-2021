@@ -264,7 +264,6 @@ const CreateCharacterForm = (props) => {
                 setAvatar(e.target.value)
               }}
             />
-            {/* <label>Aasimar</label> */}
             <img src={aasimar} id="avatar"></img>
           </div>
           <div>
@@ -277,10 +276,8 @@ const CreateCharacterForm = (props) => {
                 setAvatar(e.target.value)
               }}
             />
-            <label>Dwarf</label>
             <img src={dwarf} id="avatar"></img>
           </div>
-
           <br />
           <label>Strength:</label>
           <br />

@@ -1,7 +1,7 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
-import { Image } from 'react-bootstrap';
+import { Image, Button } from 'react-bootstrap';
 
 function CharacterStats() {
   const [character, setCharacter] = useState({});
@@ -26,11 +26,7 @@ function CharacterStats() {
   return (
     <>
       <div className="parchment-background">
-        <br />
-        <br />
-        <br />
-        <br />
-        <h1 id="character-sheet-heading">
+        <h1>
           {character.name}'s
           <br />
           Character Sheet
@@ -38,9 +34,9 @@ function CharacterStats() {
         <div id="character-container">
           {/* <div id="character-stats-image"> */}
             <br />
-            <br />
             <Image src={character.image} thumbnail/>
           </div>
+          <br />
           <div id="stats-list">
             <label>Name:</label> {character.name}
             <br />
@@ -78,11 +74,11 @@ function CharacterStats() {
             <label>Charisma:</label> {character.charisma}
             <br />
             <br />
-            <button>
-              <Link to={`/UpdateCharacterForm/${character._id}`}>
+            <Button style={{ backgroundColor: "rgb(44 90 117)" }}>
+              <Link to={`/UpdateCharacterForm/${character._id}`} style={{ color: "white" }}>
                 EDIT CHARACTER
               </Link>
-            </button>
+            </Button>
           </div>
         </div>
       {/* </div> */}

@@ -169,7 +169,7 @@ function AllCharPage() {
                     {/* p-2 mb-2 bg-dark text-white */}
                       <Card.Img
                         variant="top"
-                        src={character.thumbnail}
+                        src={character.image}
                         id="thumbnail"
                         className="rounded mx-auto d-block"
                       />
@@ -181,13 +181,13 @@ function AllCharPage() {
                         <button id="btn">
                       <Link to={`/characters/${character._id}`} style={{color: "white"}}>VIEW</Link>
                     </button>
-                    <button id="btn">
+                    <Button>
                       <div id="link">
                       <Link to={`/UpdateCharacterForm/${character._id}`} style={{color: "white"}}>
                         EDIT
                       </Link>
                       </div>
-                    </button>
+                    </Button>
                     <button id="btn" variant="primary" onClick={handleShow}>
                       DELETE
                     </button>

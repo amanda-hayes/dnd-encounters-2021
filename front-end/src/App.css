@@ -173,7 +173,7 @@ button {
 #stats-list {
   text-align: left;
   font-size: 1.3rem;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin-left: 100px;
 } 
 
@@ -550,6 +550,13 @@ form {
     min-height: 100vh;
   }
 
+  .parchment-background {
+    background-image: url("./images/parchment-paper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+  }
+
   .my-characters-heading {
     font-size: 2rem;
     margin-bottom: 10px;
@@ -558,5 +565,10 @@ form {
   #char-list {
     text-align: center;
   }
+  #stats-list {
+    text-align: left;
+    margin: 0;
+    font-size: 18px;
+  } 
 
 }
