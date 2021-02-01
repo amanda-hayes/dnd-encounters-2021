@@ -234,18 +234,27 @@ const CreateCharacterForm = (props) => {
           <br />
           <label>Avatar:</label>
           <br />
-          <label>
-            <input type="radio" name="avatars"></input>
+          <div>
+            <input
+              type="radio"
+              name="avatars"
+              value="aasimar"
+              id="aasimar"
+            ></input>
+            <label for="aasimar">Aasimar</label>
             <img src={aasimar} id="avatar"></img>
-          </label>
-          <label>
-            <input type="radio" name="avatars"></input>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="avatars"
+              value="dwarf"
+              id="dwarf"
+            ></input>
+            <label for="dwarf">Dwarf</label>
             <img src={dwarf} id="avatar"></img>
-          </label>
-          <label>
-            <input type="radio" name="avatars"></input>
-            <img src={elf} id="avatar"></img>
-          </label>
+          </div>
+
           <br />
           <label>Strength:</label>
           <br />
