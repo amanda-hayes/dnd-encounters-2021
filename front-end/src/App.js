@@ -80,7 +80,8 @@ function App(props) {
     <>
       <div className="App">
         <div className="nav-routes" />
-        <Navbar bg="light" expand="lg">
+        <Navbar bg='light' expand="lg">
+        <Navbar.Brand href="/">D&D Encounters</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -88,8 +89,8 @@ function App(props) {
               <Nav.Link href="/Characters"> Characters</Nav.Link>
               <Nav.Link href="/Register"> Register </Nav.Link>
               <Nav.Link href="/Login">Login</Nav.Link>
-              <button onClick={handleLogOut}>LOGOUT</button>
-              {loggedIn ? "You are logged in" : "You are not logged in"}
+              <Button onClick={handleLogOut}>LOGOUT</Button>
+              <Nav.Link>{loggedIn ? "{You are logged in}" : "{You are not logged in}"}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

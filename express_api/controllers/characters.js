@@ -3,6 +3,7 @@ const charactersRouter = express.Router();
 const characterModel = require("../models/characterModel.js");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET_KEY;
+let currentUser = null;
 
 const auth = async (req, res, next) => {
   const { authorization } = req.headers;
@@ -50,17 +51,15 @@ charactersRouter.delete("/:id", auth, async (req, res) => {
  * UPDATE ROUTE *
  ****************/
 try {
-  charactersRouter.put("/:charId/:userId", async (req, res) => {
+  charactersRouter.put("/:id", async (req, res) => {
     console.log(req.body);
-    console.log(req.match.params.charId);
-    console.log(req.match.params.userId);
     
     const updatedCharacter = await characterModel.findByIdAndUpdate(
-      req.match.params.charId,
-      req.params.userId,
+      req.params.id,
+      // createdBy = "600cdecd78275026de953dee",
       req.body
     );
-
+      console.log(updatedCharacter);
     res.status(200).json(updatedCharacter);
   });
 } catch (error) {

@@ -21,7 +21,7 @@ const UpdateCharacterForm = (props) => {
   const charismaInput = useRef(null);
   const characterDetailRouteMatch = useRouteMatch("/UpdateCharacterForm/:id");
   const charId = characterDetailRouteMatch.params.id;
-  const createdBy = useRef(null);
+  const createdByInput = useRef(null);
 
   const updateCharacter = async (event) => {
     event.preventDefault();
@@ -42,6 +42,7 @@ const UpdateCharacterForm = (props) => {
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
     const createdBy = "600cdecd78275026de953dee";
+    
     const body = JSON.stringify({
       name,
       race,
@@ -61,12 +62,12 @@ const UpdateCharacterForm = (props) => {
       charisma,
       createdBy
     });
-
-    event.currentTarget.reset();
+    console.log(body);
+    // event.currentTarget.reset();
 
     try {
       const response = await fetch(
-        `http://localhost:7000/characters/${charId}/${createdBy}`,
+        `http://localhost:7000/characters/${charId}`,
         {
           method: "PUT",
           headers: {
@@ -75,12 +76,14 @@ const UpdateCharacterForm = (props) => {
           body: body
         }
       );
-
+      const data = await response.json();
+        console.log(data);
       props.history.push("/characters");
     } catch (error) {
       console.error(error);
     }
   };
+
 
   return (
     <>
@@ -128,7 +131,7 @@ const UpdateCharacterForm = (props) => {
             <br />
             <label>HP</label>
             <select className="select" ref={updateHPSelect}>
-              <option value="Default">12</option>
+              <option value="12">12</option>
             </select>
             <br />
             <label>Attack:</label>
@@ -143,7 +146,7 @@ const UpdateCharacterForm = (props) => {
             <br />
             <label>Armor Class</label>
             <select className="select" ref={updateArmorClass}>
-              <option value="Default">15</option>
+              <option value="15">15</option>
             </select>
             <br />
             <label>Weapon:</label>
@@ -191,7 +194,7 @@ const UpdateCharacterForm = (props) => {
             <label>Backstory:</label>
             <input type="textarea" name="backstory" ref={updateBackstory} />
             <br />
-            <input type="hidden" name="createdBy" ref={createdBy} />
+            <input type="hidden" name="createdBy" ref={createdByInput} />
             <input type="hidden" name="strength" ref={strengthInput} />
             <input type="hidden" name="dexterity" ref={dexterityInput} />
             <input type="hidden" name="constitution" ref={constitutionInput} />

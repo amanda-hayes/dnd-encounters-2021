@@ -20,7 +20,7 @@ const CreateCharacterForm = (props) => {
   const intelligenceInput = useRef(null);
   const wisdomInput = useRef(null);
   const charismaInput = useRef(null);
-  const createdBy = useRef(null);
+  const createdByInput = useRef(null);
 
   const createCharacter = async (event) => {
     event.preventDefault();
@@ -40,7 +40,7 @@ const CreateCharacterForm = (props) => {
     const intelligence = intelligenceInput.current.value;
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
-    const createdBy = "600cdecd78275026de953dee";
+    // const createdBy = createdByInput.current.value;
 
     const body = JSON.stringify({
       name,
@@ -53,13 +53,13 @@ const CreateCharacterForm = (props) => {
       weapon,
       catchphrases,
       backstory,
-      createdBy,
       strength,
       dexterity,
       constitution,
       intelligence,
       wisdom,
-      charisma
+      charisma,
+      // createdBy
     });
 
     event.currentTarget.reset();
@@ -73,7 +73,7 @@ const CreateCharacterForm = (props) => {
         body: body
       });
 
-      props.history.push("/Characters");
+      // props.history.push("/Characters");
       alert("Character Created!");
     } catch (error) {
       alert("Something went wrong. Please try again.");
@@ -98,6 +98,7 @@ const CreateCharacterForm = (props) => {
     intelligenceInput.current.value = rolls[3];
     wisdomInput.current.value = rolls[4];
     charismaInput.current.value = rolls[5];
+    // createdByInput.current.value = "600cdecd78275026de953dee";
     console.log(rolls);
   }
 
@@ -223,8 +224,6 @@ const CreateCharacterForm = (props) => {
           <input
             type="textarea"
             name="backstory"
-            rows="10"
-            cols="30"
             ref={backstoryInput}
           />
           <br />
@@ -252,6 +251,8 @@ const CreateCharacterForm = (props) => {
           <input type="text" name="charisma" ref={charismaInput} />
           <br />
           <button onClick={rollBaseStats} id="roll">Roll Stats</button>
+          <br />
+          {/* <input type="hidden" name="createdBy" ref={createdByInput} /> */}
           <br />
           <input type="submit" value="Create Character" id="submit-btn" />
         </form>

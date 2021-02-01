@@ -149,15 +149,13 @@ function AllCharPage() {
           <div>
 
             <Link to="/CreateCharacterForm">
-              <button>CREATE</button>
+              <button id="btn">CREATE</button>
             </Link>
-            <br />
-            <button onClick={handleClick} >GENERATE</button>
-            <p id="my-characters-p">Generate a random character for me</p>
+       
+            <button onClick={handleClick} id="btn" >GENERATE</button>
+            <p id="my-characters-p">Create a new character, or generate a random character.</p>
           </div>
         </div>
-        <br />
-        <br />
         <div id="character-list">
           <ul>
             <>
@@ -167,8 +165,8 @@ function AllCharPage() {
                 }
                 return (
                   <li key={character._id}>
-         
-                    <Card style={{ width: "18rem" }} className="p-3 mb-2 bg-dark text-white">
+                    <Card style={{backgroundColor: "red"}} >
+                    {/* p-2 mb-2 bg-dark text-white */}
                       <Card.Img
                         variant="top"
                         src={character.thumbnail}
@@ -180,15 +178,17 @@ function AllCharPage() {
                         <Card.Text>
                           {character.race} | {character.characterClass}
                         </Card.Text>
-                        <button type="button">
+                        <button id="btn">
                       <Link to={`/characters/${character._id}`}>VIEW</Link>
                     </button>
-                    <button>
+                    <button id="btn">
+                      <div id="link">
                       <Link to={`/UpdateCharacterForm/${character._id}`}>
                         EDIT
                       </Link>
+                      </div>
                     </button>
-                    <button variant="primary" onClick={handleShow}>
+                    <button id="btn" variant="primary" onClick={handleShow}>
                       DELETE
                     </button>
                     <Modal show={showModal} onHide={handleClose}>
@@ -221,17 +221,12 @@ function AllCharPage() {
               })}
             </>
           </ul>
-        </div>
-
-        <div>
-          <br />
-          <br />
           <h1 id="ready">Ready to start adventuring?</h1>
           <Link to="/Tavern">
-            <button>Let's Go!</button>
+            <button id="letsgo">Let's Go!</button>
+          
           </Link>
-          <br />
-          <br />
+          
         </div>
       </div>
     </>

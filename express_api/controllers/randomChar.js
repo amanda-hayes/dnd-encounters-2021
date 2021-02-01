@@ -61,7 +61,7 @@ randcomCharRouter.post("/", async (req, res) => {
  ****************/
 randcomCharRouter.get("/:id", async (req, res) => {
   try {
-    const foundRandomCharacter = await randomCharModel.findById(req.body);
+    const foundRandomCharacter = await randomCharModel.findById(req.body, createdBy = "600cdecd78275026de953dee");
     res.status(200).json(foundRandomCharacter);
   } catch (error) {
     res.status(400).json(error);
