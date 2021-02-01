@@ -1,7 +1,16 @@
 import { useEffect, useRef } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Image } from "react-bootstrap";
+import aasimar from "../images/aasimar.png";
+import dwarf from "../images/dwarf.png";
+import elf from "../images/elf.png";
+import enchantress from "../images/enchantress.jpg";
+import fighter from "../images/fighter.png";
+import orc from "../images/orc.png";
+import ranger from "../images/ranger.png";
+import rogue from "../images/rogue.png";
+import sorcerer from "../images/sorcerer.png";
 
 const CreateCharacterForm = (props) => {
   const nameInput = useRef(null);
@@ -14,6 +23,7 @@ const CreateCharacterForm = (props) => {
   const weaponSelect = useRef(null);
   const catchphrasesSelect = useRef(null);
   const backstoryInput = useRef(null);
+  const imageInput = useRef(null);
   const strengthInput = useRef(null);
   const dexterityInput = useRef(null);
   const constitutionInput = useRef(null);
@@ -33,6 +43,7 @@ const CreateCharacterForm = (props) => {
     const weapon = weaponSelect.current.value;
     const catchphrases = catchphrasesSelect.current.value;
     const backstory = backstoryInput.current.value;
+    const image = imageInput.current.value;
     const strength = strengthInput.current.value;
     const dexterity = dexterityInput.current.value;
     const constitution = constitutionInput.current.value;
@@ -52,12 +63,13 @@ const CreateCharacterForm = (props) => {
       weapon,
       catchphrases,
       backstory,
+      image,
       strength,
       dexterity,
       constitution,
       intelligence,
       wisdom,
-      charisma
+      charisma,
     });
 
     // event.currentTarget.reset();
@@ -68,7 +80,7 @@ const CreateCharacterForm = (props) => {
         headers: {
           "Content-type": "application/json",
         },
-        body: body
+        body: body,
       });
 
       props.history.push("/Characters");
@@ -88,7 +100,7 @@ const CreateCharacterForm = (props) => {
     for (let i = 0; i < 6; i++) {
       let result = rollBaseD6();
       result += rollBaseD6();
-      rolls.push(result += 6);
+      rolls.push((result += 6));
     }
     strengthInput.current.value = rolls[0];
     dexterityInput.current.value = rolls[1];
@@ -98,7 +110,7 @@ const CreateCharacterForm = (props) => {
     charismaInput.current.value = rolls[5];
     // createdByInput.current.value = "600cdecd78275026de953dee";
     console.log(rolls);
-  }
+  };
 
   function rollBaseD6() {
     return Math.floor(Math.random() * 6);
@@ -219,11 +231,22 @@ const CreateCharacterForm = (props) => {
           </select>
           <br />
           <label>Backstory:</label>
-          <input
-            type="textarea"
-            name="backstory"
-            ref={backstoryInput}
-          />
+          <input type="textarea" name="backstory" ref={backstoryInput} />
+          <br />
+          <label>Avatar:</label>
+          <br />
+          <label>
+            <input type="radio" name="avatars"></input>
+            <img src={aasimar} id="avatar"></img>
+          </label>
+          <label>
+            <input type="radio" name="avatars"></input>
+            <img src={dwarf} id="avatar"></img>
+          </label>
+          <label>
+            <input type="radio" name="avatars"></input>
+            <img src={elf} id="avatar"></img>
+          </label>
           <br />
           <label>Strength:</label>
           <br />
@@ -248,7 +271,9 @@ const CreateCharacterForm = (props) => {
           <br />
           <input type="text" name="charisma" ref={charismaInput} />
           <br />
-          <button onClick={rollBaseStats} id="roll">Roll Stats</button>
+          <button onClick={rollBaseStats} id="roll">
+            Roll Stats
+          </button>
           <br />
           {/* <input type="hidden" name="createdBy" ref={createdByInput} /> */}
           <br />

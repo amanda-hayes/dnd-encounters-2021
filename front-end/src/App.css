@@ -354,6 +354,9 @@ form {
   color: black;
 } */
 
+#avatar {
+  max-width: 100px;
+}
 
 
 .homepage {
