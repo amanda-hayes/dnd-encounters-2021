@@ -20,7 +20,6 @@ const CreateCharacterForm = (props) => {
   const intelligenceInput = useRef(null);
   const wisdomInput = useRef(null);
   const charismaInput = useRef(null);
-  const createdByInput = useRef(null);
 
   const createCharacter = async (event) => {
     event.preventDefault();
@@ -58,11 +57,10 @@ const CreateCharacterForm = (props) => {
       constitution,
       intelligence,
       wisdom,
-      charisma,
-      // createdBy
+      charisma
     });
 
-    event.currentTarget.reset();
+    // event.currentTarget.reset();
 
     try {
       const response = await fetch("http://localhost:7000/characters", {
@@ -73,7 +71,7 @@ const CreateCharacterForm = (props) => {
         body: body
       });
 
-      // props.history.push("/Characters");
+      props.history.push("/Characters");
       alert("Character Created!");
     } catch (error) {
       alert("Something went wrong. Please try again.");
@@ -160,7 +158,7 @@ const CreateCharacterForm = (props) => {
           <br />
           <label>HP:</label>
           <select className="select" ref={hpSelect}>
-            <option value="Default">12 (Default)</option>
+            <option value="12">12</option>
           </select>
           <br />
           <label>Attack:</label>
@@ -175,7 +173,7 @@ const CreateCharacterForm = (props) => {
           <br />
           <label>Armor Class</label>
           <select className="select" ref={armorClassSelect}>
-            <option value="Default">15 (Default)</option>
+            <option value="15">15</option>
           </select>
           <br />
           <label>Weapon:</label>

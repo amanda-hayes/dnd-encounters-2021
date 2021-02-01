@@ -27,7 +27,7 @@ function App(props) {
   const [userId, setUserId] = useState(null);
 
   // Get a user id
-  const fetchUserId = async () => {
+  // const fetchUserId = async () => {
     // try {
     //   const response = await fetch("http://localhost:7000/login");
     //   const data = await response.json();
@@ -38,8 +38,8 @@ function App(props) {
     //   console.error(error);
     // }
     // return null;
-    return "600cdecd78275026de953dee";
-  };
+  //   return "600cdecd78275026de953dee";
+  // };
 
   
 
@@ -89,7 +89,7 @@ function App(props) {
               <Nav.Link href="/Characters"> Characters</Nav.Link>
               <Nav.Link href="/Register"> Register </Nav.Link>
               <Nav.Link href="/Login">Login</Nav.Link>
-              <Button onClick={handleLogOut}>LOGOUT</Button>
+              <Nav.Link onClick={handleLogOut}>Logout</Nav.Link>
               <Nav.Link>{loggedIn ? "{You are logged in}" : "{You are not logged in}"}</Nav.Link>
             </Nav>
           </Navbar.Collapse>

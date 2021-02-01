@@ -12,6 +12,7 @@ const auth = async (req, res, next) => {
     try {
       const payload = await jwt.verify(token, SECRET);
       req.user = payload;
+      currentUser = req.user;
       next();
     } catch (error) {
       res.status(400).json(error);
@@ -39,7 +40,7 @@ charactersRouter.get("/", async (req, res) => {
 charactersRouter.delete("/:id", auth, async (req, res) => {
   try {
     const deletedCharacter = await characterModel.findByIdAndRemove(
-      req.params.id
+      req.params.id,
     );
     res.status(200).json(deletedCharacter);
   } catch (error) {
@@ -56,10 +57,9 @@ try {
     
     const updatedCharacter = await characterModel.findByIdAndUpdate(
       req.params.id,
-      // createdBy = "600cdecd78275026de953dee",
       req.body
     );
-      console.log(updatedCharacter);
+
     res.status(200).json(updatedCharacter);
   });
 } catch (error) {

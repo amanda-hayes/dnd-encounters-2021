@@ -21,7 +21,6 @@ const UpdateCharacterForm = (props) => {
   const charismaInput = useRef(null);
   const characterDetailRouteMatch = useRouteMatch("/UpdateCharacterForm/:id");
   const charId = characterDetailRouteMatch.params.id;
-  const createdByInput = useRef(null);
 
   const updateCharacter = async (event) => {
     event.preventDefault();
@@ -41,7 +40,7 @@ const UpdateCharacterForm = (props) => {
     const intelligence = intelligenceInput.current.value;
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
-    const createdBy = "600cdecd78275026de953dee";
+  
     
     const body = JSON.stringify({
       name,
@@ -60,7 +59,6 @@ const UpdateCharacterForm = (props) => {
       intelligence,
       wisdom,
       charisma,
-      createdBy
     });
     console.log(body);
     // event.currentTarget.reset();
@@ -88,9 +86,7 @@ const UpdateCharacterForm = (props) => {
   return (
     <>
       <div className="update-background">
-        <div id="update-breadcrumbs">
           <Link to="/Characters">Go Back</Link>
-        </div>
         <div className="heading-with-form">
           <h2 id="update-char-h2">Update Character</h2>
           <form onSubmit={updateCharacter}>
@@ -194,7 +190,6 @@ const UpdateCharacterForm = (props) => {
             <label>Backstory:</label>
             <input type="textarea" name="backstory" ref={updateBackstory} />
             <br />
-            <input type="hidden" name="createdBy" ref={createdByInput} />
             <input type="hidden" name="strength" ref={strengthInput} />
             <input type="hidden" name="dexterity" ref={dexterityInput} />
             <input type="hidden" name="constitution" ref={constitutionInput} />
