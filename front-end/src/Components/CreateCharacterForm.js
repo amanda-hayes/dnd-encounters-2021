@@ -12,7 +12,11 @@ import ranger from "../images/ranger.png";
 import rogue from "../images/rogue.png";
 import sorcerer from "../images/sorcerer.png";
 
+
+
 const CreateCharacterForm = (props) => {
+
+  const [avatar, setAvatar] = useState([]);
 
   const nameInput = useRef(null);
   const pronounsInput = useRef(null);
@@ -33,6 +37,9 @@ const CreateCharacterForm = (props) => {
   const charismaInput = useRef(null);
 
   const createCharacter = async (event) => {
+
+    
+
     event.preventDefault();
     const name = nameInput.current.value;
     const pronouns = pronounsInput.current.value;
@@ -72,13 +79,11 @@ const CreateCharacterForm = (props) => {
       charisma,
     });
 
-    const [avatar, setAvatar] = useState("aasimar");
+    
 
     // event.currentTarget.reset();
 
-    useEffect (() => {
-      setAvatar();
-    })
+
 
     try {
       const response = await fetch("http://localhost:7000/characters", {
@@ -122,7 +127,9 @@ const CreateCharacterForm = (props) => {
     return Math.floor(Math.random() * 6);
   }
 
-  
+  useEffect (() => {
+    setAvatar();
+  })
 
 
   return (
@@ -248,30 +255,29 @@ const CreateCharacterForm = (props) => {
           <br />
           <div>
             <input
+              ref={imageInput}
               type="radio"
               checked={avatar === "aasimar"}
-              name="avatars"
               value="aasimar"
-              id="aasimar"
+              name="aasimar"
               onChange={(e) => {
                 setAvatar(e.target.value)
               }}
-            ></input>
-            <label for="aasimar">Aasimar</label>
+            />
+            {/* <label>Aasimar</label> */}
             <img src={aasimar} id="avatar"></img>
           </div>
           <div>
             <input
               type="radio"
               checked={avatar === "dwarf"}
-              name="avatars"
               value="dwarf"
-              id="dwarf"
               onChange={(e) => {
+                alert("look at me i have no wiiiings")
                 setAvatar(e.target.value)
               }}
-            ></input>
-            <label for="dwarf">Dwarf</label>
+            />
+            <label>Dwarf</label>
             <img src={dwarf} id="avatar"></img>
           </div>
 
