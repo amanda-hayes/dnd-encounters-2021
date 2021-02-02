@@ -3,6 +3,7 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 import { useState } from "react";
 import wizardbook from "../images/wizardbook.png";
 
@@ -25,14 +26,13 @@ function Tavern() {
 
   return (
     <>
-      <nav className="topnav">
-        <Link to="/">HOME</Link>
-        <Link to="/characters">CHARACTERS</Link>
-        <Link to="/createcharacterform">CREATE</Link>
-        <Link to="/battle">BATTLE</Link>
-      </nav>
-      <div id="tavern-background-image">
-        <Modal
+      <div>
+      <h1>Party time!</h1>
+        <p>
+            Tavern music is playing loudly, the drinks are flowing and you are
+            reminiscing with your adventuring party.</p>
+        <Button>Say something</Button>
+        {/* <Modal
           open={open}
           onClose={onCloseModal}
           center
@@ -153,7 +153,7 @@ function Tavern() {
               LET'S GO
             </button>
           </Link>
-        </Modal>
+        </Modal> */}
       </div>
     </>
   );

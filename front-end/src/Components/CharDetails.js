@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { Image, Button } from 'react-bootstrap';
 
-function CharacterStats() {
+function CharacterStats(props) {
   const [character, setCharacter] = useState({});
   const characterDetailRouteMatch = useRouteMatch("/Characters/:id");
+  const [token, setToken] = useState("");
 
   const fetchCharacter = async () => {
     try {
@@ -21,6 +22,9 @@ function CharacterStats() {
 
   useEffect(() => {
     fetchCharacter();
+    if (window.localStorage.getItem("token")) {
+      setToken(window.localStorage.getItem("token"));
+    }
   }, []);
 
   return (

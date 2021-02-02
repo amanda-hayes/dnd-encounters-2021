@@ -1,18 +1,14 @@
 const express = require("express");
 const charactersRouter = express.Router();
 const characterModel = require("../models/characterModel.js");
-const jwt = require("jsonwebtoken");
-const SECRET = process.env.SECRET_KEY;
-let currentUser = null;
 
 const auth = async (req, res, next) => {
   const { authorization } = req.headers;
   if (authorization) {
-    const token = authorization.split(" ")[1];
+    const token = authorization.split(' ')[1];
     try {
       const payload = await jwt.verify(token, SECRET);
       req.user = payload;
-      currentUser = req.user;
       next();
     } catch (error) {
       res.status(400).json(error);
@@ -24,7 +20,7 @@ const auth = async (req, res, next) => {
 
 /***************
  * INDEX ROUTE *
- ****************/
+****************/
 charactersRouter.get("/", async (req, res) => {
   try {
     const foundCharacter = await characterModel.find({});
@@ -36,7 +32,7 @@ charactersRouter.get("/", async (req, res) => {
 
 /***************
  * DELETE ROUTE *
- ****************/
+****************/
 charactersRouter.delete("/:id", auth, async (req, res) => {
   try {
     const deletedCharacter = await characterModel.findByIdAndRemove(

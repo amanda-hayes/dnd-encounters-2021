@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { Image } from "react-bootstrap";
+import { Image, Button } from "react-bootstrap";
 import aasimar from "../images/aasimar.png";
 import dwarf from "../images/dwarf.png";
 import elf from "../images/elf.png";
@@ -89,7 +89,7 @@ const CreateCharacterForm = (props) => {
       const response = await fetch("http://localhost:7000/characters", {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          "Content-type": "application/json"
         },
         body: body,
       });
@@ -249,7 +249,8 @@ const CreateCharacterForm = (props) => {
           </select>
           <br />
           <label>Backstory:</label>
-          <textarea name="backstory" cols="50" rows="10" ref={backstoryTextarea}></textarea>
+          <textarea name="backstory" cols="25" rows="5" ref={backstoryTextarea}></textarea>
+
           <br />
           <label>Avatar:</label>
           <br />
@@ -302,9 +303,9 @@ const CreateCharacterForm = (props) => {
           <br />
           <input type="text" name="charisma" ref={charismaInput} />
           <br />
-          <button onClick={rollBaseStats} id="roll">
+          <Button onClick={rollBaseStats} id="roll" style= {{backgroundColor: "rgb(44 90 117)"}}>
             Roll Stats
-          </button>
+          </Button>
           <br />
           {/* <input type="hidden" name="createdBy" ref={createdByInput} /> */}
           <br />

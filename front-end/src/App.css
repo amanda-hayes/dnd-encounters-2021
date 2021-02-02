@@ -83,7 +83,7 @@ p {
 ul {
   margin: 0px;
   display: block;
-  background-color: rgba(0, 0, 0, 0.397);
+  /* background-color: rgba(0, 0, 0, 0.397); */
 }
 
 
@@ -417,8 +417,9 @@ form {
 
  #tavern-background-image {
   background-image: url('./images/tavern.jpg');
-  background-size: contain;
-  height: 1500px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
   padding-top: 20px;
 }
 
@@ -444,9 +445,9 @@ form {
 }
 
 
-.tavern-modal p {
+/* .tavern-modal p {
   font-size: 1.2rem;
-}
+} */
 
 .tavern-modal button {
   text-align: center;
@@ -485,46 +486,55 @@ form {
 
 @media only screen and (max-width: 360px) {
   img {
-    max-width: 250px;
+    max-width: 350px;
   }
   #my-characters-p {
     color: white;
     font-size: 16px;
   }
-  form {
-    text-align: left;
-    font-size: 16px;
-    max-width: 200px;
+  #create-char-form {
+    text-align: center;
+    width: 360px;
   }
   input {
     margin: 10px;
+    font-size: 16px;
   }
+
   label {
-    margin: 2px;
+    font-size: 18px;
   }
   select {
     margin-bottom: 5px;
   }
+
   h1 {
     font-size: 24px;
   }
+
   h2 {
     font-size: 20px;
   }
+
   p {
     font-size: 16px;
     padding: 5px;
   }
+
   .select {
-    max-width: 220px;
+    max-width: 350px;
     margin: 5px 5px;
   }
+
   .submit-btn {
     margin: 5px;
   }
+
   #roll {
     margin: 20px;
+    text-align: center;
   }
+
   .create-generate-btns {
     margin: 20px;
     border-radius: 5px;

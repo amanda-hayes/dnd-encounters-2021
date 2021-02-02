@@ -49,8 +49,8 @@ function AllCharPage() {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
-          Authorization: token,
-        },
+          Authorization: token
+        }
       });
       if (!token) {
         return alert("Please Login before deleting!");
@@ -75,7 +75,6 @@ function AllCharPage() {
     try {
       const response = await fetch("http://localhost:7000/randomChar");
       const data = await response.json();
-
       setRandomCharacters(data);
     } catch (error) {
       console.error(error);
@@ -89,8 +88,6 @@ function AllCharPage() {
     let randomIndex = Math.round(Math.random() * (randomCharacters.length - 1));
     let generatedCharacter = randomCharacters[randomIndex];
 
-    console.log("char dupe: " + characters.includes(generatedCharacter.name));
-    console.log(generatedCharacter.name);
     try {
       if (characters.includes(generatedCharacter.name)) {
         const filterDupe = randomCharacters.filter(
@@ -102,8 +99,7 @@ function AllCharPage() {
         const response = await fetch("http://localhost:7000/characters", {
           method: "POST",
           headers: {
-            "Content-type": "application/json",
-            Authorization: token,
+            "Content-type": "application/json"
           },
           body: JSON.stringify(generatedCharacter),
         });

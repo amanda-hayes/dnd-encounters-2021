@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import beholder from "../beholder.jpeg";
 import d20 from "../images/d20.png";
 import d20natone from "../images/d20natone.png";
@@ -26,7 +26,18 @@ function Battle() {
       const response = await fetch("http://localhost:7000/characters");
       const charactersData = await response.json();
 
-      updatePlayerCharactersList(charactersData);
+      const monsters = charactersData.filter((mon) => mon.characterType !== "PC");
+
+      if (monsters.length > 1) {
+        let randomIndex = Math.round(Math.random() * (monsters.length - 1));
+        let monstaaaaa = monsters[randomIndex];
+
+        const battleCrew = charactersData.filter((mon) => mon.characterType !== "NPC" || mon.name === monstaaaaa.name);
+
+
+        updatePlayerCharactersList(battleCrew);
+      }
+
     } catch (error) {
       console.error(error);
     }
@@ -43,14 +54,17 @@ function Battle() {
       (npc) => npc.characterType === "NPC"
     );
 
-    if (monster._id !== event.target.value) {
+    let randomIndex = Math.round(Math.random() * (monster.length - 1));
+    let generatedMonster = monster[randomIndex];
+
+    if (generatedMonster._id !== event.target.value) {
       const roll = rollAD20();
 
-      if (roll >= monster.armorClass) {
-        monster.HP -= 4;
+      if (roll >= generatedMonster.armorClass) {
+        generatedMonster.HP -= 4;
         alert(`It's a hit! The Beholder takes 4 damage!`);
 
-        if (monster.HP <= 0) {
+        if (generatedMonster.HP <= 0) {
           history.push("/YouWin");
           alert(
             `You did it! You looted the monster and retrieved the precious goldfish!`
@@ -184,7 +198,7 @@ function Battle() {
             </button>
           </Modal>
 
-          <button onClick={onOpenBattle}>WHAT'S THAT SOUND?</button>
+          <Button onClick={onOpenBattle} style={{backgroundColor: "rgb(44 90 117)"}}>WHAT'S THAT SOUND?</Button>
           <Modal
             open={openBattle}
             onClose={onCloseBattle}
@@ -193,17 +207,16 @@ function Battle() {
           >
             <h2>Oh no!</h2>
             <p>
-              A Beholder appears and it's guarding the treasure you so
+              A monster appears and it's guarding the treasure you so
               desperately need! It's time to roll for initiative!
             </p>
-            <img src={beholder} alt="beholder" />
             <br />
             <button onClick={onCloseBattle} id="tavern-button">
               FIGHT
             </button>
           </Modal>
         </div>
-        <button onClick={rollInitClickHandler}>ROLL INITIATIVE</button>
+        <Button onClick={rollInitClickHandler} style={{backgroundColor: "rgb(44 90 117)" }}>ROLL INITIATIVE</Button>
         <Modal
           open={openDiceModal}
           onClose={onCloseDiceRollModal}
@@ -223,11 +236,8 @@ function Battle() {
           {playerCharacters.map((player) => {
             return (
               <li key={player._id} id="battle-character-list">
-                {/* <img src={player.thumbnail} id="thumbnail" />
-                {player.name} <br /> HP: {player.HP} | Armor Class:{" "}
-                {player.armorClass} | INIT: {player.initiative} */}
                 <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={player.thumbnail} />
+                  <Card.Img variant="top" src={player.image} />
                   <Card.Body>
                     <Card.Title>{player.name}</Card.Title>
                     <Card.Text>
@@ -238,12 +248,12 @@ function Battle() {
                   </Card.Body>
                 </Card>
                 <br />
-                <button value={player._id} onClick={shoutClickHandler}>
+                <Button value={player._id} onClick={shoutClickHandler} style={{backgroundColor: "rgb(44 90 117)"}}>
                   SHOUT
-                </button>
-                <button value={player._id} onClick={attackClickHandler}>
+                </Button>
+                <Button value={player._id} onClick={attackClickHandler} style={{backgroundColor: "rgb(44 90 117)"}}>
                   ATTACK
-                </button>
+                </Button>
               </li>
             );
           })}

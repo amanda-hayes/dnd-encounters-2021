@@ -5,33 +5,29 @@ const cors = require("cors");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const app = express();
-
 const User = require('./models/user');
-
 const PORT = process.env.PORT || 7000;
+
 const charactersController = require("./controllers/characters");
 const randomCharController = require("./controllers/randomChar");
 const MONGOURI = process.env.MONGODB_URI;
 const SECRET = process.env.SECRET_KEY;
 
 const auth = async (req, res, next) => {
-    const { authorization } = req.headers;
-
-    if(authorization){
-      const token = authorization.split(' ')[1];
-
-      try {
-        const payload = await jwt.verify(token, SECRET)
-        req.user = payload;
-        next();
-      } catch (error) {
-        res.status(400).json
-      }
-    } else {
-        
-      res.status(400).json( new Error('no token in header'))
+  const { authorization } = req.headers;
+  if (authorization) {
+    const token = authorization.split(" ")[1];
+    try {
+      const payload = await jwt.verify(token, SECRET);
+      req.user = payload;
+      next();
+    } catch (error) {
+      res.status(400).json(error);
     }
-}
+  } else {
+    res.status(400).json(new Error("no token in header"));
+  }
+};
 
 app.use(cors());
 app.use(express.json());
@@ -63,17 +59,26 @@ app.post('/register', (req, res) => {
 
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
+  console.log("here");
+
   try {
-    const user = await User.findOne({ username })
+    const user = await User.findOne({ username });
+    console.log(username);
+    console.log(user.password);
+    console.log(password);
+
     if (bcrypt.compareSync(password, user.password)) {
+      console.log("password checks out");
       const token = jwt.sign({
         username: user.username
-      }, SECRET)
+      }, SECRET);
+      console.log(token);
+
       res.status(200).json({
         token,
         username,
         authenticated: true
-      })
+      });
     }
   } catch (error) {
     res.status(400).json(error)

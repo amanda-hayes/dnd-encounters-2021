@@ -10,14 +10,18 @@ const LoginForm = (props) => {
   const clientId =
     "279098454783-6ifmp48rjph5516k7i7hajcsfshh8h2a.apps.googleusercontent.com";
 
-  const login = async (event) => {
-    event.preventDefault();
-    const body = JSON.stringify({
-      username: nameInput.current.value,
-      password: passwordInput.current.value,
-    });
-    props.userLogin(body);
+  const login = async (event, username, pass) => {
+    
+    username = nameInput.current.value;
+    pass = passwordInput.current.value;
+    try {
+      props.userLogin(event, username, pass);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  
 
   const onSuccess = (res) => {
     console.log("[Login Success] currentUser:", res.profileObj);
