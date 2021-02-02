@@ -1,8 +1,8 @@
- * {
+* {
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap");
 
 .D20-photo {
   height: 20vmin;
@@ -59,26 +59,23 @@
 } */
 
 @font-face {
-  font-family: 'Luminari';
+  font-family: "Luminari";
   font-style: normal;
   font-weight: normal;
-  src: local('Luminari'), url('Luminari-Regular.woff') format('woff');
-  }
-
+  src: local("Luminari"), url("Luminari-Regular.woff") format("woff");
+}
 
 h1 {
-  font-family: 'Luminari';
+  font-family: "Luminari";
 }
 
 #ready {
   color: white;
 }
 
-
 p {
   font-size: 1.5rem;
 }
-
 
 ul {
   margin: 0px;
@@ -86,10 +83,9 @@ ul {
   /* background-color: rgba(0, 0, 0, 0.397); */
 }
 
-
 li {
   list-style: none;
-   /* background-color: rgb(3, 65, 87);
+  /* background-color: rgb(3, 65, 87);
   margin: 10px;
   width: 30%;
   padding: 10px;
@@ -97,30 +93,22 @@ li {
   border-radius: 5px;
   font-weight: bold; */
   /* height: 150px; */
-  /* box-shadow: 5px 10px 8px #050505af;*/ 
-  display: inline-block; 
+  /* box-shadow: 5px 10px 8px #050505af;*/
+  display: inline-block;
   text-align: center;
   margin: 10px;
 }
 
-
-
-/* input {
-  padding: 5px;
-  font-size: 14px;
-} */
-
 /* label { */
-  /* width: 200px;
+/* width: 200px;
   display: inline-block;
   font-weight: bold; */
-  /* text-align: left;  */
+/* text-align: left;  */
 /* } */
-
 
 button {
   cursor: pointer;
-  background-color: white; 
+  background-color: white;
   border: none;
   color: black;
   box-shadow: 5px 8px 8px #050505af;
@@ -130,9 +118,9 @@ button {
   text-decoration: none;
   border-radius: 5px;
   transition-duration: 0.4s;
-  font-family: 'Century Gothic';
+  font-family: "Century Gothic";
   border-radius: 5px;
-  }
+}
 
 /* button:hover {
     background-color: #60636090; 
@@ -150,8 +138,8 @@ button {
   color: black;
   box-shadow: 5px 8px 8px #050505af;
   font-size: 1rem; */
-  /* padding: 15px 32px; */
-  /* text-align: center;
+/* padding: 15px 32px; */
+/* text-align: center;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
@@ -162,37 +150,32 @@ button {
   color: white;
 } */
 
-
- #thumbnail {
+#thumbnail {
   max-width: 70px;
   padding-top: 10px;
   /* float: left; */
-  }
-
+}
 
 #stats-list {
   text-align: left;
   font-size: 1.3rem;
   /* max-width: 800px; */
   margin-left: 100px;
-} 
+}
 
 #my-characters-p {
   color: white;
 }
 
-
 .character-background {
   background-image: url("./images/dnd-table-1.jpg");
   background-size: cover;
   background-position: fixed;
-
 }
 
 #letsgo {
   margin-bottom: 20px;
 }
-
 
 .parchment-background {
   background-image: url("./images/parchment-paper.png");
@@ -208,7 +191,6 @@ button {
   background-color: rgba(4, 4, 4, 0.397);
 }
 
-
 .my-characters-heading {
   font-size: 3rem;
   margin-bottom: 10px;
@@ -216,16 +198,13 @@ button {
   text-shadow: 5px 10px 8px #050505af;
 }
 
-
-
 .update-background {
-  background-image: url('./images/party.jpg');
+  background-image: url("./images/party.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
   color: white;
 }
-
 
 /* .select {
   padding: 5px;
@@ -253,17 +232,8 @@ form {
   max-width: 600px;
 }
 
-
-/* .form-box {
-  background-color: rgba(128, 128, 128, 0.454);
-  width: 40%;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 10px;
-} */ */
-
- #create-char-form {
-  background-image: url('./images/dungeons-and-dragons.jpg');
+*/ #create-char-form {
+  background-image: url("./images/dungeons-and-dragons.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 1000px;
@@ -284,7 +254,6 @@ form {
   border-radius: 5px;
 }
 
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -296,25 +265,22 @@ form {
   color: white;
 }
 
-
-
 .create-generate-btns {
   display: inline;
 }
 
-
 #create-new {
   display: inline;
-  font-family: 'Century Gothic';
+  font-family: "Century Gothic";
 }
 
 #create-char-h2 {
   padding-top: 10px;
-  font-family: 'Luminari';
+  font-family: "Luminari";
 }
 
 #battle-page-h2 {
-  font-family: 'Luminari';
+  font-family: "Luminari";
   font-size: 2rem;
   color: white;
 }
@@ -323,7 +289,6 @@ form {
   font-size: 3rem;
   text-align: center;
 }
-
 
 #update-breadcrumbs {
   text-align: left;
@@ -334,33 +299,12 @@ form {
   padding-top: 30px;
 }
 
-/* .topnav {
-  background-color: #333;
-  overflow: hidden;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-} */
-
-#avatar {
+.avatar {
   max-width: 100px;
 }
 
-
 .homepage {
-  background-image: url('./images/homepage-image.jpg');
+  background-image: url("./images/homepage-image.jpg");
   background-size: cover;
   height: 100vh;
   color: white;
@@ -408,21 +352,26 @@ form {
 } */
 
 .battle-background {
-  background-image: url('./images/forest.jpg');
+  background-image: url("./images/forest.jpg");
   background-size: cover;
   padding-top: 20px;
 }
 
-
-
- #tavern-background-image {
-  background-image: url('./images/tavern.jpg');
+#tavern-background-image {
+  background-image: url("./images/tavern.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;
   padding-top: 20px;
 }
 
+#tavern-chat {
+  color: white;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 10px;
+  margin: 10px;
+}
 
 #tavern-button {
   text-align: center;
@@ -444,7 +393,6 @@ form {
   max-width: 300px;
 }
 
-
 /* .tavern-modal p {
   font-size: 1.2rem;
 } */
@@ -453,7 +401,6 @@ form {
   text-align: center;
   background-color: brown;
   color: white;
-
 }
 
 .tavern-modal {
@@ -475,10 +422,6 @@ form {
 .battle-modal {
   text-align: left;
 }
-
-.battle-modal p{
-  border-radius: 5px;
-} 
 
 /* MOBILE DESIGN */
 
@@ -564,7 +507,7 @@ form {
     background-image: url("./images/parchment-paper.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position:center;
+    background-position: center;
   }
 
   .my-characters-heading {
@@ -579,6 +522,5 @@ form {
     text-align: left;
     margin: 0;
     font-size: 18px;
-  } 
-
+  }
 }

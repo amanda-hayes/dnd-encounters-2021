@@ -1,3 +1,6 @@
+/***************
+ *   IMPORTS   *
+ ***************/
 import "../App.css";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
@@ -8,36 +11,46 @@ import beholder from "../beholder.jpeg";
 import d20 from "../images/d20.png";
 import d20natone from "../images/d20natone.png";
 
+/**************
+ *   BATTLE   *
+ **************/
 function Battle() {
   const [playerCharacters, updatePlayerCharactersList] = useState([]);
   const [open, setOpen] = useState(true);
-  const onCloseModal = () => setOpen(false);
   const [openBattle, setOpenBattle] = useState(false);
+  const [openDiceModal, setOpenDiceModal] = useState(false);
+  const [modalContent, setModalContent] = useState([]);
+
+  const onCloseModal = () => setOpen(false);
   const onOpenBattle = () => setOpenBattle(true);
   const onCloseBattle = () => setOpenBattle(false);
-  const [openDiceModal, setOpenDiceModal] = useState(false);
   const onOpenDiceRollModal = () => setOpenDiceModal(true);
   const onCloseDiceRollModal = () => setOpenDiceModal(false);
-  const [modalContent, setModalContent] = useState([]);
+
   let history = useHistory();
+
+  function chooseOneMonster(characters) {
+    const monsters = characters.filter((mon) => mon.characterType !== "PC");
+
+    if (monsters.length > 1) {
+      let randomIndex = Math.round(Math.random() * (monsters.length - 1));
+      let monstaaaaa = monsters[randomIndex];
+
+      const battleCrew = characters.filter(
+        (mon) => mon.characterType !== "NPC" || mon.name !== monstaaaaa.name
+      );
+
+      return battleCrew;
+    }
+    return characters;
+  }
 
   const fetchPlayerCharacters = async () => {
     try {
       const response = await fetch("http://localhost:7000/characters");
       const charactersData = await response.json();
 
-      const monsters = charactersData.filter((mon) => mon.characterType !== "PC");
-
-      if (monsters.length > 1) {
-        let randomIndex = Math.round(Math.random() * (monsters.length - 1));
-        let monstaaaaa = monsters[randomIndex];
-
-        const battleCrew = charactersData.filter((mon) => mon.characterType !== "NPC" || mon.name === monstaaaaa.name);
-
-
-        updatePlayerCharactersList(battleCrew);
-      }
-
+      updatePlayerCharactersList(chooseOneMonster(charactersData));
     } catch (error) {
       console.error(error);
     }
@@ -198,7 +211,12 @@ function Battle() {
             </button>
           </Modal>
 
-          <Button onClick={onOpenBattle} style={{backgroundColor: "rgb(44 90 117)"}}>WHAT'S THAT SOUND?</Button>
+          <Button
+            onClick={onOpenBattle}
+            style={{ backgroundColor: "rgb(44 90 117)" }}
+          >
+            WHAT'S THAT SOUND?
+          </Button>
           <Modal
             open={openBattle}
             onClose={onCloseBattle}
@@ -216,7 +234,12 @@ function Battle() {
             </button>
           </Modal>
         </div>
-        <Button onClick={rollInitClickHandler} style={{backgroundColor: "rgb(44 90 117)" }}>ROLL INITIATIVE</Button>
+        <Button
+          onClick={rollInitClickHandler}
+          style={{ backgroundColor: "rgb(44 90 117)" }}
+        >
+          ROLL INITIATIVE
+        </Button>
         <Modal
           open={openDiceModal}
           onClose={onCloseDiceRollModal}
@@ -248,10 +271,18 @@ function Battle() {
                   </Card.Body>
                 </Card>
                 <br />
-                <Button value={player._id} onClick={shoutClickHandler} style={{backgroundColor: "rgb(44 90 117)"}}>
+                <Button
+                  value={player._id}
+                  onClick={shoutClickHandler}
+                  style={{ backgroundColor: "rgb(44 90 117)" }}
+                >
                   SHOUT
                 </Button>
-                <Button value={player._id} onClick={attackClickHandler} style={{backgroundColor: "rgb(44 90 117)"}}>
+                <Button
+                  value={player._id}
+                  onClick={attackClickHandler}
+                  style={{ backgroundColor: "rgb(44 90 117)" }}
+                >
                   ATTACK
                 </Button>
               </li>

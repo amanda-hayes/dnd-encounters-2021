@@ -12,10 +12,7 @@ import ranger from "../images/ranger.png";
 import rogue from "../images/rogue.png";
 import sorcerer from "../images/sorcerer.png";
 
-
-
 const CreateCharacterForm = (props) => {
-
   const [avatar, setAvatar] = useState([]);
 
   const nameInput = useRef(null);
@@ -37,9 +34,6 @@ const CreateCharacterForm = (props) => {
   const charismaInput = useRef(null);
 
   const createCharacter = async (event) => {
-
-    
-
     event.preventDefault();
     const name = nameInput.current.value;
     const pronouns = pronounsInput.current.value;
@@ -78,20 +72,16 @@ const CreateCharacterForm = (props) => {
       intelligence,
       wisdom,
       charisma,
-      createdBy
+      createdBy,
     });
 
-    
-
     // event.currentTarget.reset();
-
-
 
     try {
       const response = await fetch("http://localhost:7000/characters", {
         method: "POST",
         headers: {
-          "Content-type": "application/json"
+          "Content-type": "application/json",
         },
         body: body,
       });
@@ -129,15 +119,12 @@ const CreateCharacterForm = (props) => {
     return Math.floor(Math.random() * 6);
   }
 
-  useEffect (() => {
+  useEffect(() => {
     setAvatar();
-  })
-
+  });
 
   return (
-    
     <>
-   
       <div id="create-char-form">
         <h2 id="create-char-h2">Create New Character</h2>
         <p>
@@ -251,7 +238,12 @@ const CreateCharacterForm = (props) => {
           </select>
           <br />
           <label>Backstory:</label>
-          <textarea name="backstory" cols="25" rows="5" ref={backstoryTextarea}></textarea>
+          <textarea
+            name="backstory"
+            cols="25"
+            rows="5"
+            ref={backstoryTextarea}
+          ></textarea>
 
           <br />
           <label>Avatar:</label>
@@ -260,26 +252,50 @@ const CreateCharacterForm = (props) => {
             <input
               ref={imageInput}
               type="radio"
-              checked={avatar === "aasimar"}
+              // checked={avatar == "aasimar"}
+              // check here
               value="aasimar"
-              name="aasimar"
+              name="avatars"
+              className="avatar-style"
               onChange={(e) => {
-                setAvatar(e.target.value)
+                setAvatar(e.target.value);
+                // state variable to send src path to the image
               }}
             />
-            <img src={aasimar} id="avatar"></img>
+            <img src={aasimar} className="avatar"></img>
           </div>
           <div>
             <input
               type="radio"
-              checked={avatar === "dwarf"}
               value="dwarf"
+              name="avatars"
               onChange={(e) => {
-                alert("look at me i have no wiiiings")
-                setAvatar(e.target.value)
+                setAvatar(e.target.value);
               }}
             />
-            <img src={dwarf} id="avatar"></img>
+            <img src={dwarf} className="avatar"></img>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="elf"
+              name="avatars"
+              onChange={(e) => {
+                setAvatar(e.target.value);
+              }}
+            />
+            <img src={elf} className="avatar"></img>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="fighter"
+              name="avatars"
+              onChange={(e) => {
+                setAvatar(e.target.value);
+              }}
+            />
+            <img src={fighter} className="avatar"></img>
           </div>
           <br />
           <label>Strength:</label>
@@ -305,7 +321,11 @@ const CreateCharacterForm = (props) => {
           <br />
           <input type="text" name="charisma" ref={charismaInput} />
           <br />
-          <Button onClick={rollBaseStats} id="roll" style= {{backgroundColor: "rgb(44 90 117)"}}>
+          <Button
+            onClick={rollBaseStats}
+            id="roll"
+            style={{ backgroundColor: "rgb(44 90 117)" }}
+          >
             Roll Stats
           </Button>
           <br />

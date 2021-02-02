@@ -12,7 +12,6 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const app = express();
-const User = require("./models/user");
 const charactersController = require("./controllers/characters");
 const randomCharController = require("./controllers/randomChar");
 const PORT = process.env.PORT || 7000;
@@ -44,7 +43,7 @@ mongoose.connection.once("open", () => {
  * HELPER FUNCTIONS *
  ********************/
 function createPasswordHash(password, salt) {
-  return bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(salt));
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(salt));
 }
 
 /*********************
@@ -81,7 +80,7 @@ app.post("/login", async (req, res) => {
 });
 
 /********************
- *  NAVI.HEYLISTEN  *
+ *  PORT  *
  ********************/
 app.listen(PORT, () => {
   console.log("🎉🎊", "celebrations happening on port", PORT, "🎉🎊");

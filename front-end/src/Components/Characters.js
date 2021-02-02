@@ -11,9 +11,6 @@ function AllCharPage() {
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-
-
-
   /*****************
    * GET ALL CHARS *
    ****************/
@@ -22,7 +19,10 @@ function AllCharPage() {
     try {
       const response = await fetch("http://localhost:7000/characters");
       const data = await response.json();
-      const userCharacters = data.filter(char => char.createdBy !== window.localStorage.getItem("currentUsername"));
+      const userCharacters = data.filter(
+        (char) =>
+          char.createdBy !== window.localStorage.getItem("currentUsername")
+      );
       setCharacters(userCharacters);
     } catch (error) {
       console.error(error);
@@ -39,8 +39,8 @@ function AllCharPage() {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
-          Authorization: token
-        }
+          Authorization: token,
+        },
       });
       if (!token) {
         return alert("Please Login before deleting!");
@@ -89,9 +89,9 @@ function AllCharPage() {
         const response = await fetch("http://localhost:7000/characters", {
           method: "POST",
           headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
           },
-          body: JSON.stringify(generatedCharacter)
+          body: JSON.stringify(generatedCharacter),
         });
         if (!token) {
           return alert("Please Login before continuing!");
@@ -131,15 +131,20 @@ function AllCharPage() {
       <div className="character-background">
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
-          <p id="my-characters-p">View and manage all your characters, or create a new one.</p>
+          <p id="my-characters-p">
+            View and manage all your characters, or create a new one.
+          </p>
           <div>
-
             <Link to="/CreateCharacterForm">
               <button id="btn">CREATE</button>
             </Link>
-       
-            <button onClick={handleClick} id="btn" >GENERATE</button>
-            <p id="my-characters-p">Create a new character, or generate a random character.</p>
+
+            <button onClick={handleClick} id="btn">
+              GENERATE
+            </button>
+            <p id="my-characters-p">
+              Create a new character, or generate a random character.
+            </p>
           </div>
         </div>
         <div id="character-list">
@@ -151,8 +156,7 @@ function AllCharPage() {
                 }
                 return (
                   <li key={character._id}>
-                    <Card style={{backgroundColor: "rgb(44 90 117)"}} >
-                    {/* p-2 mb-2 bg-dark text-white */}
+                    <Card style={{ backgroundColor: "rgb(44 90 117)" }}>
                       <Card.Img
                         variant="top"
                         src={character.image}
@@ -160,48 +164,67 @@ function AllCharPage() {
                         className="rounded mx-auto d-block"
                       />
                       <Card.Body>
-                        <Card.Title style={{color: "white"}}>{character.name}</Card.Title>
-                        <Card.Text style={{color: "white"}}>
+                        <Card.Title style={{ color: "white" }}>
+                          {character.name}
+                        </Card.Title>
+                        <Card.Text style={{ color: "white" }}>
                           {character.race} | {character.characterClass}
                         </Card.Text>
-                        <Button style={{ backgroundColor: "rgb(44 90 117)", borderColor: "rgb(44 90 117)" }}>
-                      <Link to={`/characters/${character._id}`} style={{color: "white"}}>VIEW</Link>
-                    </Button>
-                    <Button style={{ backgroundColor: "rgb(44 90 117)", borderColor: "rgb(44 90 117)" }}>
-                      <div id="link">
-                      <Link to={`/UpdateCharacterForm/${character._id}`} style={{color: "white"}}>
-                        EDIT
-                      </Link>
-                      </div>
-                    </Button>
-                    <button id="btn" variant="primary" onClick={handleShow}>
-                      DELETE
-                    </button>
-                    <Modal show={showModal} onHide={handleClose}>
-                      <Modal.Header>
-                        <Modal.Title>Delete Character</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        Are you sure you want to delete this character?
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                          Close
-                        </Button>
                         <Button
-                          variant="primary"
-                          onClick={() => {
-                            deleteCharacter(character._id);
-                            handleClose();
+                          style={{
+                            backgroundColor: "rgb(44 90 117)",
+                            borderColor: "rgb(44 90 117)",
                           }}
                         >
-                          DELETE
+                          <Link
+                            to={`/characters/${character._id}`}
+                            style={{ color: "white" }}
+                          >
+                            VIEW
+                          </Link>
                         </Button>
-                      </Modal.Footer>
-                    </Modal>
+                        <Button
+                          style={{
+                            backgroundColor: "rgb(44 90 117)",
+                            borderColor: "rgb(44 90 117)",
+                          }}
+                        >
+                          <div id="link">
+                            <Link
+                              to={`/UpdateCharacterForm/${character._id}`}
+                              style={{ color: "white" }}
+                            >
+                              EDIT
+                            </Link>
+                          </div>
+                        </Button>
+                        <button id="btn" variant="primary" onClick={handleShow}>
+                          DELETE
+                        </button>
+                        <Modal show={showModal} onHide={handleClose}>
+                          <Modal.Header>
+                            <Modal.Title>Delete Character</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
+                            Are you sure you want to delete this character?
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                              Close
+                            </Button>
+                            <Button
+                              variant="primary"
+                              onClick={() => {
+                                deleteCharacter(character._id);
+                                handleClose();
+                              }}
+                            >
+                              DELETE
+                            </Button>
+                          </Modal.Footer>
+                        </Modal>
                       </Card.Body>
                     </Card>
-                  
                   </li>
                 );
               })}
@@ -210,9 +233,20 @@ function AllCharPage() {
           <h1 id="ready">Ready to start adventuring?</h1>
           <Link to="/Tavern">
             <button id="letsgo">Let's Go!</button>
-          
           </Link>
-          
+          {/* // radio button test */}
+          <div>
+            <div>
+              <label>
+                <input type="radio" value="dwarf" name="avatar" />
+                Dwarf
+              </label>
+              <label>
+                <input type="radio" value="elf" name="avatar" />
+                Elf
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -1,3 +1,6 @@
+/***************
+ *   IMPORTS   *
+ ***************/
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -21,15 +24,17 @@ import Login from "./Components/Login";
 import { useState, useEffect } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 
+/***********
+ *   APP   *
+ ***********/
 function App(props) {
   const [loggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
   const [currentName, setUsername] = useState(null);
 
-  /*****************
-   * LOGOUT *
-   ****************/
-
+  /***************
+   *   LOGOUT   *
+   ***************/
   const handleLogOut = () => {
     localStorage.clear();
     setIsLoggedIn(false);
@@ -37,13 +42,16 @@ function App(props) {
     props.history.push("/Login");
   };
 
-  
+  // get user id from server, set to state
 
+  /***************
+   *   LOG IN   *
+   ***************/
   const userLogin = async (event, username, pass) => {
     event.preventDefault();
     const body = JSON.stringify({
       username: username,
-      password: pass
+      password: pass,
     });
     try {
       const response = await fetch(`http://localhost:7000/login`, {
@@ -51,19 +59,19 @@ function App(props) {
         headers: {
           "Content-type": "application/json",
         },
-        body
+        body,
       });
 
       const data = await response.json();
       console.log(response);
-      
+
       window.localStorage.setItem("token", `Bearer ${data.token}`);
       setToken(`Bearer ${data.token}`);
       window.localStorage.setItem("currentUsername", username);
       setUsername(username);
-      
+
       setIsLoggedIn(true);
-      alert("You are logged in. Welcome back!")
+      alert("You are logged in. Welcome back!");
       props.history.push("/Characters");
     } catch (error) {
       setIsLoggedIn(false);

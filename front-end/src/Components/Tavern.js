@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalFooter,
   ModalTitle,
+  Image,
 } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import wizardbook from "../images/wizardbook.png";
@@ -44,12 +45,14 @@ function Tavern() {
 
   return (
     <>
-      <div>
-        <h1>Party time!</h1>
-        <p>
-          Tavern music is playing loudly, the drinks are flowing and you are
-          reminiscing with your adventuring party.
-        </p>
+      <div id="tavern-background-image">
+        <div id="tavern-chat">
+          <h1>Party time!</h1>
+          <p>
+            Tavern music is playing loudly, the drinks are flowing and you are
+            reminiscing with your adventuring party.
+          </p>
+        </div>
         <Button
           variant="primary"
           onClick={handleShow}
@@ -162,6 +165,11 @@ function Tavern() {
             done. Now get a move on...and good luck, adventurer. You're going to
             need it. For few who have traveled this path have returned to tell
             the tale."
+            <Image
+              src={wizardbook}
+              id="wizard-book-image"
+              alt="wizard-book"
+            ></Image>
           </ModalBody>
           <ModalFooter>
             <Link to="./battle">
