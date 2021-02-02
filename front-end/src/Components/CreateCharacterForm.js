@@ -58,6 +58,7 @@ const CreateCharacterForm = (props) => {
     const intelligence = intelligenceInput.current.value;
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
+    const createdBy = window.localStorage.getItem("currentUsername");
 
     const body = JSON.stringify({
       name,
@@ -77,6 +78,7 @@ const CreateCharacterForm = (props) => {
       intelligence,
       wisdom,
       charisma,
+      createdBy
     });
 
     

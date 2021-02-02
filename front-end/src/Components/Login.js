@@ -10,12 +10,9 @@ const LoginForm = (props) => {
   const clientId =
     "279098454783-6ifmp48rjph5516k7i7hajcsfshh8h2a.apps.googleusercontent.com";
 
-  const login = async (event, username, pass) => {
-    
-    username = nameInput.current.value;
-    pass = passwordInput.current.value;
+  const login = async (event) => {
     try {
-      props.userLogin(event, username, pass);
+      props.userLogin(event, nameInput.current.value, passwordInput.current.value);
     } catch (error) {
       console.log(error);
     }

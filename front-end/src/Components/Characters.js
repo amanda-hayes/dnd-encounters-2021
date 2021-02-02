@@ -11,17 +11,6 @@ function AllCharPage() {
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-  /*****************
-   * CHECK LOGIN *
-   ****************/
-
-  const checkLogin = (props) => {
-    if (token) {
-      setIsLoggedIn("LOGGED IN");
-    } else {
-      setIsLoggedIn("LOGGED OUT");
-    }
-  };
 
 
 
@@ -33,7 +22,8 @@ function AllCharPage() {
     try {
       const response = await fetch("http://localhost:7000/characters");
       const data = await response.json();
-      setCharacters(data);
+      const userCharacters = data.filter(char => char.createdBy !== window.localStorage.getItem("currentUsername"));
+      setCharacters(userCharacters);
     } catch (error) {
       console.error(error);
     }

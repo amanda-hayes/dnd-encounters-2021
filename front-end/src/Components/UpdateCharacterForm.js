@@ -40,7 +40,7 @@ const UpdateCharacterForm = (props) => {
     const intelligence = intelligenceInput.current.value;
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
-  
+    const createdBy = window.localStorage.getItem("currentUsername");
     
     const body = JSON.stringify({
       name,
@@ -59,6 +59,7 @@ const UpdateCharacterForm = (props) => {
       intelligence,
       wisdom,
       charisma,
+      createdBy
     });
     console.log(body);
     // event.currentTarget.reset();

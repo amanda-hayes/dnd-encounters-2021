@@ -19,27 +19,12 @@ import YouLose from "./Components/YouLose";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
 import { useState, useEffect } from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 function App(props) {
   const [loggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
-  const [userId, setUserId] = useState(null);
-
-  // Get a user id
-  // const fetchUserId = async () => {
-  // try {
-  //   const response = await fetch("http://localhost:7000/login");
-  //   const data = await response.json();
-  //   console.log("data: " + data);
-
-  //   return data._id;
-  // } catch (error) {
-  //   console.error(error);
-  // }
-  // return null;
-  //   return "600cdecd78275026de953dee";
-  // };
+  const [currentName, setUsername] = useState(null);
 
   /*****************
    * LOGOUT *
@@ -51,6 +36,8 @@ function App(props) {
     alert("You have been logged out.");
     props.history.push("/Login");
   };
+
+  
 
   const userLogin = async (event, username, pass) => {
     event.preventDefault();
@@ -72,6 +59,8 @@ function App(props) {
       
       window.localStorage.setItem("token", `Bearer ${data.token}`);
       setToken(`Bearer ${data.token}`);
+      window.localStorage.setItem("currentUsername", username);
+      setUsername(username);
       
       setIsLoggedIn(true);
       alert("You are logged in. Welcome back!")
@@ -85,6 +74,7 @@ function App(props) {
   useEffect(() => {
     if (window.localStorage.getItem("token")) {
       setToken(window.localStorage.getItem("token"));
+      setUsername(window.localStorage.getItem("currentUsername"));
       setIsLoggedIn(true);
     }
   }, []);
@@ -93,7 +83,7 @@ function App(props) {
     <>
       <div className="App">
         <div className="nav-routes" />
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg">
           <Navbar.Brand href="/">D&D Encounters</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
