@@ -1,5 +1,6 @@
 import "../App.css";
 import { useRef } from "react";
+import { Form } from 'react-bootstrap';
 
 const RegisterForm = (props) => {
   const usernameInput = useRef(null);
@@ -42,7 +43,7 @@ const RegisterForm = (props) => {
           suggest passwords be at least 8 characters with letters, numbers, and
           special characters.
         </p>
-        <form onSubmit={register} method="post">
+        <Form onSubmit={register} method="post">
           <label>Username</label>
           <input type="text" name="username" ref={usernameInput} />
           <br />
@@ -53,7 +54,7 @@ const RegisterForm = (props) => {
           <input type="password" name="confirmpassword" ref={confirmPasswordInput} />
           <br />
           <input type="submit" value="REGISTER" id="submit-btn" />
-        </form>
+        </Form>
       </div>
     </>
   );

@@ -11,7 +11,7 @@
 *.sln.docstates
 */.vscode
 *.env
-**/.eslintcache
+*.eslintcache
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)

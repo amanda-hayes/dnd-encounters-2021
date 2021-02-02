@@ -91,7 +91,7 @@ function AllCharPage() {
           headers: {
             "Content-type": "application/json"
           },
-          body: JSON.stringify(generatedCharacter),
+          body: JSON.stringify(generatedCharacter)
         });
         if (!token) {
           return alert("Please Login before continuing!");
@@ -164,10 +164,10 @@ function AllCharPage() {
                         <Card.Text style={{color: "white"}}>
                           {character.race} | {character.characterClass}
                         </Card.Text>
-                        <button id="btn">
+                        <Button style={{ backgroundColor: "rgb(44 90 117)", borderColor: "rgb(44 90 117)" }}>
                       <Link to={`/characters/${character._id}`} style={{color: "white"}}>VIEW</Link>
-                    </button>
-                    <Button>
+                    </Button>
+                    <Button style={{ backgroundColor: "rgb(44 90 117)", borderColor: "rgb(44 90 117)" }}>
                       <div id="link">
                       <Link to={`/UpdateCharacterForm/${character._id}`} style={{color: "white"}}>
                         EDIT

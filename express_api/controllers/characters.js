@@ -1,11 +1,17 @@
+/****************
+ *  CLASS VARS  *
+ ****************/
 const express = require("express");
 const charactersRouter = express.Router();
 const characterModel = require("../models/characterModel.js");
 
+/**********
+ *  AUTH  *
+ **********/
 const auth = async (req, res, next) => {
   const { authorization } = req.headers;
   if (authorization) {
-    const token = authorization.split(' ')[1];
+    const token = authorization.split(" ")[1];
     try {
       const payload = await jwt.verify(token, SECRET);
       req.user = payload;
@@ -18,9 +24,9 @@ const auth = async (req, res, next) => {
   }
 };
 
-/***************
- * INDEX ROUTE *
-****************/
+/****************
+ *  ROUTE: GET  *
+ ****************/
 charactersRouter.get("/", async (req, res) => {
   try {
     const foundCharacter = await characterModel.find({});
@@ -30,27 +36,26 @@ charactersRouter.get("/", async (req, res) => {
   }
 });
 
-/***************
- * DELETE ROUTE *
-****************/
+/*******************
+ *  ROUTE: DELETE  *
+ *******************/
 charactersRouter.delete("/:id", auth, async (req, res) => {
   try {
     const deletedCharacter = await characterModel.findByIdAndRemove(
-      req.params.id,
+      req.params.id
     );
+
     res.status(200).json(deletedCharacter);
   } catch (error) {
     res.status(400).json(error);
   }
 });
 
-/***************
- * UPDATE ROUTE *
+/****************
+ *  ROUTE: PUT  *
  ****************/
 try {
   charactersRouter.put("/:id", async (req, res) => {
-    console.log(req.body);
-    
     const updatedCharacter = await characterModel.findByIdAndUpdate(
       req.params.id,
       req.body
@@ -62,9 +67,9 @@ try {
   res.status(400).json(error);
 }
 
-/***************
- * CREATE ROUTE *
- ****************/
+/******************
+ *  ROUTE: POST  *
+ ******************/
 charactersRouter.post("/", async (req, res) => {
   try {
     const createdCharacter = await characterModel.create(req.body);
@@ -74,9 +79,9 @@ charactersRouter.post("/", async (req, res) => {
   }
 });
 
-/***************
- * SHOW ROUTE *
- ****************/
+/***********************
+ *  ROUTE: GET (SHOW)  *
+ ***********************/
 charactersRouter.get("/:id", async (req, res) => {
   try {
     const foundCharacter = await characterModel.findById(req.params.id);
