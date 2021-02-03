@@ -11,6 +11,11 @@ function AllCharPage() {
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
+  function handleDeleteClick(characterId) {
+    deleteCharacter(characterId);
+    handleClose();
+  }
+
   /*****************
    * CHECK LOGIN *
    ****************/
@@ -22,8 +27,6 @@ function AllCharPage() {
       setIsLoggedIn("LOGGED OUT");
     }
   };
-
-
 
   /*****************
    * GET ALL CHARS *
@@ -145,15 +148,33 @@ function AllCharPage() {
       <div className="character-background">
         <div className="header-style">
           <h1 className="my-characters-heading">My Adventuring Party</h1>
-          <p id="my-characters-p">View and manage all your characters, or create a new one.</p>
-          <div>
-
+          <p id="my-characters-p">
+            View and manage all your characters, or create a new one.
+          </p>
+          <div id="char-buttons">
             <Link to="/CreateCharacterForm">
-              <button id="btn">CREATE</button>
+              <Button
+                style={{
+                  backgroundColor: "rgb(44 90 117)",
+                  borderColor: "rgb(44 90 117)",
+                }}
+              >
+                CREATE
+              </Button>
             </Link>
-       
-            <button onClick={handleClick} id="btn" >GENERATE</button>
-            <p id="my-characters-p">Create a new character, or generate a random character.</p>
+
+            <Button
+              onClick={handleClick}
+              style={{
+                backgroundColor: "rgb(44 90 117)",
+                borderColor: "rgb(44 90 117)",
+              }}
+            >
+              GENERATE
+            </Button>
+            <p id="my-characters-p">
+              Create a new character, or generate a random character.
+            </p>
           </div>
         </div>
         <div id="character-list">
@@ -165,57 +186,82 @@ function AllCharPage() {
                 }
                 return (
                   <li key={character._id}>
-                    <Card style={{backgroundColor: "rgb(44 90 117)"}} >
-                    {/* p-2 mb-2 bg-dark text-white */}
+                    <Card style={{ backgroundColor: "rgb(44 90 117)" }}>
                       <Card.Img
                         variant="top"
-                        src={character.thumbnail}
+                        src={character.image}
                         id="thumbnail"
                         className="rounded mx-auto d-block"
                       />
                       <Card.Body>
-                        <Card.Title style={{color: "white"}}>{character.name}</Card.Title>
-                        <Card.Text style={{color: "white"}}>
+                        <Card.Title style={{ color: "white" }}>
+                          {character.name}
+                        </Card.Title>
+                        <Card.Text style={{ color: "white" }}>
                           {character.race} | {character.characterClass}
                         </Card.Text>
-                        <button id="btn">
-                      <Link to={`/characters/${character._id}`} style={{color: "white"}}>VIEW</Link>
-                    </button>
-                    <button id="btn">
-                      <div id="link">
-                      <Link to={`/UpdateCharacterForm/${character._id}`} style={{color: "white"}}>
-                        EDIT
-                      </Link>
-                      </div>
-                    </button>
-                    <button id="btn" variant="primary" onClick={handleShow}>
-                      DELETE
-                    </button>
-                    <Modal show={showModal} onHide={handleClose}>
-                      <Modal.Header>
-                        <Modal.Title>Delete Character</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        Are you sure you want to delete this character?
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                          Close
+                        <Button
+                          style={{
+                            backgroundColor: "rgb(44 90 117)",
+                            borderColor: "rgb(44 90 117)",
+                          }}
+                        >
+                          <Link
+                            to={`/characters/${character._id}`}
+                            style={{ color: "white" }}
+                          >
+                            VIEW
+                          </Link>
+                        </Button>
+                        <Button
+                          style={{
+                            backgroundColor: "rgb(44 90 117)",
+                            borderColor: "rgb(44 90 117)",
+                          }}
+                        >
+                          <div id="link">
+                            <Link
+                              to={`/UpdateCharacterForm/${character._id}`}
+                              style={{ color: "white" }}
+                            >
+                              EDIT
+                            </Link>
+                          </div>
                         </Button>
                         <Button
                           variant="primary"
-                          onClick={() => {
-                            deleteCharacter(character._id);
-                            handleClose();
+                          style={{
+                            backgroundColor: "rgb(44 90 117)",
+                            borderColor: "rgb(44 90 117)",
                           }}
+                          onClick={handleShow}
                         >
                           DELETE
                         </Button>
-                      </Modal.Footer>
-                    </Modal>
+                        <Modal show={showModal} onHide={handleClose}>
+                          <Modal.Header>
+                            <Modal.Title>Delete Character</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
+                            Are you sure you want to delete this character?
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                              Close
+                            </Button>
+                            <Button
+                              variant="primary"
+                              onClick={() => {
+                                deleteCharacter(character._id);
+                                handleClose();
+                              }}
+                            >
+                              DELETE
+                            </Button>
+                          </Modal.Footer>
+                        </Modal>
                       </Card.Body>
                     </Card>
-                  
                   </li>
                 );
               })}
@@ -223,10 +269,17 @@ function AllCharPage() {
           </ul>
           <h1 id="ready">Ready to start adventuring?</h1>
           <Link to="/Tavern">
-            <button id="letsgo">Let's Go!</button>
-          
+            <Button
+              style={{
+                backgroundColor: "rgb(44 90 117)",
+                borderColor: "rgb(44 90 117)",
+              }}
+            >
+              Let's Go!
+            </Button>
+            <br />
+            <br />
           </Link>
-          
         </div>
       </div>
     </>

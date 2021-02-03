@@ -22,6 +22,8 @@ const UpdateCharacterForm = (props) => {
   const characterDetailRouteMatch = useRouteMatch("/UpdateCharacterForm/:id");
   const charId = characterDetailRouteMatch.params.id;
 
+  // use state
+
   const updateCharacter = async (event) => {
     event.preventDefault();
     const name = updateNameInput.current.value;
@@ -40,8 +42,8 @@ const UpdateCharacterForm = (props) => {
     const intelligence = intelligenceInput.current.value;
     const wisdom = wisdomInput.current.value;
     const charisma = charismaInput.current.value;
-  
-    
+    const createdBy = window.localStorage.getItem("currentUsername");
+
     const body = JSON.stringify({
       name,
       race,
@@ -59,6 +61,7 @@ const UpdateCharacterForm = (props) => {
       intelligence,
       wisdom,
       charisma,
+      createdBy,
     });
     console.log(body);
     // event.currentTarget.reset();
@@ -71,22 +74,21 @@ const UpdateCharacterForm = (props) => {
           headers: {
             "Content-type": "application/json",
           },
-          body: body
+          body: body,
         }
       );
       const data = await response.json();
-        console.log(data);
+      console.log(data);
       props.history.push("/characters");
     } catch (error) {
       console.error(error);
     }
   };
 
-
   return (
     <>
       <div className="update-background">
-          <Link to="/Characters">Go Back</Link>
+        <Link to="/Characters">Go Back</Link>
         <div className="heading-with-form">
           <h2 id="update-char-h2">Update Character</h2>
           <form onSubmit={updateCharacter}>

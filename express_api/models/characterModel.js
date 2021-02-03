@@ -1,3 +1,6 @@
+/***************
+ *   IMPORTS   *
+ ***************/
 const { Schema, model } = require("mongoose");
 
 const characterSchema = Schema(
@@ -22,7 +25,7 @@ const characterSchema = Schema(
     thumbnail: { type: String, required: false },
     initiative: { type: Number, required: false },
     characterType: { type: String, required: false },
-    // createdBy: { type: String, required: false }
+    createdBy: { type: String, required: false },
   },
   { strict: false }
 );

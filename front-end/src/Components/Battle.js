@@ -1,32 +1,57 @@
+/***************
+ *   IMPORTS   *
+ ***************/
 import "../App.css";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import beholder from "../beholder.jpeg";
 import d20 from "../images/d20.png";
 import d20natone from "../images/d20natone.png";
 
+/**************
+ *   BATTLE   *
+ **************/
 function Battle() {
   const [playerCharacters, updatePlayerCharactersList] = useState([]);
   const [open, setOpen] = useState(true);
-  const onCloseModal = () => setOpen(false);
   const [openBattle, setOpenBattle] = useState(false);
+  const [openDiceModal, setOpenDiceModal] = useState(false);
+  const [modalContent, setModalContent] = useState([]);
+
+  const onCloseModal = () => setOpen(false);
   const onOpenBattle = () => setOpenBattle(true);
   const onCloseBattle = () => setOpenBattle(false);
-  const [openDiceModal, setOpenDiceModal] = useState(false);
   const onOpenDiceRollModal = () => setOpenDiceModal(true);
   const onCloseDiceRollModal = () => setOpenDiceModal(false);
-  const [modalContent, setModalContent] = useState([]);
+
   let history = useHistory();
+
+  function chooseOneMonster(characters) {
+    const monsters = characters.filter((mon) => mon.characterType !== "PC");
+
+    if (monsters.length > 1) {
+      let randomIndex = Math.round(Math.random() * (monsters.length - 1));
+      let monstaaaaa = monsters[randomIndex];
+
+      const battleCrew = characters.filter(
+        (mon) => mon.characterType !== "NPC" || mon.name !== monstaaaaa.name
+      );
+
+      return battleCrew;
+    }
+
+    return characters;
+  }
 
   const fetchPlayerCharacters = async () => {
     try {
       const response = await fetch("http://localhost:7000/characters");
       const charactersData = await response.json();
 
-      updatePlayerCharactersList(charactersData);
+      updatePlayerCharactersList(chooseOneMonster(charactersData));
     } catch (error) {
       console.error(error);
     }
@@ -43,14 +68,17 @@ function Battle() {
       (npc) => npc.characterType === "NPC"
     );
 
-    if (monster._id !== event.target.value) {
+    let randomIndex = Math.round(Math.random() * (monster.length - 1));
+    let generatedMonster = monster[randomIndex];
+
+    if (generatedMonster._id !== event.target.value) {
       const roll = rollAD20();
 
-      if (roll >= monster.armorClass) {
-        monster.HP -= 4;
+      if (roll >= generatedMonster.armorClass) {
+        generatedMonster.HP -= 4;
         alert(`It's a hit! The Beholder takes 4 damage!`);
 
-        if (monster.HP <= 0) {
+        if (generatedMonster.HP <= 0) {
           history.push("/YouWin");
           alert(
             `You did it! You looted the monster and retrieved the precious goldfish!`
@@ -162,18 +190,13 @@ function Battle() {
     <>
       <div className="battle-background">
         <div>
-          <br />
+          <h1>Time for Battle</h1>
           <img src={d20natone} alt="d20natone" className="D20natone-photo" />
           <img src={d20} alt="d20" className="D20-photo" />
           <br />
           <Modal open={open} onClose={onCloseModal} center>
             <h2>On your way!</h2>
-            <p
-              classNames={{
-                overlay: "tavern-overlay",
-                modal: "tavern-modal",
-              }}
-            >
+            <p>
               You're traveling through the forest....suddenly...you hear a
               terrifying sound. The blood drains from your party member's faces
               as you search for the source.
@@ -184,7 +207,15 @@ function Battle() {
             </button>
           </Modal>
 
-          <button onClick={onOpenBattle}>WHAT'S THAT SOUND?</button>
+          <Button
+            onClick={onOpenBattle}
+            style={{
+              backgroundColor: "#c80004",
+              borderColor: "white",
+            }}
+          >
+            WHAT'S THAT SOUND?
+          </Button>
           <Modal
             open={openBattle}
             onClose={onCloseBattle}
@@ -193,17 +224,25 @@ function Battle() {
           >
             <h2>Oh no!</h2>
             <p>
-              A Beholder appears and it's guarding the treasure you so
+              A monster appears and it's guarding the treasure you so
               desperately need! It's time to roll for initiative!
             </p>
-            <img src={beholder} alt="beholder" />
             <br />
             <button onClick={onCloseBattle} id="tavern-button">
               FIGHT
             </button>
           </Modal>
         </div>
-        <button onClick={rollInitClickHandler}>ROLL INITIATIVE</button>
+        <br />
+        <Button
+          onClick={rollInitClickHandler}
+          style={{
+            backgroundColor: "#3e236e",
+            borderColor: "white",
+          }}
+        >
+          ROLL INITIATIVE
+        </Button>
         <Modal
           open={openDiceModal}
           onClose={onCloseDiceRollModal}
@@ -218,16 +257,20 @@ function Battle() {
         </Modal>
         <br />
         <br />
-        <h2 id="battle-page-h2">Players</h2>
+        <p id="battle-p">
+          PLAYERS:
+          <br />
+          In order of their initiative rolls
+          <br />
+          Click "ATTACK" when you're ready to take your turn or "SHOUT" to talk
+          some smack! Good luck!
+        </p>
         <ul>
           {playerCharacters.map((player) => {
             return (
               <li key={player._id} id="battle-character-list">
-                {/* <img src={player.thumbnail} id="thumbnail" />
-                {player.name} <br /> HP: {player.HP} | Armor Class:{" "}
-                {player.armorClass} | INIT: {player.initiative} */}
                 <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={player.thumbnail} />
+                  <Card.Img variant="top" src={player.image} />
                   <Card.Body>
                     <Card.Title>{player.name}</Card.Title>
                     <Card.Text>
@@ -238,12 +281,27 @@ function Battle() {
                   </Card.Body>
                 </Card>
                 <br />
-                <button value={player._id} onClick={shoutClickHandler}>
+                <Button
+                  value={player._id}
+                  onClick={shoutClickHandler}
+                  style={{
+                    backgroundColor: "#3e236e",
+                    borderColor: "white",
+                  }}
+                >
                   SHOUT
-                </button>
-                <button value={player._id} onClick={attackClickHandler}>
+                </Button>
+                ||
+                <Button
+                  value={player._id}
+                  onClick={attackClickHandler}
+                  style={{
+                    backgroundColor: "#c80004",
+                    borderColor: "white",
+                  }}
+                >
                   ATTACK
-                </button>
+                </Button>
               </li>
             );
           })}

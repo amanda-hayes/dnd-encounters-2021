@@ -1,8 +1,4 @@
- * {
-  box-sizing: border-box;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap");
 
 .D20-photo {
   height: 20vmin;
@@ -52,432 +48,325 @@
   }
 }
 
-/* html {
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-} */
-
-@font-face {
-  font-family: 'Luminari';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Luminari'), url('Luminari-Regular.woff') format('woff');
+@media only screen and (min-width: 680px) {
+  @font-face {
+    font-family: "Luminari";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Luminari"), url("Luminari-Regular.woff") format("woff");
   }
 
-
-h1 {
-  font-family: 'Luminari';
-}
-
-#ready {
-  color: white;
-}
-
-
-p {
-  font-size: 1.5rem;
-}
-
-
-ul {
-  margin: 0px;
-  display: block;
-  background-color: rgba(0, 0, 0, 0.397);
-}
-
-
-li {
-  list-style: none;
-   /* background-color: rgb(3, 65, 87);
-  margin: 10px;
-  width: 30%;
-  padding: 10px;
-  padding-top: 20px;
-  border-radius: 5px;
-  font-weight: bold; */
-  /* height: 150px; */
-  /* box-shadow: 5px 10px 8px #050505af;*/ 
-  display: inline-block; 
-  text-align: center;
-  margin: 10px;
-}
-
-
-
-/* input {
-  padding: 5px;
-  font-size: 14px;
-} */
-
-/* label { */
-  /* width: 200px;
-  display: inline-block;
-  font-weight: bold; */
-  /* text-align: left;  */
-/* } */
-
-
-button {
-  cursor: pointer;
-  background-color: white; 
-  border: none;
-  color: black;
-  box-shadow: 5px 8px 8px #050505af;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  transition-duration: 0.4s;
-  font-family: 'Century Gothic';
-  border-radius: 5px;
+  h1 {
+    font-family: "Luminari";
   }
 
-/* button:hover {
-    background-color: #60636090; 
+  #ready {
     color: white;
-}
-
-#submit-btn {
-  cursor: pointer;
-  padding: .5em;
-  margin-top: 1rem;
-  margin-left: .5rem;
-  margin-right: .5rem;
-  background-color: white; 
-  border: none;
-  color: black;
-  box-shadow: 5px 8px 8px #050505af;
-  font-size: 1rem; */
-  /* padding: 15px 32px; */
-  /* text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 5px;
-  transition-duration: 0.4s;
-} 
-
-#click-here {
-  color: white;
-} */
-
-
- #thumbnail {
-  max-width: 70px;
-  padding-top: 10px;
-  /* float: left; */
   }
 
+  p {
+    font-size: 1rem;
+  }
 
-#stats-list {
-  text-align: left;
-  font-size: 1.3rem;
-  max-width: 800px;
-  margin-left: 100px;
-} 
+  ul {
+    margin: 0px;
+    display: block;
+  }
 
-#my-characters-p {
-  color: white;
+  li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    color: black;
+    box-shadow: 5px 8px 8px #050505af;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    font-family: "Century Gothic";
+    border-radius: 5px;
+  }
+
+  #submit-btn {
+    cursor: pointer;
+    padding: 0.5em;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: white;
+    border: none;
+    color: black;
+    box-shadow: 5px 8px 8px #050505af;
+    font-size: 1rem;
+  }
+
+  #click-here {
+    color: white;
+  }
+
+  #thumbnail {
+    max-width: 70px;
+    padding-top: 10px;
+  }
+
+  #stats-list {
+    text-align: left;
+    font-size: 1.3rem;
+    margin-left: 100px;
+  }
+
+  #my-characters-p {
+    color: white;
+  }
+
+  .character-background {
+    background-image: url("./images/dnd-table-1.jpg");
+    background-size: cover;
+    background-position: fixed;
+    min-height: 100vh;
+  }
+
+  #create-char-background-img {
+    /* background-image: url("./images/dnd-dice.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  #letsgo {
+    margin-bottom: 20px;
+  }
+
+  .parchment-background {
+    background-image: url("./images/parchment-paper.png");
+    height: 2000px;
+    width: 100%;
+    padding: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .header-style {
+    padding: 20px;
+    background-color: rgba(4, 4, 4, 0.397);
+  }
+
+  .my-characters-heading {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 5px 10px 8px #050505af;
+  }
+
+  .update-background {
+    background-image: url("./images/party.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+  }
+
+  form {
+    text-align: left;
+    padding: 20px;
+    margin: 20px;
+    /* font-size: 24px; */
+    /* max-width: 600px; */
+  }
+
+  #create-char-form {
+    background-image: url("./images/dungeons-and-dragons.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 1000px;
+    min-width: 1500px;
+    color: white;
+    padding-top: 20px;
+    padding-left: 50px;
+  }
+
+  .viewStats {
+    width: 30%;
+    padding: 20px 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.432);
+    margin-top: 10px;
+    font-size: 1.5rem;
+    display: none;
+    border-radius: 5px;
+  }
+
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .create-generate-btns {
+    display: inline;
+  }
+
+  #create-new {
+    display: inline;
+    font-family: "Century Gothic";
+  }
+
+  #create-char-h2 {
+    padding-top: 10px;
+    font-family: "Luminari";
+  }
+
+  #battle-page-h2 {
+    font-family: "Luminari";
+    font-size: 2rem;
+    color: white;
+  }
+
+  #character-sheet-heading {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  /* #update-breadcrumbs {
+    text-align: left;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-top: 30px;
+  } */
+
+  .avatar {
+    max-width: 100px;
+  }
+
+  #thumbnail {
+    max-width: 70px;
+    padding-top: 10px;
+  }
+
+  .homepage {
+    background-image: url("./images/homepage-image.jpg");
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    font-size: 2rem;
+    padding: 40px;
+  }
+
+  #home-heading {
+    text-shadow: 5px 10px 8px #050505af;
+    margin-bottom: -10px;
+    padding-top: 20px;
+  }
+
+  #homepage-content {
+    background-color: rgba(0, 0, 0, 0.623);
+    box-shadow: 5px 10px 8px #050505af;
+  }
+
+  .App {
+    text-align: center;
+    font-family: "Century Gothic";
+  }
+
+  .battle-background {
+    background-image: url("./images/dungeons-and-dragons-art.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 20px;
+  }
+
+  #tavern-background-image {
+    background-image: url("./images/tavern.jpg");
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 20px;
+  }
+
+  #tavern-p {
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 10px;
+    margin: 30px;
+    font-size: 24px;
+  }
+
+  #tavern-h1 {
+    color: white;
+  }
+
+  #tavern-heading {
+    text-align: center;
+  }
+
+  #tavern-button {
+    text-align: center;
+  }
+
+  #battle-p {
+    color: white;
+    font-size: 18px;
+  }
+
+  #you-win-verbiage {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    padding-bottom: 200px;
+  }
+
+  #you-win-h1 {
+    font-size: 3rem;
+  }
+
+  #wizard-book-image {
+    text-align: center;
+    max-width: 300px;
+  }
+
+  .tavern-modal button {
+    text-align: center;
+    background-color: brown;
+    color: white;
+  }
+
+  .tavern-modal {
+    border-radius: 5px;
+  }
+
+  .react-responsive-modal-closeButton {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    margin-bottom: 25px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+  }
+
+  .battle-modal {
+    text-align: left;
+  }
 }
-
-
-.character-background {
-  background-image: url("./images/dnd-table-1.jpg");
-  background-size: cover;
-  background-position: fixed;
-
-}
-
-#letsgo {
-  margin-bottom: 20px;
-}
-
-
-.parchment-background {
-  background-image: url("./images/parchment-paper.png");
-  height: 2000px;
-  width: 100%;
-  padding: 50px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.header-style {
-  padding: 20px;
-  background-color: rgba(4, 4, 4, 0.397);
-}
-
-
-.my-characters-heading {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  color: white;
-  text-shadow: 5px 10px 8px #050505af;
-}
-
-
-
-.update-background {
-  background-image: url('./images/party.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  color: white;
-}
-
-
-/* .select {
-  padding: 5px;
-  font-size: 16px;
-}
-
-#update-char-h2 {
-  font-family: 'Luminari';
-  font-size: 3rem;
-  text-align: center;
-} */
-
-/* .heading-with-form {
-  background-color: rgba(34, 32, 32, 0.514);
-  max-width: 800px;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-} */
-
-form {
-  text-align: left;
-  padding: 20px;
-  font-size: 24px;
-  max-width: 600px;
-}
-
-
-/* .form-box {
-  background-color: rgba(128, 128, 128, 0.454);
-  width: 40%;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 10px;
-} */ */
-
- #create-char-form {
-  background-image: url('./images/dungeons-and-dragons.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 1000px;
-  min-width: 1500px;
-  color: white;
-  padding-top: 20px;
-  padding-left: 50px;
-}
-
-.viewStats {
-  width: 30%;
-  padding: 20px 0;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.432);
-  margin-top: 10px;
-  font-size: 1.5rem;
-  display: none;
-  border-radius: 5px;
-}
-
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-
-
-.create-generate-btns {
-  display: inline;
-}
-
-
-#create-new {
-  display: inline;
-  font-family: 'Century Gothic';
-}
-
-#create-char-h2 {
-  padding-top: 10px;
-  font-family: 'Luminari';
-}
-
-#battle-page-h2 {
-  font-family: 'Luminari';
-  font-size: 2rem;
-  color: white;
-}
-
-#character-sheet-heading {
-  font-size: 3rem;
-  text-align: center;
-}
-
-
-#update-breadcrumbs {
-  text-align: left;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding-left: 30px;
-  padding-top: 30px;
-}
-
-/* .topnav {
-  background-color: #333;
-  overflow: hidden;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-} */
-
-#avatar {
-  max-width: 100px;
-}
-
-
-.homepage {
-  background-image: url('./images/homepage-image.jpg');
-  background-size: cover;
-  height: 100vh;
-  color: white;
-  font-size: 2rem;
-  padding: 40px;
-}
-
-#home-heading {
-  text-shadow: 5px 10px 8px #050505af;
-  margin-bottom: -10px;
-  padding-top: 20px;
-}
-
-#homepage-content {
-  background-color: rgba(0, 0, 0, 0.623);
-  box-shadow: 5px 10px 8px #050505af;
-}
-
-/* #battle-character-list {
-  display: inline-block;
-  color: white;
-  width: 500px;
-  background-color: rgb(30, 79, 131);
-} */
-
-.App {
-  text-align: center;
-  /* background-size: cover; */
-  /* color: black;*/
-  font-family: "Century Gothic";
-  /* height: 100vh; */
-}
-
-/* #character-container {
-  display: inline-flex;
-  height: 100%;
-} */
-
-/* img {
-  width: 400px;
-  box-shadow: 5px 10px 8px #050505af;
-  border-radius: 5px;
-  margin-left: 10px;
-  margin-right: -10px;
-} */
-
-.battle-background {
-  background-image: url('./images/forest.jpg');
-  background-size: cover;
-  padding-top: 20px;
-}
-
-
-
- #tavern-background-image {
-  background-image: url('./images/tavern.jpg');
-  background-size: contain;
-  height: 1500px;
-  padding-top: 20px;
-}
-
-
-#tavern-button {
-  text-align: center;
-}
-
-#you-win-verbiage {
-  margin-left: 200px;
-  margin-right: 200px;
-  margin-top: 50px;
-  padding-bottom: 200px;
-}
-
-#you-win-h1 {
-  font-size: 3rem;
-}
-
-#wizard-book-image {
-  text-align: center;
-  max-width: 300px;
-}
-
-
-.tavern-modal p {
-  font-size: 1.2rem;
-}
-
-.tavern-modal button {
-  text-align: center;
-  background-color: brown;
-  color: white;
-
-}
-
-.tavern-modal {
-  border-radius: 5px;
-}
-
-.react-responsive-modal-closeButton {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  margin-bottom: 25px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  background-color: transparent;
-  display: flex;
-}
-
-.battle-modal {
-  text-align: left;
-}
-
-.battle-modal p{
-  border-radius: 5px;
-} 
 
 /* MOBILE DESIGN */
 
@@ -485,46 +374,59 @@ form {
 
 @media only screen and (max-width: 360px) {
   img {
-    max-width: 250px;
+    max-width: 100vw;
   }
+
   #my-characters-p {
     color: white;
     font-size: 16px;
   }
-  form {
-    text-align: left;
-    font-size: 16px;
-    max-width: 200px;
+
+  #create-char-form {
+    text-align: center;
+    width: 360px;
   }
+
   input {
     margin: 10px;
+    font-size: 16px;
   }
+
   label {
-    margin: 2px;
+    font-size: 18px;
   }
+
   select {
     margin-bottom: 5px;
   }
+
   h1 {
     font-size: 24px;
   }
+
   h2 {
     font-size: 20px;
   }
+
   p {
     font-size: 16px;
     padding: 5px;
   }
+
   .select {
-    max-width: 220px;
+    max-width: 350px;
     margin: 5px 5px;
   }
+
   .submit-btn {
     margin: 5px;
   }
+
   #roll {
     margin: 20px;
+    text-align: center;
   }
+
   .create-generate-btns {
     margin: 20px;
     border-radius: 5px;
@@ -550,13 +452,266 @@ form {
     min-height: 100vh;
   }
 
+  .parchment-background {
+    background-image: url("./images/parchment-paper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
   .my-characters-heading {
     font-size: 2rem;
     margin-bottom: 10px;
     color: white;
   }
+
   #char-list {
     text-align: center;
   }
 
+  #stats-list {
+    text-align: left;
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  [class*="col-"] {
+    width: 100%;
+  }
+
+  button {
+    text-align: center;
+  }
+
+  #my-characters-p {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin: 15px;
+  }
+
+  #ready {
+    color: white;
+  }
+
+  .my-characters-heading {
+    text-align: center;
+  }
+
+  #create-char-form {
+    text-align: center;
+  }
+
+  #create-char-background-img {
+    max-width: 400px;
+    text-align: center;
+  }
+
+  #create-form {
+    text-align: left;
+    margin: 15px;
+  }
+
+  #character-list {
+    text-align: center;
+  }
+
+  ul {
+    margin: 0px;
+    display: block;
+  }
+
+  button {
+    font-family: "Century Gothic";
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+  }
+
+  input {
+    margin: 10px;
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  select {
+    margin-bottom: 5px;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-family: "Luminari";
+  }
+
+  h2 {
+    font-size: 20px;
+    font-family: "Luminari";
+  }
+
+  p {
+    font-size: 16px;
+    padding: 5px;
+    font-family: "Century Gothic";
+  }
+
+  .select {
+    max-width: 350px;
+    margin: 5px 5px;
+  }
+
+  .submit-btn {
+    margin: 5px;
+  }
+
+  #roll {
+    margin: 20px;
+    text-align: center;
+  }
+
+  .create-generate-btns {
+    margin: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  #btn {
+    border-radius: 3px;
+    margin: 5px;
+    font-family: "Open Sans";
+    padding: 8px;
+    background-color: rgb(44, 90, 117);
+    color: white;
+  }
+
+  #create-char-background-img {
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .character-background {
+    background-image: url("./images/party.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  #character-container {
+    margin: 20px;
+    text-align: center;
+  }
+
+  #char-details-h1 {
+    text-align: center;
+  }
+
+  #stats-list {
+    margin: 10px;
+  }
+
+  .parchment-background {
+    background-image: url("./images/parchment-paper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+  .my-characters-heading {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    color: white;
+  }
+
+  #char-list {
+    text-align: center;
+  }
+
+  #stats-list {
+    /* text-align: left; */
+    margin-left: 20px;
+    font-size: 18px;
+    font-family: "Century Gothic";
+  }
+
+  #char-buttons {
+    text-align: center;
+    margin: 15px;
+  }
+
+  #char-details-img {
+    max-width: 200px;
+    text-align: center;
+  }
+
+  #tavern-heading {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.598);
+    padding: 10px;
+    margin: 10px;
+  }
+
+  #tavern-p {
+    font-size: 18px;
+  }
+
+  #tavern-background-image {
+    margin: auto;
+    background-image: url("./images/tavern.jpg");
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+    font-family: "Century Gothic";
+  }
+
+  #wizard-book-image {
+    text-align: center;
+    max-width: 200px;
+  }
+
+  .battle-background {
+    background-image: url("./images/dungeons-and-dragons-art.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  #battle-page-h2 {
+    font-family: "Luminari";
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.719);
+    padding: 5px;
+  }
+
+  #battle-p {
+    font-size: 18px;
+    color: white;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.452);
+  }
+
+  img.avatar {
+    max-width: 100px;
+  }
 }

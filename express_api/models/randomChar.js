@@ -1,3 +1,6 @@
+/***************
+ *   IMPORTS   *
+ ***************/
 const { Schema, model } = require("mongoose");
 
 const randomCharSchema = Schema({
@@ -22,9 +25,7 @@ const randomCharSchema = Schema({
   thumbnail: { type: String, required: false },
   initiative: { type: Number, required: false },
   characterType: { type: String, required: false },
-  createdBy: { type: String, required: false }
+  createdBy: { type: String, required: false },
 });
 
 module.exports = model("Random Char", randomCharSchema);
-
-
