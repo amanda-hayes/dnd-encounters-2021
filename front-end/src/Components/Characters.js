@@ -3,13 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Modal, Button, Card } from "react-bootstrap";
 
-function AllCharPage(props) {
+function AllCharPage() {
   const [characters, setCharacters] = useState([]);
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState([]);
   const [showModal, setShowModal] = useState([false]);
-  const [randomCharacters, setRandomCharacters] = useState([]);
-
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
@@ -18,30 +16,27 @@ function AllCharPage(props) {
     handleClose();
   }
 
-  const USERNAME = window.localStorage.getItem("currentUsername");
+  /*****************
+   * CHECK LOGIN *
+   ****************/
 
-  function getUsersCharacters(characterList) {
-    return characterList.filter((char) => char.createdBy === USERNAME);
-  }
-
-  function getUserCharactersExcept(character) {
-    return characters.filter((char) => char._id !== character._id);
-  }
-
-  function removeDuplicateRandomCharacters(gCharacter) {
-    return randomCharacters.filter((rando) => rando.name !== gCharacter.name);
-  }
+  const checkLogin = (props) => {
+    if (token) {
+      setIsLoggedIn("LOGGED IN");
+    } else {
+      setIsLoggedIn("LOGGED OUT");
+    }
+  };
 
   /*****************
    * GET ALL CHARS *
    ****************/
+
   const fetchCharacters = async () => {
     try {
       const response = await fetch("http://localhost:7000/characters");
       const data = await response.json();
-      const userCharacters = getUsersCharacters(data);
-
-      setCharacters(userCharacters);
+      setCharacters(data);
     } catch (error) {
       console.error(error);
     }
@@ -50,22 +45,34 @@ function AllCharPage(props) {
   /***************
    * DELETE CHAR *
    ****************/
+
   const deleteCharacter = async (id) => {
     try {
       const response = await fetch(`http://localhost:7000/characters/${id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
+          Authorization: token,
         },
       });
-
+      if (!token) {
+        return alert("Please Login before deleting!");
+      }
       const data = await response.json();
-      const filteredCharacters = getUserCharactersExcept(data);
+      const filteredCharacters = characters.filter(
+        (character) => character._id !== data._id
+      );
       setCharacters(filteredCharacters);
     } catch (error) {
       console.log(error);
     }
   };
+
+  /*****************
+   * GENERATE CHAR *
+   ****************/
+
+  const [randomCharacters, setRandomCharacters] = useState([]);
 
   const fetchRandomCharacters = async () => {
     try {
@@ -78,36 +85,40 @@ function AllCharPage(props) {
     }
   };
 
-  function getRandomCharacter() {
-    const randomIndex = Math.round(
-      Math.random() * (randomCharacters.length - 1)
-    );
-    const filteredCharacters = removeDuplicateRandomCharacters(
-      randomCharacters[randomIndex]
-    );
-    return setRandomCharacters(filteredCharacters);
-  }
-
-  /*****************
-   * GENERATE CHAR *
-   ****************/
   const generateChar = async () => {
     if (randomCharacters.length === 0) {
       return;
     }
+    let randomIndex = Math.round(Math.random() * (randomCharacters.length - 1));
+    let generatedCharacter = randomCharacters[randomIndex];
 
+    console.log("char dupe: " + characters.includes(generatedCharacter.name));
+    console.log(generatedCharacter.name);
     try {
-      let gCharacter = getRandomCharacter();
-
-      const response = await fetch("http://localhost:7000/characters", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(gCharacter),
-      });
-
-      setCharacters([...characters, gCharacter]);
+      if (characters.includes(generatedCharacter.name)) {
+        const filterDupe = randomCharacters.filter(
+          (rando) => rando.name !== generatedCharacter.name
+        );
+        setRandomCharacters(filterDupe);
+        generateChar();
+      } else {
+        const response = await fetch("http://localhost:7000/characters", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify(generatedCharacter),
+        });
+        if (!token) {
+          return alert("Please Login before continuing!");
+        }
+        const newRandomCharList = randomCharacters.filter(
+          (rando) => rando.name !== generatedCharacter.name
+        );
+        setRandomCharacters(newRandomCharList);
+        setCharacters([...characters, generatedCharacter]);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -121,14 +132,13 @@ function AllCharPage(props) {
   /***************
    * USE EFFECT *
    ****************/
+
   useEffect(() => {
     fetchCharacters();
     setIsLoggedIn();
     setShowModal();
     fetchRandomCharacters();
-    if (!window.localStorage.getItem("token")) {
-      props.history.push("/Login");
-    } else {
+    if (window.localStorage.getItem("token")) {
       setToken(window.localStorage.getItem("token"));
     }
   }, []);
@@ -241,7 +251,10 @@ function AllCharPage(props) {
                             </Button>
                             <Button
                               variant="primary"
-                              onClick={handleDeleteClick(character._id)}
+                              onClick={() => {
+                                deleteCharacter(character._id);
+                                handleClose();
+                              }}
                             >
                               DELETE
                             </Button>

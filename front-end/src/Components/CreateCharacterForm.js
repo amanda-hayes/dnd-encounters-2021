@@ -328,7 +328,7 @@ const CreateCharacterForm = (props) => {
                 value="dwarf"
                 name="avatars"
                 checked={avatarImage === "dwarf"}
-                onChange={(e) => {
+                onClick={(e) => {
                   setAvatar("dwarf");
                 }}
               />
@@ -358,7 +358,7 @@ const CreateCharacterForm = (props) => {
               />
               <img src={fighter} className="avatar" alt="fighter" />
             </div>
-            <div>
+            {/* <div>
               <input
                 type="radio"
                 value="rogue"
@@ -370,18 +370,6 @@ const CreateCharacterForm = (props) => {
               />
               <img src={rogue} className="avatar" alt="rogue" />
             </div>
-            {/* <div>
-              <input
-                type="radio"
-                value="fighter"
-                name="avatars"
-                checked={avatarImage === "fighter"}
-                onChange={(e) => {
-                  setAvatar("fighter");
-                }}
-              />
-              <img src={fighter} className="avatar" alt="fighter" />
-            </div> */}
             <div>
               <input
                 type="radio"
@@ -429,7 +417,7 @@ const CreateCharacterForm = (props) => {
                 }}
               />
               <img src={assassin} className="avatar" alt="assassin" />
-            </div>
+            </div> */}
 
             <br />
             <label>Strength:</label>

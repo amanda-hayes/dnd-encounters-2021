@@ -17,7 +17,7 @@ function Home() {
             home? This app is a truncated version of the roleplaying classic to
             get you a unique experience without the complexity of the full game.
           </p>
-          <Link to="/characters">
+          <Link to="/login">
             <Button
               style={{
                 backgroundColor: "rgb(44 90 117)",
