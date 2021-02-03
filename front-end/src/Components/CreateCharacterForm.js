@@ -358,7 +358,7 @@ const CreateCharacterForm = (props) => {
               />
               <img src={fighter} className="avatar" alt="fighter" />
             </div>
-            {/* <div>
+            <div>
               <input
                 type="radio"
                 value="rogue"
@@ -417,7 +417,7 @@ const CreateCharacterForm = (props) => {
                 }}
               />
               <img src={assassin} className="avatar" alt="assassin" />
-            </div> */}
+            </div>
 
             <br />
             <label>Strength:</label>
