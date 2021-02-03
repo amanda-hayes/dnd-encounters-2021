@@ -24,10 +24,6 @@ function Tavern() {
   const onOpenAcceptModal = () => setOpenAccept(true);
   const onCloseAcceptModal = () => setOpenAccept(false);
 
-  const [openChat, setOpenChat] = useState(false);
-  const onOpenChatModal = () => setOpenChat(true);
-  const onCloseChatModal = () => setOpenChat(false);
-
   const [openWizChat, setOpenWizChat] = useState(false);
   const onOpenWizChatModal = () => setOpenWizChat(true);
   const onCloseWizChatModal = () => setOpenWizChat(false);
@@ -46,13 +42,17 @@ function Tavern() {
   return (
     <>
       <div id="tavern-background-image">
-        <div id="tavern-chat">
-          <h1>Party time!</h1>
-          <p>
+        <br />
+        <br />
+        <div id="tavern-heading">
+          <h1 id="tavern-h1">Party time!</h1>
+          <p id="tavern-p">
             Tavern music is playing loudly, the drinks are flowing and you are
-            reminiscing with your adventuring party.
+            reminiscing with your adventuring party. Click on a button below to
+            interact with those around you.
           </p>
         </div>
+
         <Button
           variant="primary"
           onClick={handleShow}
@@ -68,7 +68,7 @@ function Tavern() {
             <ModalTitle>Cheers!</ModalTitle>
           </ModalHeader>
           <ModalBody>
-            Gnome: 'Oi! Watch where yer goin!'
+            Gnome: 'Oi! Why don't you get me another drink, friend?'
             <br />
             Tiefling: 'To adventure! To friendship! To free booze!'
             <br />
@@ -101,31 +101,31 @@ function Tavern() {
         <Modal show={openWizChat} onHide={onCloseWizChatModal}>
           <ModalHeader>
             <ModalTitle>
-              You approach an aged wizard sitting at a table alone, smoking his
-              pipe.
+              You approach an aged wizard sitting at a table playing cards.
             </ModalTitle>
           </ModalHeader>
           <ModalBody>
-            The wizard looks up at you and chuckles. 'So it begins...'
-            <br />
-            In a land of Myth and a time of Legend there lived a group of
-            adventurers who's destinies would sculpt the future of the world...
+            The wizard looks up at you and chuckles. 'So it begins...
+            <br />I knew you would come. In a land of Myth and a time of Legend
+            there lived a group of adventurers who's destinies would sculpt the
+            future of the world...'
           </ModalBody>
           <ModalFooter>
+            Your response:
             <Button variant="secondary" onClick={onOpenQuestChat}>
-              What are you on about?
+              Say what?
             </Button>
             <Button variant="secondary" onClick={onOpenQuestChat}>
               Go on...
             </Button>
             <Button variant="secondary" onClick={onOpenQuestChat}>
-              No thank you, goodbye!
+              Sounds fake, but okay.
             </Button>
           </ModalFooter>
         </Modal>
         <Modal show={openQuestChat} onHide={onCloseQuestChat}>
           <ModalHeader>
-            <ModalTitle>This is intriguing...</ModalTitle>
+            <ModalTitle>Sit down, friend...</ModalTitle>
           </ModalHeader>
           <ModalBody>
             The old wizard tells you a tale of intrigue and courage, of magic

@@ -190,7 +190,7 @@ function Battle() {
     <>
       <div className="battle-background">
         <div>
-          <br />
+          <h1>Time for Battle</h1>
           <img src={d20natone} alt="d20natone" className="D20natone-photo" />
           <img src={d20} alt="d20" className="D20-photo" />
           <br />
@@ -209,7 +209,10 @@ function Battle() {
 
           <Button
             onClick={onOpenBattle}
-            style={{ backgroundColor: "rgb(44 90 117)" }}
+            style={{
+              backgroundColor: "#c80004",
+              borderColor: "white",
+            }}
           >
             WHAT'S THAT SOUND?
           </Button>
@@ -230,9 +233,13 @@ function Battle() {
             </button>
           </Modal>
         </div>
+        <br />
         <Button
           onClick={rollInitClickHandler}
-          style={{ backgroundColor: "rgb(44 90 117)" }}
+          style={{
+            backgroundColor: "#3e236e",
+            borderColor: "white",
+          }}
         >
           ROLL INITIATIVE
         </Button>
@@ -250,7 +257,14 @@ function Battle() {
         </Modal>
         <br />
         <br />
-        <h2 id="battle-page-h2">Players</h2>
+        <p id="battle-p">
+          PLAYERS:
+          <br />
+          In order of their initiative rolls
+          <br />
+          Click "ATTACK" when you're ready to take your turn or "SHOUT" to talk
+          some smack! Good luck!
+        </p>
         <ul>
           {playerCharacters.map((player) => {
             return (
@@ -270,14 +284,21 @@ function Battle() {
                 <Button
                   value={player._id}
                   onClick={shoutClickHandler}
-                  style={{ backgroundColor: "rgb(44 90 117)" }}
+                  style={{
+                    backgroundColor: "#3e236e",
+                    borderColor: "white",
+                  }}
                 >
                   SHOUT
                 </Button>
+                ||
                 <Button
                   value={player._id}
                   onClick={attackClickHandler}
-                  style={{ backgroundColor: "rgb(44 90 117)" }}
+                  style={{
+                    backgroundColor: "#c80004",
+                    borderColor: "white",
+                  }}
                 >
                   ATTACK
                 </Button>

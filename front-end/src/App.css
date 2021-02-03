@@ -241,14 +241,14 @@
     text-align: center;
   }
 
-  #update-breadcrumbs {
+  /* #update-breadcrumbs {
     text-align: left;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
     padding-left: 30px;
     padding-top: 30px;
-  }
+  } */
 
   .avatar {
     max-width: 100px;
@@ -285,29 +285,43 @@
   }
 
   .battle-background {
-    background-image: url("./images/forest.jpg");
+    background-image: url("./images/dungeons-and-dragons-art.jpg");
     background-size: cover;
+    background-attachment: fixed;
     padding-top: 20px;
   }
 
   #tavern-background-image {
     background-image: url("./images/tavern.jpg");
-    background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
     padding-top: 20px;
   }
 
-  #tavern-chat {
+  #tavern-p {
     color: white;
     font-weight: bold;
     background-color: rgba(0, 0, 0, 0.55);
     padding: 10px;
-    margin: 10px;
+    margin: 30px;
+    font-size: 24px;
+  }
+
+  #tavern-h1 {
+    color: white;
+  }
+
+  #tavern-heading {
+    text-align: center;
   }
 
   #tavern-button {
     text-align: center;
+  }
+
+  #battle-p {
+    color: white;
+    font-size: 18px;
   }
 
   #you-win-verbiage {
@@ -623,6 +637,7 @@
     /* text-align: left; */
     margin-left: 20px;
     font-size: 18px;
+    font-family: "Century Gothic";
   }
 
   #char-buttons {
@@ -633,5 +648,58 @@
   #char-details-img {
     max-width: 200px;
     text-align: center;
+  }
+
+  #tavern-heading {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.598);
+    padding: 10px;
+    margin: 10px;
+  }
+
+  #tavern-p {
+    font-size: 18px;
+  }
+
+  #tavern-background-image {
+    margin: auto;
+    background-image: url("./images/tavern.jpg");
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+    font-family: "Century Gothic";
+  }
+
+  #wizard-book-image {
+    text-align: center;
+    max-width: 200px;
+  }
+
+  .battle-background {
+    background-image: url("./images/dungeons-and-dragons-art.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  #battle-page-h2 {
+    font-family: "Luminari";
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.719);
+    padding: 5px;
+  }
+
+  #battle-p {
+    font-size: 18px;
+    color: white;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.452);
   }
 }
