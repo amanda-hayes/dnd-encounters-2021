@@ -13,6 +13,11 @@ function AllCharPage(props) {
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
+  function handleDeleteClick(characterId) {
+    deleteCharacter(characterId);
+    handleClose();
+  }
+
   const USERNAME = window.localStorage.getItem("currentUsername");
 
   function getUsersCharacters(characterList) {
@@ -59,7 +64,6 @@ function AllCharPage(props) {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
-          Authorization: token,
         },
       });
 
@@ -252,10 +256,7 @@ function AllCharPage(props) {
                             </Button>
                             <Button
                               variant="primary"
-                              onClick={() => {
-                                deleteCharacter(character._id);
-                                handleClose();
-                              }}
+                              onClick={handleDeleteClick(character._id)}
                             >
                               DELETE
                             </Button>

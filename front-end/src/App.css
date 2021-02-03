@@ -132,6 +132,7 @@
     background-image: url("./images/dnd-table-1.jpg");
     background-size: cover;
     background-position: fixed;
+    min-height: 100vh;
   }
 
   #create-char-background-img {
