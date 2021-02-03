@@ -11,7 +11,7 @@ function CharacterStats(props) {
   const fetchCharacter = async () => {
     try {
       const response = await fetch(
-        `http://localhost:7000/characters/${characterDetailRouteMatch.params.id}`
+        `https://dnd-encounters-2021.herokuapp.com/api/characters/${characterDetailRouteMatch.params.id}`
       );
       const data = await response.json();
       setCharacter(data);

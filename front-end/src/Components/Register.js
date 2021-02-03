@@ -1,6 +1,6 @@
 import "../App.css";
 import { useRef } from "react";
-import { Form } from 'react-bootstrap';
+import { Form } from "react-bootstrap";
 
 const RegisterForm = (props) => {
   const usernameInput = useRef(null);
@@ -16,13 +16,16 @@ const RegisterForm = (props) => {
     });
     event.currentTarget.reset();
     try {
-      const response = await fetch("http://localhost:7000/register", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body,
-      });
+      const response = await fetch(
+        "https://dnd-encounters-2021.herokuapp.com/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body,
+        }
+      );
       if (passwordInput !== confirmPasswordInput) {
         alert("Passwords do not match!");
       } else {
@@ -51,7 +54,11 @@ const RegisterForm = (props) => {
           <input type="password" name="password" ref={passwordInput} />
           <br />
           <label>Confirm Password</label>
-          <input type="password" name="confirmpassword" ref={confirmPasswordInput} />
+          <input
+            type="password"
+            name="confirmpassword"
+            ref={confirmPasswordInput}
+          />
           <br />
           <input type="submit" value="REGISTER" id="submit-btn" />
         </Form>
