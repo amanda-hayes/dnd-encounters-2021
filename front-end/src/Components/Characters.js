@@ -20,11 +20,15 @@ function AllCharPage(props) {
   }
 
   function getUserCharactersExcept(character) {
-    return characters.filter((char) => char._id !== character._id);
+    return characters.filter(
+      (char) => char._id !== character._id && char.createdBy === USERNAME
+    );
   }
 
   function getNonUserCharactersExcept(gCharacter) {
-    return randomCharacters.filter((char) => char._id !== gCharacter._id);
+    return randomCharacters.filter(
+      (char) => char._id !== gCharacter._id && char.createdBy === USERNAME
+    );
   }
 
   function removeDuplicateRandomCharacters(gCharacter) {

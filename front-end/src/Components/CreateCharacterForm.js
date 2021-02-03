@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "../App.css";
 import { Button } from "react-bootstrap";
 import aasimar from "../images/aasimar.png";
-// import assassin from "../images/assassin.png";
+import assassin from "../images/assassin.png";
 import dwarf from "../images/dwarf.png";
 import elf from "../images/elf.png";
 import fighter from "../images/fighter.png";
@@ -12,7 +12,7 @@ import rogue from "../images/rogue.png";
 import sorcerer from "../images/sorcerer.png";
 
 const CreateCharacterForm = (props) => {
-  const [avatar, setAvatar] = useState([]);
+  const [avatarImage, setAvatar] = useState([]);
 
   const nameInput = useRef(null);
   const pronounsInput = useRef(null);
@@ -24,7 +24,6 @@ const CreateCharacterForm = (props) => {
   const weaponSelect = useRef(null);
   const catchphrasesSelect = useRef(null);
   const backstoryTextarea = useRef(null);
-  const imageInput = useRef(null);
   const strengthInput = useRef(null);
   const dexterityInput = useRef(null);
   const constitutionInput = useRef(null);
@@ -44,7 +43,7 @@ const CreateCharacterForm = (props) => {
     const weapon = weaponSelect.current.value;
     const catchphrases = catchphrasesSelect.current.value;
     const backstory = backstoryTextarea.current.value;
-    const image = setImagePath(imageInput.current.value);
+    const image = setImagePath(avatarImage);
     const strength = strengthInput.current.value;
     const dexterity = dexterityInput.current.value;
     const constitution = constitutionInput.current.value;
@@ -95,13 +94,18 @@ const CreateCharacterForm = (props) => {
             "https://res.cloudinary.com/arolson87/image/upload/v1612313371/fighter_wfqaxi.png";
           break;
 
+        case "orc":
+          imageName =
+            "https://res.cloudinary.com/arolson87/image/upload/v1612320641/orc_ha7x63.png";
+          break;
+
         default:
           imageName =
             "https://res.cloudinary.com/arolson87/image/upload/v1612313698/david-pumpkins_vtoqpm.png";
           break;
       }
 
-      return `url(http://something.goes.here/${imageName}.png)`;
+      return imageName;
     }
 
     const body = JSON.stringify({
@@ -125,8 +129,6 @@ const CreateCharacterForm = (props) => {
       createdBy,
       characterType: "PC",
     });
-
-    // event.currentTarget.reset();
 
     try {
       const response = await fetch("http://localhost:7000/characters", {
@@ -168,9 +170,7 @@ const CreateCharacterForm = (props) => {
     return Math.floor(Math.random() * 6);
   }
 
-  useEffect(() => {
-    setAvatar();
-  });
+  useEffect(() => {});
 
   return (
     <>
@@ -211,7 +211,7 @@ const CreateCharacterForm = (props) => {
               <option value="Tabaxi">Tabaxi</option>
               <option value="Centaur">Centaur</option>
               <option value="Halfling">Halfling</option>
-              <option value="Halfling">Dwarf</option>
+              <option value="Dwarf">Dwarf</option>
             </select>
             <br />
             <label>Class:</label>
@@ -226,7 +226,7 @@ const CreateCharacterForm = (props) => {
               <option value="Paladin">Paladin</option>
               <option value="Ranger">Ranger</option>
               <option value="Sorcerer">Sorcerer</option>
-              <option value="Sorcerer">Warlock</option>
+              <option value="Warlock">Warlock</option>
             </select>
             <br />
             <label>HP:</label>
@@ -308,64 +308,129 @@ const CreateCharacterForm = (props) => {
             <br />
             <label>Avatar:</label>
             <br />
+
             <div>
               <input
-                ref={imageInput}
                 type="radio"
                 value="aasimar"
                 name="avatars"
                 className="avatar-style"
+                checked={avatarImage === "aasimar"}
                 onChange={(e) => {
-                  setAvatar(e.target.value);
-                  // state variable to send src path to the image
+                  setAvatar("aasimar");
                 }}
               />
-              <img src={aasimar} className="avatar"></img>
+              <img src={aasimar} className="avatar" alt="aasimar" />
             </div>
             <div>
               <input
                 type="radio"
                 value="dwarf"
                 name="avatars"
+                checked={avatarImage === "dwarf"}
                 onChange={(e) => {
-                  setAvatar(e.target.value);
+                  setAvatar("dwarf");
                 }}
               />
-              <img src={dwarf} className="avatar"></img>
+              <img src={dwarf} className="avatar" alt="dwarf" />
             </div>
             <div>
               <input
                 type="radio"
                 value="elf"
                 name="avatars"
+                checked={avatarImage === "elf"}
                 onChange={(e) => {
-                  setAvatar(e.target.value);
+                  setAvatar("elf");
                 }}
               />
-              <img src={elf} className="avatar"></img>
+              <img src={elf} className="avatar" alt="elf" />
             </div>
             <div>
               <input
                 type="radio"
                 value="fighter"
                 name="avatars"
+                checked={avatarImage === "fighter"}
                 onChange={(e) => {
-                  setAvatar(e.target.value);
+                  setAvatar("fighter");
                 }}
               />
-              <img src={fighter} className="avatar"></img>
+              <img src={fighter} className="avatar" alt="fighter" />
+            </div>
+            <div>
+              <input
+                type="radio"
+                value="rogue"
+                name="avatars"
+                checked={avatarImage === "rogue"}
+                onChange={(e) => {
+                  setAvatar("rogue");
+                }}
+              />
+              <img src={rogue} className="avatar" alt="rogue" />
             </div>
             {/* <div>
-            <input
-              type="radio"
-              value="assassin"
-              name="avatars"
-              onChange={(e) => {
-                setAvatar(e.target.value);
-              }}
-            />
-            <img src={assassin} className="avatar"></img>
-          </div> */}
+              <input
+                type="radio"
+                value="fighter"
+                name="avatars"
+                checked={avatarImage === "fighter"}
+                onChange={(e) => {
+                  setAvatar("fighter");
+                }}
+              />
+              <img src={fighter} className="avatar" alt="fighter" />
+            </div> */}
+            <div>
+              <input
+                type="radio"
+                value="orc"
+                name="avatars"
+                checked={avatarImage === "orc"}
+                onChange={(e) => {
+                  setAvatar("orc");
+                }}
+              />
+              <img src={orc} className="avatar" alt="orc" />
+            </div>
+            <div>
+              <input
+                type="radio"
+                value="sorcerer"
+                name="avatars"
+                checked={avatarImage === "sorcerer"}
+                onChange={(e) => {
+                  setAvatar("sorcerer");
+                }}
+              />
+              <img src={sorcerer} className="avatar" alt="sorcerer" />
+            </div>
+            <div>
+              <input
+                type="radio"
+                value="ranger"
+                name="avatars"
+                checked={avatarImage === "ranger"}
+                onChange={(e) => {
+                  setAvatar("ranger");
+                }}
+              />
+              <img src={ranger} className="avatar" alt="ranger" />
+            </div>
+            <div>
+              <input
+                type="radio"
+                value="assassin"
+                name="avatars"
+                checked={avatarImage === "assassin"}
+                onChange={(e) => {
+                  setAvatar("assassin");
+                }}
+              />
+              <img src={assassin} className="avatar" alt="assassin" />
+            </div>
+
             <br />
             <label>Strength:</label>
             <br />
@@ -399,8 +464,6 @@ const CreateCharacterForm = (props) => {
             >
               Roll Stats
             </Button>
-            <br />
-            {/* <input type="hidden" name="createdBy" ref={createdByInput} /> */}
             <br />
             <input type="submit" value="Create Character" id="submit-btn" />
           </form>

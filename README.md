@@ -6,8 +6,8 @@ This project is a truncated version of the tabletop game D&D, based on the 5th e
 
 I built this project using Nodejs, Express, React and Bootstrap.
 
-<h1> User Stories </h1>
-
+<h2> User Stories </h2>
+<ul>
 All users will be able to securely login to their account and access their unique data.
 
 Each user will be able to view, edit and delete their own data.
@@ -23,8 +23,9 @@ different creatures.
 
 Each user will be able to start a new adventure at any time.
 
-<h1>MVP</h1>
-
+</ul>
+<h2>MVP</h2>
+<ul>
 Deployed on Heroku
 
 Used new technology: JWT, Bcrypt and Google Authentication
@@ -37,8 +38,10 @@ Mobile-responsiveness using media queries
 
 Randomly generate character stats and images and assign to their characters.
 
-Post MVP
+</ul>
 
+<h2>Post MVP</h2>
+<ul>
 Users can have inventory that includes armor, items and gold.
 
 Users will be able to use their rolled stats to get them bonuses in their adventures and roleplaying.
@@ -47,3 +50,5 @@ Users can have more roleplaying selections and areas to visit.
 
 Users can view a private feed of user created recipes and liked recipes
 Build in photo upload functionality (Upload from album or take photo)
+
+</ul>
