@@ -592,6 +592,13 @@
     color: white;
   }
 
+  #create-char-background-img {
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
   a {
     text-decoration: none;
   }
@@ -702,5 +709,9 @@
     color: white;
     margin: 5px;
     background-color: rgba(0, 0, 0, 0.452);
+  }
+
+  img.avatar {
+    max-width: 100px;
   }
 }

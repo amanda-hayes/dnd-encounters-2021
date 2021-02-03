@@ -25,15 +25,7 @@ function AllCharPage(props) {
   }
 
   function getUserCharactersExcept(character) {
-    return characters.filter(
-      (char) => char._id !== character._id && char.createdBy === USERNAME
-    );
-  }
-
-  function getNonUserCharactersExcept(gCharacter) {
-    return randomCharacters.filter(
-      (char) => char._id !== gCharacter._id && char.createdBy === USERNAME
-    );
+    return characters.filter((char) => char._id !== character._id);
   }
 
   function removeDuplicateRandomCharacters(gCharacter) {
@@ -90,7 +82,10 @@ function AllCharPage(props) {
     const randomIndex = Math.round(
       Math.random() * (randomCharacters.length - 1)
     );
-    return randomCharacters[randomIndex];
+    const filteredCharacters = removeDuplicateRandomCharacters(
+      randomCharacters[randomIndex]
+    );
+    return setRandomCharacters(filteredCharacters);
   }
 
   /*****************
@@ -101,28 +96,18 @@ function AllCharPage(props) {
       return;
     }
 
-    let gCharacter = getRandomCharacter();
-    gCharacter.createdBy = USERNAME;
-
     try {
-      if (characters.includes(gCharacter.name)) {
-        const filteredgCharacters = getNonUserCharactersExcept(gCharacter);
+      let gCharacter = getRandomCharacter();
 
-        setRandomCharacters(filteredgCharacters);
-        generateChar();
-      } else {
-        const response = await fetch("http://localhost:7000/characters", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(gCharacter),
-        });
+      const response = await fetch("http://localhost:7000/characters", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(gCharacter),
+      });
 
-        const filteredgCharacters = removeDuplicateRandomCharacters(gCharacter);
-        setRandomCharacters(filteredgCharacters);
-        setCharacters([...characters, gCharacter]);
-      }
+      setCharacters([...characters, gCharacter]);
     } catch (error) {
       console.log(error);
     }
