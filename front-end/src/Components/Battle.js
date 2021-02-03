@@ -42,6 +42,7 @@ function Battle() {
 
       return battleCrew;
     }
+
     return characters;
   }
 
@@ -195,12 +196,7 @@ function Battle() {
           <br />
           <Modal open={open} onClose={onCloseModal} center>
             <h2>On your way!</h2>
-            <p
-              classNames={{
-                overlay: "tavern-overlay",
-                modal: "tavern-modal",
-              }}
-            >
+            <p>
               You're traveling through the forest....suddenly...you hear a
               terrifying sound. The blood drains from your party member's faces
               as you search for the source.

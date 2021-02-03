@@ -41,7 +41,7 @@ charactersRouter.get("/", async (req, res) => {
  *******************/
 charactersRouter.delete("/:id", auth, async (req, res) => {
   try {
-    const deletedCharacter = await characterModel.findByIdAndRemove(
+    const deletedCharacter = await characterModel.findByIdAndDelete(
       req.params.id
     );
 

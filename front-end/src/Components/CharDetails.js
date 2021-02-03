@@ -1,7 +1,7 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
-import { Image, Button } from 'react-bootstrap';
+import { Image, Button } from "react-bootstrap";
 
 function CharacterStats(props) {
   const [character, setCharacter] = useState({});
@@ -30,62 +30,66 @@ function CharacterStats(props) {
   return (
     <>
       <div className="parchment-background">
-        <h1>
+        <br />
+        <h1 id="char-details-h1">
           {character.name}'s
           <br />
           Character Sheet
         </h1>
         <div id="character-container">
-          {/* <div id="character-stats-image"> */}
-            <br />
-            <Image src={character.image} thumbnail/>
-          </div>
           <br />
-          <div id="stats-list">
-            <label>Name:</label> {character.name}
-            <br />
-            <label>Race:</label> {character.race}
-            <br />
-            <label>Pronouns:</label> {character.pronouns}
-            <br />
-            <label>Class:</label> {character.characterClass}
-            <br />
-            <label>HP:</label> {character.HP}
-            <br />
-            <label>Main Weapon:</label> {character.weapon}
-            <br />
-            <label>Main Attack:</label> {character.attack}
-            <br />
-            <label>Armor Class:</label> {character.armorClass}
-            <br />
-            <label>Motto:</label>
-            <br />"{character.catchphrases}"
-            <br />
-            <br />
-            <label>Backstory:</label>
-            <br />"{character.backstory}"
-            <br />
-            <label>Strength:</label> {character.strength}
-            <br />
-            <label>Dexterity:</label> {character.dexterity}
-            <br />
-            <label>Constitution</label> {character.constitution}
-            <br />
-            <label>Intelligence:</label> {character.intelligence}
-            <br />
-            <label>Wisdom</label> {character.wisdom}
-            <br />
-            <label>Charisma:</label> {character.charisma}
-            <br />
-            <br />
-            <Button style={{ backgroundColor: "rgb(44 90 117)" }}>
-              <Link to={`/UpdateCharacterForm/${character._id}`} style={{ color: "white" }}>
-                EDIT CHARACTER
-              </Link>
-            </Button>
+          <div id="char-details-img">
+            <Image src={character.image} thumbnail />
           </div>
         </div>
-      {/* </div> */}
+        <br />
+        <div id="stats-list">
+          <label>Name:</label> {character.name}
+          <br />
+          <label>Race:</label> {character.race}
+          <br />
+          <label>Pronouns:</label> {character.pronouns}
+          <br />
+          <label>Class:</label> {character.characterClass}
+          <br />
+          <label>HP:</label> {character.HP}
+          <br />
+          <label>Main Weapon:</label> {character.weapon}
+          <br />
+          <label>Main Attack:</label> {character.attack}
+          <br />
+          <label>Armor Class:</label> {character.armorClass}
+          <br />
+          <label>Motto:</label>
+          <br />"{character.catchphrases}"
+          <br />
+          <br />
+          <label>Backstory:</label>
+          <br />"{character.backstory}"
+          <br />
+          <label>Strength:</label> {character.strength}
+          <br />
+          <label>Dexterity:</label> {character.dexterity}
+          <br />
+          <label>Constitution</label> {character.constitution}
+          <br />
+          <label>Intelligence:</label> {character.intelligence}
+          <br />
+          <label>Wisdom</label> {character.wisdom}
+          <br />
+          <label>Charisma:</label> {character.charisma}
+          <br />
+          <br />
+          <Button style={{ backgroundColor: "rgb(44 90 117)" }}>
+            <Link
+              to={`/UpdateCharacterForm/${character._id}`}
+              style={{ color: "white" }}
+            >
+              EDIT CHARACTER
+            </Link>
+          </Button>
+        </div>
+      </div>
     </>
   );
 }

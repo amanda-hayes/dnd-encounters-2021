@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 @import url("https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Open+Sans:wght@300;400&display=swap");
 
 .D20-photo {
@@ -52,375 +48,309 @@
   }
 }
 
-/* html {
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-} */
+@media only screen and (min-width: 680px) {
+  @font-face {
+    font-family: "Luminari";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Luminari"), url("Luminari-Regular.woff") format("woff");
+  }
 
-@font-face {
-  font-family: "Luminari";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Luminari"), url("Luminari-Regular.woff") format("woff");
-}
+  h1 {
+    font-family: "Luminari";
+  }
 
-h1 {
-  font-family: "Luminari";
-}
-
-#ready {
-  color: white;
-}
-
-p {
-  font-size: 1.5rem;
-}
-
-ul {
-  margin: 0px;
-  display: block;
-  /* background-color: rgba(0, 0, 0, 0.397); */
-}
-
-li {
-  list-style: none;
-  /* background-color: rgb(3, 65, 87);
-  margin: 10px;
-  width: 30%;
-  padding: 10px;
-  padding-top: 20px;
-  border-radius: 5px;
-  font-weight: bold; */
-  /* height: 150px; */
-  /* box-shadow: 5px 10px 8px #050505af;*/
-  display: inline-block;
-  text-align: center;
-  margin: 10px;
-}
-
-/* label { */
-/* width: 200px;
-  display: inline-block;
-  font-weight: bold; */
-/* text-align: left;  */
-/* } */
-
-button {
-  cursor: pointer;
-  background-color: white;
-  border: none;
-  color: black;
-  box-shadow: 5px 8px 8px #050505af;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  transition-duration: 0.4s;
-  font-family: "Century Gothic";
-  border-radius: 5px;
-}
-
-/* button:hover {
-    background-color: #60636090; 
+  #ready {
     color: white;
-}
+  }
 
-#submit-btn {
-  cursor: pointer;
-  padding: .5em;
-  margin-top: 1rem;
-  margin-left: .5rem;
-  margin-right: .5rem;
-  background-color: white; 
-  border: none;
-  color: black;
-  box-shadow: 5px 8px 8px #050505af;
-  font-size: 1rem; */
-/* padding: 15px 32px; */
-/* text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 5px;
-  transition-duration: 0.4s;
-} 
+  p {
+    font-size: 1rem;
+  }
 
-#click-here {
-  color: white;
-} */
+  ul {
+    margin: 0px;
+    display: block;
+  }
 
-#thumbnail {
-  max-width: 70px;
-  padding-top: 10px;
-  /* float: left; */
-}
+  li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+  }
 
-#stats-list {
-  text-align: left;
-  font-size: 1.3rem;
-  /* max-width: 800px; */
-  margin-left: 100px;
-}
+  button {
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    color: black;
+    box-shadow: 5px 8px 8px #050505af;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    font-family: "Century Gothic";
+    border-radius: 5px;
+  }
 
-#my-characters-p {
-  color: white;
-}
+  #submit-btn {
+    cursor: pointer;
+    padding: 0.5em;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: white;
+    border: none;
+    color: black;
+    box-shadow: 5px 8px 8px #050505af;
+    font-size: 1rem;
+  }
 
-.character-background {
-  background-image: url("./images/dnd-table-1.jpg");
-  background-size: cover;
-  background-position: fixed;
-}
+  #click-here {
+    color: white;
+  }
 
-#letsgo {
-  margin-bottom: 20px;
-}
+  #thumbnail {
+    max-width: 70px;
+    padding-top: 10px;
+  }
 
-.parchment-background {
-  background-image: url("./images/parchment-paper.png");
-  height: 2000px;
-  width: 100%;
-  padding: 50px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+  #stats-list {
+    text-align: left;
+    font-size: 1.3rem;
+    margin-left: 100px;
+  }
 
-.header-style {
-  padding: 20px;
-  background-color: rgba(4, 4, 4, 0.397);
-}
+  #my-characters-p {
+    color: white;
+  }
 
-.my-characters-heading {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  color: white;
-  text-shadow: 5px 10px 8px #050505af;
-}
+  .character-background {
+    background-image: url("./images/dnd-table-1.jpg");
+    background-size: cover;
+    background-position: fixed;
+  }
 
-.update-background {
-  background-image: url("./images/party.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  color: white;
-}
+  #create-char-background-img {
+    /* background-image: url("./images/dnd-dice.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
 
-/* .select {
-  padding: 5px;
-  font-size: 16px;
-}
+  #letsgo {
+    margin-bottom: 20px;
+  }
 
-#update-char-h2 {
-  font-family: 'Luminari';
-  font-size: 3rem;
-  text-align: center;
-} */
+  .parchment-background {
+    background-image: url("./images/parchment-paper.png");
+    height: 2000px;
+    width: 100%;
+    padding: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-/* .heading-with-form {
-  background-color: rgba(34, 32, 32, 0.514);
-  max-width: 800px;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-} */
+  .header-style {
+    padding: 20px;
+    background-color: rgba(4, 4, 4, 0.397);
+  }
 
-form {
-  text-align: left;
-  padding: 20px;
-  font-size: 24px;
-  max-width: 600px;
-}
+  .my-characters-heading {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 5px 10px 8px #050505af;
+  }
 
-*/ #create-char-form {
-  background-image: url("./images/dungeons-and-dragons.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 1000px;
-  min-width: 1500px;
-  color: white;
-  padding-top: 20px;
-  padding-left: 50px;
-}
+  .update-background {
+    background-image: url("./images/party.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+  }
 
-.viewStats {
-  width: 30%;
-  padding: 20px 0;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.432);
-  margin-top: 10px;
-  font-size: 1.5rem;
-  display: none;
-  border-radius: 5px;
-}
+  form {
+    text-align: left;
+    padding: 20px;
+    margin: 20px;
+    /* font-size: 24px; */
+    /* max-width: 600px; */
+  }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  #create-char-form {
+    background-image: url("./images/dungeons-and-dragons.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 1000px;
+    min-width: 1500px;
+    color: white;
+    padding-top: 20px;
+    padding-left: 50px;
+  }
 
-.create-generate-btns {
-  display: inline;
-}
+  .viewStats {
+    width: 30%;
+    padding: 20px 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.432);
+    margin-top: 10px;
+    font-size: 1.5rem;
+    display: none;
+    border-radius: 5px;
+  }
 
-#create-new {
-  display: inline;
-  font-family: "Century Gothic";
-}
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
 
-#create-char-h2 {
-  padding-top: 10px;
-  font-family: "Luminari";
-}
+  .create-generate-btns {
+    display: inline;
+  }
 
-#battle-page-h2 {
-  font-family: "Luminari";
-  font-size: 2rem;
-  color: white;
-}
+  #create-new {
+    display: inline;
+    font-family: "Century Gothic";
+  }
 
-#character-sheet-heading {
-  font-size: 3rem;
-  text-align: center;
-}
+  #create-char-h2 {
+    padding-top: 10px;
+    font-family: "Luminari";
+  }
 
-#update-breadcrumbs {
-  text-align: left;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding-left: 30px;
-  padding-top: 30px;
-}
+  #battle-page-h2 {
+    font-family: "Luminari";
+    font-size: 2rem;
+    color: white;
+  }
 
-.avatar {
-  max-width: 100px;
-}
+  #character-sheet-heading {
+    font-size: 3rem;
+    text-align: center;
+  }
 
-.homepage {
-  background-image: url("./images/homepage-image.jpg");
-  background-size: cover;
-  height: 100vh;
-  color: white;
-  font-size: 2rem;
-  padding: 40px;
-}
+  #update-breadcrumbs {
+    text-align: left;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-top: 30px;
+  }
 
-#home-heading {
-  text-shadow: 5px 10px 8px #050505af;
-  margin-bottom: -10px;
-  padding-top: 20px;
-}
+  .avatar {
+    max-width: 100px;
+  }
 
-#homepage-content {
-  background-color: rgba(0, 0, 0, 0.623);
-  box-shadow: 5px 10px 8px #050505af;
-}
+  #thumbnail {
+    max-width: 70px;
+    padding-top: 10px;
+  }
 
-/* #battle-character-list {
-  display: inline-block;
-  color: white;
-  width: 500px;
-  background-color: rgb(30, 79, 131);
-} */
+  .homepage {
+    background-image: url("./images/homepage-image.jpg");
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    font-size: 2rem;
+    padding: 40px;
+  }
 
-.App {
-  text-align: center;
-  /* background-size: cover; */
-  /* color: black;*/
-  font-family: "Century Gothic";
-  /* height: 100vh; */
-}
+  #home-heading {
+    text-shadow: 5px 10px 8px #050505af;
+    margin-bottom: -10px;
+    padding-top: 20px;
+  }
 
-/* #character-container {
-  display: inline-flex;
-  height: 100%;
-} */
+  #homepage-content {
+    background-color: rgba(0, 0, 0, 0.623);
+    box-shadow: 5px 10px 8px #050505af;
+  }
 
-/* img {
-  width: 400px;
-  box-shadow: 5px 10px 8px #050505af;
-  border-radius: 5px;
-  margin-left: 10px;
-  margin-right: -10px;
-} */
+  .App {
+    text-align: center;
+    font-family: "Century Gothic";
+  }
 
-.battle-background {
-  background-image: url("./images/forest.jpg");
-  background-size: cover;
-  padding-top: 20px;
-}
+  .battle-background {
+    background-image: url("./images/forest.jpg");
+    background-size: cover;
+    padding-top: 20px;
+  }
 
-#tavern-background-image {
-  background-image: url("./images/tavern.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-  padding-top: 20px;
-}
+  #tavern-background-image {
+    background-image: url("./images/tavern.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 20px;
+  }
 
-#tavern-chat {
-  color: white;
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.55);
-  padding: 10px;
-  margin: 10px;
-}
+  #tavern-chat {
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 10px;
+    margin: 10px;
+  }
 
-#tavern-button {
-  text-align: center;
-}
+  #tavern-button {
+    text-align: center;
+  }
 
-#you-win-verbiage {
-  margin-left: 200px;
-  margin-right: 200px;
-  margin-top: 50px;
-  padding-bottom: 200px;
-}
+  #you-win-verbiage {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    padding-bottom: 200px;
+  }
 
-#you-win-h1 {
-  font-size: 3rem;
-}
+  #you-win-h1 {
+    font-size: 3rem;
+  }
 
-#wizard-book-image {
-  text-align: center;
-  max-width: 300px;
-}
+  #wizard-book-image {
+    text-align: center;
+    max-width: 300px;
+  }
 
-/* .tavern-modal p {
-  font-size: 1.2rem;
-} */
+  .tavern-modal button {
+    text-align: center;
+    background-color: brown;
+    color: white;
+  }
 
-.tavern-modal button {
-  text-align: center;
-  background-color: brown;
-  color: white;
-}
+  .tavern-modal {
+    border-radius: 5px;
+  }
 
-.tavern-modal {
-  border-radius: 5px;
-}
+  .react-responsive-modal-closeButton {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    margin-bottom: 25px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+  }
 
-.react-responsive-modal-closeButton {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  margin-bottom: 25px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  background-color: transparent;
-  display: flex;
-}
-
-.battle-modal {
-  text-align: left;
+  .battle-modal {
+    text-align: left;
+  }
 }
 
 /* MOBILE DESIGN */
@@ -429,16 +359,19 @@ form {
 
 @media only screen and (max-width: 360px) {
   img {
-    max-width: 350px;
+    max-width: 100vw;
   }
+
   #my-characters-p {
     color: white;
     font-size: 16px;
   }
+
   #create-char-form {
     text-align: center;
     width: 360px;
   }
+
   input {
     margin: 10px;
     font-size: 16px;
@@ -447,6 +380,7 @@ form {
   label {
     font-size: 18px;
   }
+
   select {
     margin-bottom: 5px;
   }
@@ -515,12 +449,189 @@ form {
     margin-bottom: 10px;
     color: white;
   }
+
   #char-list {
     text-align: center;
   }
+
   #stats-list {
     text-align: left;
     margin: 0;
     font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  [class*="col-"] {
+    width: 100%;
+  }
+
+  button {
+    text-align: center;
+  }
+
+  #my-characters-p {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin: 15px;
+  }
+
+  #ready {
+    color: white;
+  }
+
+  .my-characters-heading {
+    text-align: center;
+  }
+
+  #create-char-form {
+    text-align: center;
+  }
+
+  #create-char-background-img {
+    max-width: 400px;
+    text-align: center;
+  }
+
+  #create-form {
+    text-align: left;
+    margin: 15px;
+  }
+
+  #character-list {
+    text-align: center;
+  }
+
+  ul {
+    margin: 0px;
+    display: block;
+  }
+
+  button {
+    font-family: "Century Gothic";
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+  }
+
+  input {
+    margin: 10px;
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  select {
+    margin-bottom: 5px;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-family: "Luminari";
+  }
+
+  h2 {
+    font-size: 20px;
+    font-family: "Luminari";
+  }
+
+  p {
+    font-size: 16px;
+    padding: 5px;
+    font-family: "Century Gothic";
+  }
+
+  .select {
+    max-width: 350px;
+    margin: 5px 5px;
+  }
+
+  .submit-btn {
+    margin: 5px;
+  }
+
+  #roll {
+    margin: 20px;
+    text-align: center;
+  }
+
+  .create-generate-btns {
+    margin: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  #btn {
+    border-radius: 3px;
+    margin: 5px;
+    font-family: "Open Sans";
+    padding: 8px;
+    background-color: rgb(44, 90, 117);
+    color: white;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .character-background {
+    background-image: url("./images/party.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  #character-container {
+    margin: 20px;
+    text-align: center;
+  }
+
+  #char-details-h1 {
+    text-align: center;
+  }
+
+  #stats-list {
+    margin: 10px;
+  }
+
+  .parchment-background {
+    background-image: url("./images/parchment-paper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+  .my-characters-heading {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    color: white;
+  }
+
+  #char-list {
+    text-align: center;
+  }
+
+  #stats-list {
+    /* text-align: left; */
+    margin-left: 20px;
+    font-size: 18px;
+  }
+
+  #char-buttons {
+    text-align: center;
+    margin: 15px;
+  }
+
+  #char-details-img {
+    max-width: 200px;
+    text-align: center;
   }
 }
