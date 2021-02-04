@@ -14,7 +14,7 @@ const bcrypt = require("bcryptjs");
 const app = express();
 const charactersController = require("./controllers/characters");
 const randomCharController = require("./controllers/randomChar");
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 7000;
 const MONGOURI = process.env.MONGODB_URI;
 const SECRET = process.env.SECRET_KEY;
 
