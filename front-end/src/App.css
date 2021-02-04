@@ -402,10 +402,12 @@
 
   h1 {
     font-size: 24px;
+    text-align: center;
   }
 
   h2 {
     font-size: 20px;
+    text-align: center;
   }
 
   p {
@@ -713,5 +715,29 @@
 
   img.avatar {
     max-width: 100px;
+  }
+
+  .homepage {
+    background-image: url("./images/homepage-image.jpg");
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    font-size: 2rem;
+    padding: 40px;
+  }
+
+  #homepage-content {
+    background-color: rgba(0, 0, 0, 0.623);
+    box-shadow: 5px 10px 8px #050505af;
+    padding: 20px;
+  }
+
+  #register-page {
+    text-align: left;
+    margin: 10px;
+  }
+
+  #register {
+    text-align: center;
   }
 }

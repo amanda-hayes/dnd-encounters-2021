@@ -82,7 +82,7 @@ function AllCharPage() {
   const fetchRandomCharacters = async () => {
     try {
       const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/characters"
+        "https://dnd-encounters-2021.herokuapp.com/api/randomchar"
       );
       const data = await response.json();
 

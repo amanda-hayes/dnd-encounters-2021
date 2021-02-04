@@ -12,13 +12,15 @@ const LoginForm = (props) => {
 
   const login = async (event) => {
     try {
-      props.userLogin(event, nameInput.current.value, passwordInput.current.value);
+      props.userLogin(
+        event,
+        nameInput.current.value,
+        passwordInput.current.value
+      );
     } catch (error) {
       console.log(error);
     }
   };
-
-  
 
   const onSuccess = (res) => {
     console.log("[Login Success] currentUser:", res.profileObj);
@@ -34,8 +36,6 @@ const LoginForm = (props) => {
     alert("Logged Out Successfully");
   };
 
-
-
   useEffect(() => {
     if (window.localStorage.getItem("token")) {
       props.setToken(window.localStorage.getItem("token"));
@@ -45,35 +45,45 @@ const LoginForm = (props) => {
   return (
     <>
       <div>
-        <p>Welcome back, Adventurer! Please login below.</p>
-        <div>
-          <GoogleLogin
-            clientId={clientId}
-            buttonText="Login with Google"
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={"single_host_origin"}
-            style={{ marginTop: "100px" }}
-            isSignedIn={true}
-          />
+        <br />
+        <div id="register">
+          <p>Welcome back, Adventurer! Please login below.</p>
+          <div>
+            <GoogleLogin
+              clientId={clientId}
+              buttonText="Login with Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={"single_host_origin"}
+              style={{ marginTop: "100px" }}
+              isSignedIn={true}
+            />
+          </div>
+          <br />
+          <form onSubmit={login} method="post">
+            <label>Username</label>
+            <br />
+            <input type="text" name="username" ref={nameInput} />
+            <br />
+            <br />
+            <label>Password</label>
+            <br />
+            <input type="password" name="password" ref={passwordInput} />
+            <br />
+            <input type="submit" value="LOGIN" id="submit-btn" />
+          </form>
         </div>
-        <form onSubmit={login} method="post">
-          <label>Username</label>
-          <input type="text" name="username" ref={nameInput} />
-          <br />
-          <label>Password</label>
-          <input type="password" name="password" ref={passwordInput} />
-          <br />
-          <input type="submit" value="LOGIN" id="submit-btn" />
-        </form>
+        <br />
+        {
+          <div>
+            <GoogleLogout
+              clientId={clientId}
+              buttonText="Logout with Google"
+              onLogoutSuccess={onLogoutSuccess}
+            ></GoogleLogout>
+          </div>
+        }
       </div>
-      {<div>
-        <GoogleLogout
-          clientId={clientId}
-          buttonText="Logout with Google"
-          onLogoutSuccess={onLogoutSuccess}
-        ></GoogleLogout>
-      </div>}
     </>
   );
 };

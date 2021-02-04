@@ -14,7 +14,7 @@ const RegisterForm = (props) => {
       password: passwordInput.current.value,
       confirmPassword: confirmPasswordInput.current.value,
     });
-    event.currentTarget.reset();
+    // event.currentTarget.reset();
     try {
       const response = await fetch(
         "https://dnd-encounters-2021.herokuapp.com/register",
@@ -39,7 +39,8 @@ const RegisterForm = (props) => {
 
   return (
     <>
-      <div>
+      <div id="register-page">
+        <br />
         <h2>Register</h2>
         <p>
           Please create a unique username and password to create an account. We
@@ -48,17 +49,21 @@ const RegisterForm = (props) => {
         </p>
         <Form onSubmit={register} method="post">
           <label>Username</label>
+          <br />
           <input type="text" name="username" ref={usernameInput} />
           <br />
           <label>Password</label>
+          <br />
           <input type="password" name="password" ref={passwordInput} />
           <br />
           <label>Confirm Password</label>
+          <br />
           <input
             type="password"
             name="confirmpassword"
             ref={confirmPasswordInput}
           />
+          <br />
           <br />
           <input type="submit" value="REGISTER" id="submit-btn" />
         </Form>
