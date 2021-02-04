@@ -49,7 +49,7 @@ function createPasswordHash(password, salt) {
 /*********************
  *  ROUTE: REGISTER  *
  *********************/
-app.post("/register", (req, res) => {
+app.post("api/register", (req, res) => {
   req.body.password = createPasswordHash(req.body.password, 10);
 
   User.create(req.body, (err, createdUser) => {
@@ -64,7 +64,7 @@ app.post("/register", (req, res) => {
 /******************
  *  ROUTE: LOGIN  *
  ******************/
-app.post("/login", async (req, res) => {
+app.post("api/login", async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await User.findOne({ username });
