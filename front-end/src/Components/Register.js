@@ -16,16 +16,13 @@ const RegisterForm = (props) => {
     });
     // event.currentTarget.reset();
     try {
-      const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body,
-        }
-      );
+      const response = await fetch("http://theadventurerlog.com/register", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body,
+      });
       if (passwordInput !== confirmPasswordInput) {
         alert("Passwords do not match!");
       } else {

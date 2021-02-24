@@ -48,9 +48,7 @@ function Battle() {
 
   const fetchPlayerCharacters = async () => {
     try {
-      const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/characters"
-      );
+      const response = await fetch("http://theadventurerlog.com/characters");
       const charactersData = await response.json();
 
       updatePlayerCharactersList(chooseOneMonster(charactersData));

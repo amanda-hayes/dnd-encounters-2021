@@ -34,9 +34,7 @@ function AllCharPage() {
 
   const fetchCharacters = async () => {
     try {
-      const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/characters"
-      );
+      const response = await fetch("http://theadventurerlog.com/characters");
       const data = await response.json();
       setCharacters(data);
     } catch (error) {
@@ -51,7 +49,7 @@ function AllCharPage() {
   const deleteCharacter = async (id) => {
     try {
       const response = await fetch(
-        `https://dnd-encounters-2021.herokuapp.com/api/characters/${id}`,
+        `http://theadventurerlog.com/characters/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -81,9 +79,7 @@ function AllCharPage() {
 
   const fetchRandomCharacters = async () => {
     try {
-      const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/randomchar"
-      );
+      const response = await fetch("http://theadventurerlog.com/randomchar");
       const data = await response.json();
 
       setRandomCharacters(data);
@@ -109,17 +105,14 @@ function AllCharPage() {
         setRandomCharacters(filterDupe);
         generateChar();
       } else {
-        const response = await fetch(
-          "https://dnd-encounters-2021.herokuapp.com/api/characters",
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-              Authorization: token,
-            },
-            body: JSON.stringify(generatedCharacter),
-          }
-        );
+        const response = await fetch("http://theadventurerlog.com/characters", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify(generatedCharacter),
+        });
         if (!token) {
           return alert("Please Login before continuing!");
         }

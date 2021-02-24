@@ -23,8 +23,8 @@ const SECRET = process.env.SECRET_KEY;
  ***************/
 app.use(cors());
 app.use(express.json());
-app.use("/api/characters", charactersController);
-app.use("/api/randomChar", randomCharController);
+app.use("/characters", charactersController);
+app.use("/randomChar", randomCharController);
 
 /**************
  *  MONGOOSE  *

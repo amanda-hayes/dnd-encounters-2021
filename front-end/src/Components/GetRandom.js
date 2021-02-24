@@ -6,9 +6,7 @@ function GetRandom(props) {
 
   const fetchRandomCharacters = async () => {
     try {
-      const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/randomchar"
-      );
+      const response = await fetch("http://theadventurerlog.com/randomchar");
       const data = await response.json();
       setRandomCharacters(data);
       console.log(data);

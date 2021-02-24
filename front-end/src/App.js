@@ -54,16 +54,13 @@ function App(props) {
       password: pass,
     });
     try {
-      const response = await fetch(
-        `https://dnd-encounters-2021.herokuapp.com/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body,
-        }
-      );
+      const response = await fetch(`http://theadventurerlog.com/login`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body,
+      });
 
       const data = await response.json();
       console.log(response);

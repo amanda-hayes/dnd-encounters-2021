@@ -67,16 +67,13 @@ const UpdateCharacterForm = (props) => {
     // event.currentTarget.reset();
 
     try {
-      const response = await fetch(
-        `https://dnd-encounters-2021.herokuapp.com/api/${charId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: body,
-        }
-      );
+      const response = await fetch(`http://theadventurerlog.com/${charId}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: body,
+      });
       const data = await response.json();
       console.log(data);
       props.history.push("/characters");

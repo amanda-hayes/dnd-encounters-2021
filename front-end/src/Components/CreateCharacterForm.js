@@ -131,16 +131,13 @@ const CreateCharacterForm = (props) => {
     });
 
     try {
-      const response = await fetch(
-        "https://dnd-encounters-2021.herokuapp.com/api/characters",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: body,
-        }
-      );
+      const response = await fetch("http://theadventurerlog.com/characters", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: body,
+      });
 
       props.history.push("/Characters");
     } catch (error) {
