@@ -48,7 +48,9 @@ function Battle() {
 
   const fetchPlayerCharacters = async () => {
     try {
-      const response = await fetch("http://theadventurerlog.com/characters");
+      const response = await fetch(
+        "https://theadventurerlog.com/api/characters"
+      );
       const charactersData = await response.json();
 
       updatePlayerCharactersList(chooseOneMonster(charactersData));

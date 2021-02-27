@@ -11,7 +11,7 @@ function CharacterStats(props) {
   const fetchCharacter = async () => {
     try {
       const response = await fetch(
-        `http://theadventurerlog.com/characters/${characterDetailRouteMatch.params.id}`
+        `https://theadventurerlog.com/characters/api/${characterDetailRouteMatch.params.id}`
       );
       const data = await response.json();
       setCharacter(data);

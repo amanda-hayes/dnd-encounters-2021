@@ -52,7 +52,7 @@ function App(props) {
       password: pass,
     });
     try {
-      const response = await fetch(`http://theadventurerlog.com/login`, {
+      const response = await fetch(`https://theadventurerlog.com/login`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
