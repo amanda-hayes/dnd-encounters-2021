@@ -2,5 +2,11 @@
     "editor.wordWrapColumn": 160,
     "editor.wordWrap": "wordWrapColumn",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/742292a6-f641-431a-973f-08a5369ac750/resourceGroups/rg-the-adventurer-log-01/providers/Microsoft.Web/sites/the-adventurer-log",
+    "appService.deploySubpath": "."
 }
