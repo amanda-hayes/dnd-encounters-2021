@@ -44,10 +44,10 @@ const LoginForm = (props) => {
 
   return (
     <>
-      <div>
+      <div className="login-page">
         <br />
-        <div id="register">
-          <p>Welcome back, Adventurer! Please login below.</p>
+        <div>
+          <h3 id="h3-login">Welcome back, Adventurer! Please login below.</h3>
           <div>
             <GoogleLogin
               clientId={clientId}
@@ -58,9 +58,16 @@ const LoginForm = (props) => {
               style={{ marginTop: "100px" }}
               isSignedIn={true}
             />
+            {/* {
+              <GoogleLogout
+                clientId={clientId}
+                buttonText="Logout with Google"
+                onLogoutSuccess={onLogoutSuccess}
+              ></GoogleLogout>
+            } */}
           </div>
           <br />
-          <form onSubmit={login} method="post">
+          <form onSubmit={login} method="post" className="login">
             <label>Username</label>
             <br />
             <input type="text" name="username" ref={nameInput} />
@@ -74,15 +81,6 @@ const LoginForm = (props) => {
           </form>
         </div>
         <br />
-        {
-          <div>
-            <GoogleLogout
-              clientId={clientId}
-              buttonText="Logout with Google"
-              onLogoutSuccess={onLogoutSuccess}
-            ></GoogleLogout>
-          </div>
-        }
       </div>
     </>
   );

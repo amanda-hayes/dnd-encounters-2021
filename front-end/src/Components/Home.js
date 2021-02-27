@@ -9,6 +9,7 @@ function Home() {
         <div id="homepage-content">
           <h1 id="home-heading"> Welcome to The Adventurer Log</h1>
           <p>
+            <br />
             Create your characters, form your party and get ready for an
             adventure!
           </p>

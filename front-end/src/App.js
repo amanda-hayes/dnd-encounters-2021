@@ -6,8 +6,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useHistory,
-  Link,
   withRouter,
 } from "react-router-dom";
 import AllCharPage from "./Components/Characters";
@@ -98,7 +96,7 @@ function App(props) {
               expand="sm"
               style={{ paddingLeft: "15px" }}
             >
-              <Navbar.Brand href="/">D&D Encounters</Navbar.Brand>
+              <Navbar.Brand href="/">The Adventurer Log</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
