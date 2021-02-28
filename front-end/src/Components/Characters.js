@@ -51,7 +51,7 @@ function AllCharPage() {
   const deleteCharacter = async (id) => {
     try {
       const response = await fetch(
-        `https://theadventurerlog.com/characters/api/${id}`,
+        `https://theadventurerlog.com/api/characters/${id}`,
         {
           method: "DELETE",
           headers: {

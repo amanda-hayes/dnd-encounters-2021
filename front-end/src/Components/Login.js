@@ -48,7 +48,7 @@ const LoginForm = (props) => {
         <br />
         <div>
           <h3 id="h3-login">Welcome back, Adventurer! Please login below.</h3>
-          <div>
+          {/* <div>
             <GoogleLogin
               clientId={clientId}
               buttonText="Login with Google"
@@ -56,16 +56,16 @@ const LoginForm = (props) => {
               onFailure={onFailure}
               cookiePolicy={"single_host_origin"}
               style={{ marginTop: "100px" }}
-              isSignedIn={true}
-            />
-            {/* {
+              isSignedIn={true} */}
+          />
+          {/* {
               <GoogleLogout
                 clientId={clientId}
                 buttonText="Logout with Google"
                 onLogoutSuccess={onLogoutSuccess}
               ></GoogleLogout>
             } */}
-          </div>
+          {/* </div> */}
           <br />
           <form onSubmit={login} method="post" className="login">
             <label>Username</label>
