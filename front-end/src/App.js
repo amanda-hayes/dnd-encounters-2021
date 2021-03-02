@@ -53,7 +53,7 @@ function App(props) {
     });
     try {
       const response = await fetch(
-        `https://dnd-encounters-2021.herokuapp.com/api/login`,
+        `https://dnd-encounters-2021.herokuapp.com/login`,
         {
           method: "POST",
           headers: {
