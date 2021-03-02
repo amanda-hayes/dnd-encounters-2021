@@ -59,3 +59,18 @@ I built this project using Nodejs, Express, React and Bootstrap.
 7. When you have created a full party and are ready to play, click "Let's Go" under "Ready to Start Adventuring?" at the bottom of the page.
 8. You will be directed to a tavern where you can speak to some of the locals and receive a quest
 9. After accepting the quest, you will begin your adventure!
+
+Maintenance done on MONDAY, MARCH 1, 2021
+
+## Upcoming features:
+
+- Add name to user database
+- Display name on Characters landing page
+- Remove extra monsters from array and only display one at a time
+- Check database for that user before registering (avoid duplicate user logins)
+
+## Next iteration:
+
+- Make modal appear on Tavern page automatically
+- Make Battle page begin automatically
+- Reset Password

@@ -37,6 +37,20 @@ charactersRouter.get("/", async (req, res) => {
 });
 
 /*******************
+ *  GET USER CHARS *
+ *******************/
+charactersRouter.get("/:createdBy", async (req, res) => {
+  try {
+    const foundUserCharacters = await charactersRouter.findByUser(
+      req.params.createdBy
+    );
+    res.status(200).json(foundUserCharacters);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
+/*******************
  *  ROUTE: DELETE  *
  *******************/
 charactersRouter.delete("/:id", async (req, res) => {
