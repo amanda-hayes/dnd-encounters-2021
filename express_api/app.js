@@ -9,7 +9,6 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const methodOverride = require("method-override");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const app = express();
@@ -26,7 +25,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/characters", charactersController);
 app.use("/api/randomChar", randomCharController);
-app.use(methodOverride("_method"));
 
 /**************
  *  MONGOOSE  *
