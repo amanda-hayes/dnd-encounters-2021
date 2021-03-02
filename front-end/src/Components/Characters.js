@@ -172,7 +172,7 @@ function AllCharPage() {
                 CREATE
               </Button>
             </Link>
-
+            -
             <Button
               onClick={handleClick}
               style={{
@@ -277,6 +277,7 @@ function AllCharPage() {
               })}
             </>
           </ul>
+          <br />
           <h1 id="ready">Ready to start adventuring?</h1>
           <Link to="/Tavern">
             <Button
