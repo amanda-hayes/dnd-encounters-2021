@@ -17,7 +17,7 @@ const RegisterForm = (props) => {
     // event.currentTarget.reset();
     try {
       const response = await fetch(
-        "https://theadventurerlog.com/api/register",
+        "https://dnd-encounters-2021.herokuapp.com/api/register",
         {
           method: "POST",
           headers: {

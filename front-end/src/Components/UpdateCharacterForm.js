@@ -68,7 +68,7 @@ const UpdateCharacterForm = (props) => {
 
     try {
       const response = await fetch(
-        `https://theadventurerlog.com/api/${charId}`,
+        `https://dnd-encounters-2021.herokuapp.com/api/${charId}`,
         {
           method: "PUT",
           headers: {

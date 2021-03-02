@@ -132,7 +132,7 @@ const CreateCharacterForm = (props) => {
 
     try {
       const response = await fetch(
-        "https://theadventurerlog.com/api/characters",
+        "https://dnd-encounters-2021.herokuapp.com/api/characters",
         {
           method: "POST",
           headers: {

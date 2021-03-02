@@ -35,7 +35,7 @@ function AllCharPage() {
   const fetchCharacters = async () => {
     try {
       const response = await fetch(
-        "https://theadventurerlog.com/api/characters"
+        "https://dnd-encounters-2021.herokuapp.com/api/characters"
       );
       const data = await response.json();
       setCharacters(data);
@@ -51,7 +51,7 @@ function AllCharPage() {
   const deleteCharacter = async (id) => {
     try {
       const response = await fetch(
-        `https://theadventurerlog.com/api/characters/${id}`,
+        `https://dnd-encounters-2021.herokuapp.com/api/characters/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -82,7 +82,7 @@ function AllCharPage() {
   const fetchRandomCharacters = async () => {
     try {
       const response = await fetch(
-        "https://theadventurerlog.com/api/randomchar"
+        "https://dnd-encounters-2021.herokuapp.com/api/randomchar"
       );
       const data = await response.json();
 
@@ -110,7 +110,7 @@ function AllCharPage() {
         generateChar();
       } else {
         const response = await fetch(
-          "https://theadventurerlog.com/api/characters",
+          "https://dnd-encounters-2021.herokuapp.com/api/characters",
           {
             method: "POST",
             headers: {
