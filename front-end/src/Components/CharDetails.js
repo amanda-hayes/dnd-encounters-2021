@@ -32,6 +32,7 @@ function CharacterStats(props) {
       <div className="parchment-background">
         <br />
         <h1 id="char-details-h1">
+          <br />
           {character.name}'s
           <br />
           Character Sheet
