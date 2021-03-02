@@ -34,7 +34,9 @@ function AllCharPage() {
 
   const fetchCharacters = async () => {
     try {
-      const response = await fetch("https://theadventurerlog.com/characters");
+      const response = await fetch(
+        "https://theadventurerlog.com/api/characters"
+      );
       const data = await response.json();
       setCharacters(data);
     } catch (error) {
@@ -49,7 +51,7 @@ function AllCharPage() {
   const deleteCharacter = async (id) => {
     try {
       const response = await fetch(
-        `https://theadventurerlog.com/characters/${id}`,
+        `https://theadventurerlog.com/api/characters/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -79,7 +81,9 @@ function AllCharPage() {
 
   const fetchRandomCharacters = async () => {
     try {
-      const response = await fetch("https://theadventurerlog.com/randomchar");
+      const response = await fetch(
+        "https://theadventurerlog.com/api/randomchar"
+      );
       const data = await response.json();
 
       setRandomCharacters(data);
@@ -106,7 +110,7 @@ function AllCharPage() {
         generateChar();
       } else {
         const response = await fetch(
-          "https://theadventurerlog.com/characters",
+          "https://theadventurerlog.com/api/characters",
           {
             method: "POST",
             headers: {

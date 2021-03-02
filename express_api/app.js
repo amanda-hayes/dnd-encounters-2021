@@ -7,6 +7,7 @@ require("dotenv").config();
  *  CLASS VARS  *
  ****************/
 const express = require("express");
+const mongoClient = require("mongodb").MongoClient;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const methodOverride = require("method-override");
@@ -15,8 +16,9 @@ const bcrypt = require("bcryptjs");
 const app = express();
 const charactersController = require("./controllers/characters");
 const randomCharController = require("./controllers/randomChar");
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 7000;
 const MONGOURI = process.env.MONGODB_URI;
+const DATABASE_URL = process.env.DATABASE_URL;
 const SECRET = process.env.SECRET_KEY;
 
 /***************
@@ -28,18 +30,26 @@ app.use("/api/characters", charactersController);
 app.use("/api/randomChar", randomCharController);
 app.use(methodOverride("_method"));
 
+mongoClient.connect(
+  DATABASE_URL,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  function (err, client) {
+    client.close();
+  }
+);
+
 /**************
  *  MONGOOSE  *
  ***************/
-mongoose.connect(MONGOURI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(MONGOURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connection.on("error", (err) =>
-  console.log(err.message + " is Mongod not running?")
-);
-mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
-mongoose.connection.once("open", () => {
-  console.log("connected to mongoose!!!");
-});
+// mongoose.connection.on("error", (err) =>
+//   console.log(err.message + " is Mongod not running?")
+// );
+// mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
+// mongoose.connection.once("open", () => {
+//   console.log("connected to mongoose!!!");
+// });
 
 /********************
  * HELPER FUNCTIONS *
@@ -51,7 +61,7 @@ function createPasswordHash(password, salt) {
 /*********************
  *  ROUTE: REGISTER  *
  *********************/
-app.post("api/register", (req, res) => {
+app.post("/register", (req, res) => {
   req.body.password = createPasswordHash(req.body.password, 10);
 
   User.create(req.body, (err, createdUser) => {
