@@ -44,25 +44,6 @@ const UpdateCharacterForm = (props) => {
     const charisma = charismaInput.current.value;
     const createdBy = window.localStorage.getItem("currentUsername");
 
-    const body = JSON.stringify({
-      name,
-      race,
-      characterClass,
-      pronouns,
-      HP,
-      weapon,
-      attack,
-      armorClass,
-      catchphrases,
-      backstory,
-      strength,
-      dexterity,
-      constitution,
-      intelligence,
-      wisdom,
-      charisma,
-      createdBy,
-    });
     console.log(body);
     // event.currentTarget.reset();
 
